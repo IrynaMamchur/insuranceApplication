@@ -3,19 +3,21 @@ package com.example.insuranceapplication.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 @Data
 @Entity
 @Table(name = "contractNumber")
 public class ContractNumber {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "contractNumberID")
-        private Integer contractNumberId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "contractNumberID")
+    private Integer contractNumberId;
 
-        @Basic(optional = false)
-        @Column(name = "clientID")
-        private Integer clientID;
+    @Basic(optional = false)
+    @Column(name = "clientID")
+    private Integer clientID;
 
 
     @Basic(optional = false)
@@ -40,4 +42,10 @@ public class ContractNumber {
 
     @Column(name = "isInsuranceEvent")
     private boolean isInsuranceEvent;
+
+    @Column(name = "created_at")
+    private Timestamp createdAt;
+
+    @Column(name = "finished_at")
+    private Timestamp finishedAt;
 }
