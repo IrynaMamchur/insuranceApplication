@@ -3,6 +3,7 @@ package com.example.insuranceapplication.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Data
@@ -15,8 +16,12 @@ public class Payment {
     private Integer paymentId;
 
     @Basic(optional = false)
-    @Column(name = "date")
-    private LocalDate date;
+    @Column(name = "datePlan")
+    private LocalDate datePlan;
+
+    @Basic(optional = false)
+    @Column(name = "dateOfPayment")
+    private LocalDate dateOfPayment;
 
     @Basic(optional = false)
     @Column(name = "amount")
@@ -26,4 +31,6 @@ public class Payment {
     @Column(name = "contractNumberID")
     private Integer contractNumberId;
 
+    @Column(name = "created_at")
+    private Timestamp createdAt;
 }
