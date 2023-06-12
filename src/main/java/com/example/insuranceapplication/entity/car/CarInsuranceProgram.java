@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "carYearOfIssue")
-public class YearOfIssue {
+@Table(name = "carInsuranceProgram")
+public class CarInsuranceProgram {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +16,8 @@ public class YearOfIssue {
     private Integer id;
 
     @Basic(optional = false)
-    @Column(name = "carFirstRegistr")
-    private LocalDate careFirstRegistr;
+    @Column(name = "insuranceProgramName", length = 30)
+    private String insuranceProgramName;
 
     @Basic(optional = false)
     @Column(name = "coefficient")
@@ -29,5 +28,6 @@ public class YearOfIssue {
 
     @Column(name = "finished_at")
     private Timestamp finishedAt;
+
 
 }

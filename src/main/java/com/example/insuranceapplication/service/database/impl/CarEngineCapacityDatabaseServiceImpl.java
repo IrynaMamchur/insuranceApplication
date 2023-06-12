@@ -1,6 +1,6 @@
-package com.example.insuranceapplication.database.impl;
+package com.example.insuranceapplication.service.database.impl;
 
-import com.example.insuranceapplication.database.CarEngineCapacityDatabaseService;
+import com.example.insuranceapplication.service.database.CarEngineCapacityDatabaseService;
 import org.springframework.stereotype.Service;
 
 @Service

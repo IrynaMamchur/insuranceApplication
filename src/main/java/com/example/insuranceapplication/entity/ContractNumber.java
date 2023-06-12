@@ -12,13 +12,12 @@ public class ContractNumber {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "contractNumberID")
-    private Integer contractNumberId;
+    @Column(name = "id")
+    private Integer id;
 
     @Basic(optional = false)
     @Column(name = "clientID")
     private Integer clientID;
-
 
     @Basic(optional = false)
     @Column(name = "requestsId")
