@@ -8,19 +8,19 @@ import java.sql.Timestamp;
 @Data
 @Entity
 @Table(name = "carBrand")
-public class Brand {
+public class CarBrand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
     @Basic(optional = false)
-    @Column(name = "carBrand", length = 30)
-    private String carBrand;
+    @Column(name = "carBrandName", length = 30)
+    private String carBrandName;
 
     @Basic(optional = false)
-    @Column(name = "carModel", length = 30)
-    private String carModel;
+    @Column(name = "carModelName", length = 30)
+    private String carModelName;
 
     @Basic(optional = false)
     @Column(name = "coefficient")
