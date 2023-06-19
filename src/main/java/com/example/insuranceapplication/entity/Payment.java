@@ -16,11 +16,7 @@ public class Payment {
     private Integer id;
 
     @Basic(optional = false)
-    @Column(name = "datePlan")
-    private LocalDate datePlan;
-
-    @Basic(optional = false)
-    @Column(name = "dateOfPayment")
+    @Column(name = "date_of_payment")
     private LocalDate dateOfPayment;
 
     @Basic(optional = false)
@@ -28,7 +24,7 @@ public class Payment {
     private Double amount;
 
     @Basic(optional = false)
-    @Column(name = "contractNumberID")
+    @Column(name = "contract_number_id")
     private Integer contractNumberId;
 
     @Column(name = "created_at")

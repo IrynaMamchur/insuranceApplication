@@ -16,7 +16,7 @@ public class CarEngineCapacity {
         private Integer id;
 
         @Basic(optional = false)
-        @Column(name = "engineCapacity")
+        @Column(name = "engine_capacity")
         private Double engineCapacity;
 
         @Basic(optional = false)
