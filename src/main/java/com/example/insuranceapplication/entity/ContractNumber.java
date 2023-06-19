@@ -51,6 +51,7 @@ public class ContractNumber {
     private InsuranceEventInContractNumber insuranceEventInContractNumber;
 
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
     @Column(name = "started_at")

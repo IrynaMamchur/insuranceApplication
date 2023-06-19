@@ -42,6 +42,7 @@ public class ClientRequests {
     private ClientRequestStatus clientRequestStatus;
 
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
     @Basic(optional = false)

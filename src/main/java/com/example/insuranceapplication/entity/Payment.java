@@ -28,5 +28,6 @@ public class Payment {
     private Integer contractNumberId;
 
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 }

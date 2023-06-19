@@ -47,6 +47,7 @@ public class Client {
     private ContractInClientStatus contractInClientStatus;
 
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
 }

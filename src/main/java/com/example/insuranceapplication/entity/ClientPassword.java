@@ -33,6 +33,7 @@ public class ClientPassword {
     private String password;
 
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
     @Column(name = "status")

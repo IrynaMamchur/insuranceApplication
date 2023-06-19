@@ -27,6 +27,7 @@ public class CarBrand {
     private Double coefficient;
 
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
     @Column(name = "finished_at")
