@@ -10,23 +10,23 @@ import java.sql.Timestamp;
 @Table(name = "carEngineCapacity")
 public class CarEngineCapacity {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id")
-        private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
-        @Basic(optional = false)
-        @Column(name = "engine_capacity")
-        private Double engineCapacity;
+    @Basic(optional = false)
+    @Column(name = "engine_capacity")
+    private Double engineCapacity;
 
-        @Basic(optional = false)
-        @Column(name = "coefficient")
-        private Double coefficient;
+    @Basic(optional = false)
+    @Column(name = "coefficient")
+    private Double coefficient;
 
-        @Column(name = "created_at")
-        private Timestamp createdAt;
+    @Column(name = "created_at")
+    private Timestamp createdAt;
 
-        @Column(name = "finished_at")
-        private Timestamp finishedAt;
+    @Column(name = "finished_at")
+    private Timestamp finishedAt;
 
 }

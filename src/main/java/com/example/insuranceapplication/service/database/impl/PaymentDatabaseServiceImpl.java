@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
-private final PaymentRepository paymentRepository;
+    private final PaymentRepository paymentRepository;
 
 
     @Override

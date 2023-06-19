@@ -15,8 +15,8 @@ public interface CarBrandDatabaseService {
 
     List<CarBrand> getCarBrands();
 
-    CarBrand update (CarBrand carBrand);
+    CarBrand update(CarBrand carBrand);
 
-    CarBrand create (CarBrand carBrand);
+    CarBrand create(CarBrand carBrand);
 
 }

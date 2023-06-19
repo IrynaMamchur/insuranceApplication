@@ -24,7 +24,7 @@ public class Client {
     private String surname;
 
     @Basic(optional = false)
-    @Column(name = "name",length = 60)
+    @Column(name = "name", length = 60)
     private String name;
 
     @Basic(optional = false)

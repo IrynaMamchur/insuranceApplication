@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabaseService {
-private final ClientPasswordRepository clientPasswordRepository;
+    private final ClientPasswordRepository clientPasswordRepository;
 
     @Override
     public ClientPassword getClientPassword(String login, String password) {

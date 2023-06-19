@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabaseService {
-private final ContractNumberRepository contractNumberRepository;
+    private final ContractNumberRepository contractNumberRepository;
 
 
     @Override

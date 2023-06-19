@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabaseService {
-private final ClientRequestsRepository clientRequestsRepository;
+    private final ClientRequestsRepository clientRequestsRepository;
 
 
     @Override
@@ -52,7 +52,13 @@ private final ClientRequestsRepository clientRequestsRepository;
     }
 
     @Override
+    public ClientRequests createCoefficient(Integer id) {
+        return clientRequestsRepository.createNewCoefficient(id);
+    }
+
+    @Override
     public ClientRequests update(ClientRequests clientRequests) {
         return clientRequestsRepository.save(clientRequests);
     }
+
 }

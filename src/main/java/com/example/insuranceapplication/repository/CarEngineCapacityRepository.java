@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapacity, Integer> {
-CarEngineCapacity getEngineCapacity (Double engineCapacity);
+    CarEngineCapacity getEngineCapacity(Double engineCapacity);
 
 }

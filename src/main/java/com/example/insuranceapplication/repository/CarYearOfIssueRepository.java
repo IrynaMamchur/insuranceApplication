@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Repository
 public interface CarYearOfIssueRepository extends JpaRepository<CarYearOfIssue, Integer> {
-CarYearOfIssue getYearOfIssueByCarFirstRegistr (LocalDate carFirstRegistr);
+    CarYearOfIssue getYearOfIssueByCarFirstRegistr(LocalDate carFirstRegistr);
 
 
 }

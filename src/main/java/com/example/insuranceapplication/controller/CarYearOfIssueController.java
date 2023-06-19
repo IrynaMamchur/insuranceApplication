@@ -1,8 +1,5 @@
 package com.example.insuranceapplication.controller;
 
-import com.example.insuranceapplication.entity.car.CarBrand;
-import com.example.insuranceapplication.entity.car.CarEngineCapacity;
-import com.example.insuranceapplication.entity.car.CarInsuranceProgram;
 import com.example.insuranceapplication.entity.car.CarYearOfIssue;
 import com.example.insuranceapplication.service.database.CarYearOfIssueDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -19,18 +16,19 @@ public class CarYearOfIssueController {
     private final CarYearOfIssueDatabaseService carYearOfIssueDatabaseService;
 
     @GetMapping(value = "/carYearOfIssue/find/first_year/{carFirstRegistr}")
-    public CarYearOfIssue getCarYearOfIssueByYear(@PathVariable(name = "carFirstRegistr") LocalDate carFirstRegistr){
-        CarYearOfIssue carYearOfIssue = carYearOfIssueDatabaseService.getYearOfIssueByCarFirstRegistr (carFirstRegistr);
+    public CarYearOfIssue getCarYearOfIssueByYear(@PathVariable(name = "carFirstRegistr") LocalDate carFirstRegistr) {
+        CarYearOfIssue carYearOfIssue = carYearOfIssueDatabaseService.getYearOfIssueByCarFirstRegistr(carFirstRegistr);
         return carYearOfIssue;
     }
+
     @GetMapping(value = "/carYearOfIssue/find/id/{id}")
-    public Optional<CarYearOfIssue> getCarEngineCapacityById(@PathVariable(name = "id") Integer id){
+    public Optional<CarYearOfIssue> getCarEngineCapacityById(@PathVariable(name = "id") Integer id) {
         Optional<CarYearOfIssue> carYearOfIssue = carYearOfIssueDatabaseService.getCarYearOfIssueById(id);
         return carYearOfIssue;
     }
 
     @GetMapping(value = "/carYearOfIssue/find/all")
-    public List<CarYearOfIssue> getAllCarEngineCapacity(){
+    public List<CarYearOfIssue> getAllCarEngineCapacity() {
         List<CarYearOfIssue> carYearOfIssues = carYearOfIssueDatabaseService.getAllCarYearOfIssue();
         return carYearOfIssues;
     }

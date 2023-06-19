@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CarInsuranceProgramRepository extends JpaRepository<CarInsuranceProgram, Integer> {
 
-    CarInsuranceProgram getInsuranceProgramByInsuranceProgramName (String insuranceProgramName);
+    CarInsuranceProgram getInsuranceProgramByInsuranceProgramName(String insuranceProgramName);
 
 }

@@ -12,5 +12,5 @@ public interface ClientPasswordRepository extends JpaRepository<ClientPassword, 
 
     ClientPassword getClientPasswordByLoginAndPassword(String login, String password);
 
-    Collection<ClientPassword>getClientPasswordsByPasswordStatus (PasswordStatus passwordStatus);
+    Collection<ClientPassword> getClientPasswordsByPasswordStatus(PasswordStatus passwordStatus);
 }
