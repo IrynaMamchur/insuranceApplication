@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.entity;
 
+import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,27 +19,27 @@ public class ClientRequests {
     private Integer id;
 
     @Basic(optional = false)
-    @Column(name = "clientId")
+    @Column(name = "client_id")
     private Integer clientId;
 
     @Basic(optional = false)
-    @Column(name = "brandId")
-    private String brandID;
+    @Column(name = "brand_id")
+    private String brandId;
 
     @Basic(optional = false)
-    @Column(name = "engineCapacityId")
+    @Column(name = "engine_capacity_id")
     private Integer engineCapacityId;
 
     @Basic(optional = false)
-    @Column(name = "carFirstRegistrId")
+    @Column(name = "car_first_registr_id")
     private Integer careFirstRegistrId;
 
     @Basic(optional = false)
-    @Column(name = "insuranceProgramId")
+    @Column(name = "insurance_program_id")
     private Integer insuranceProgramId;
 
-    @Column(name = "isConfirmed")
-    private boolean isConfirmed;
+    @Column(name = "is_confirmed")
+    private ClientRequestStatus clientRequestStatus;
 
     @Column(name = "created_at")
     private Timestamp createdAt;

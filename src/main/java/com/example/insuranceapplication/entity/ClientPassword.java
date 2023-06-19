@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.entity;
 
+import com.example.insuranceapplication.entity.enam.PasswordStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class ClientPassword {
     private Integer id;
 
     @Basic(optional = false)
-    @Column(name = "clientId")
+    @Column(name = "client_id")
     private Integer clientId;
 
     @Basic(optional = false)
@@ -33,5 +34,8 @@ public class ClientPassword {
 
     @Column(name = "created_at")
     private Timestamp createdAt;
+
+    @Column(name = "status")
+    private PasswordStatus passwordStatus;
 
 }

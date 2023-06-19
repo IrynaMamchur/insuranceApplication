@@ -16,7 +16,7 @@ public class CarInsuranceProgram {
     private Integer id;
 
     @Basic(optional = false)
-    @Column(name = "insuranceProgramName", length = 30)
+    @Column(name = "insurance_program_name", length = 30)
     private String insuranceProgramName;
 
     @Basic(optional = false)
@@ -29,5 +29,6 @@ public class CarInsuranceProgram {
     @Column(name = "finished_at")
     private Timestamp finishedAt;
 
-
+    @Column(name = "optional", length = 60)
+    private String optional;
 }

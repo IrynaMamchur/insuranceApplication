@@ -1,9 +1,11 @@
 package com.example.insuranceapplication.entity;
 
+import com.example.insuranceapplication.entity.enam.InsuranceEventInContractNumber;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -16,34 +18,43 @@ public class ContractNumber {
     private Integer id;
 
     @Basic(optional = false)
-    @Column(name = "clientID")
-    private Integer clientID;
+    @Column(name = "client_id")
+    private Integer clientId;
 
     @Basic(optional = false)
-    @Column(name = "requestsId")
+    @Column(name = "requests_id")
     private Integer requestsId;
 
     @Basic(optional = false)
-    @Column(name = "payment1Id")
+    @Column(name = "amount_all")
+    private Double amountAll;
+
+    @Column(name = "payment_1_id")
     private Integer payment1Id;
 
-    @Basic(optional = false)
-    @Column(name = "payment2Id")
+    @Column(name = "date_payment_1plan")
+    private LocalDate datePayment1Plan;
+
+    @Column(name = "amount_1plan")
+    private Double amount1Plan;
+
+    @Column(name = "payment_2_id")
     private Integer payment2Id;
 
-    @Basic(optional = false)
-    @Column(name = "payment3Id")
-    private Integer payment3Id;
+    @Column(name = "date_payment_2plan")
+    private LocalDate datePayment2Plan;
 
-    @Basic(optional = false)
-    @Column(name = "payment4Id")
-    private Integer payment4Id;
+    @Column(name = "amount_2plan")
+    private Double amount2Plan;
 
-    @Column(name = "isInsuranceEvent")
-    private boolean isInsuranceEvent;
+    @Column(name = "is_insurance_event")
+    private InsuranceEventInContractNumber insuranceEventInContractNumber;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
+
+    @Column(name = "started_at")
+    private Timestamp startedAt;
 
     @Column(name = "finished_at")
     private Timestamp finishedAt;

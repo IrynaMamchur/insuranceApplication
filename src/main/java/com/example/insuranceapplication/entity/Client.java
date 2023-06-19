@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.entity;
 
+import com.example.insuranceapplication.entity.enam.ContractInClientStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -27,23 +28,23 @@ public class Client {
     private String name;
 
     @Basic(optional = false)
-    @Column(name = "dateOfBirthday")
+    @Column(name = "date_of_birthday")
     private LocalDate dateOfBirthday;
 
     @Basic(optional = false)
-    @Column(name = "eMail", length = 60)
+    @Column(name = "e_mail", length = 60)
     private String eMail;
 
     @Basic(optional = false)
-    @Column(name = "phoneNumber", length = 20)
+    @Column(name = "phone_number", length = 20)
     private String phoneNumber;
 
     @Basic(optional = false)
     @Column(name = "address", length = 120)
     private String address;
 
-    @Column(name = "isContract")
-    private boolean isContract;
+    @Column(name = "is_contract")
+    private ContractInClientStatus contractInClientStatus;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
