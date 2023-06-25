@@ -18,7 +18,7 @@ public class CarYearOfIssueDatabaseServiceImpl implements CarYearOfIssueDatabase
 
 
     @Override
-    public CarYearOfIssue getYearOfIssueByCarFirstRegistr(LocalDate carFirstRegistr) {
+    public CarYearOfIssue getYearOfIssueByCarFirstRegistr(Integer carFirstRegistr) {
         return carYearOfIssueRepository.getYearOfIssueByCarFirstRegistr(carFirstRegistr);
     }
 
@@ -40,5 +40,10 @@ public class CarYearOfIssueDatabaseServiceImpl implements CarYearOfIssueDatabase
     @Override
     public CarYearOfIssue update(CarYearOfIssue carYearOfIssue) {
         return carYearOfIssueRepository.save(carYearOfIssue);
+    }
+
+    @Override
+    public double getCoefficientCarYearOfIssue(Integer carFirstRegistr) {
+        return carYearOfIssueRepository.getCoefficientCarYearOfIssue(carFirstRegistr);
     }
 }

@@ -18,7 +18,7 @@ public class CarYearOfIssue {
 
     @Basic(optional = false)
     @Column(name = "car_first_registr")
-    private LocalDate carFirstRegistr;
+    private Integer carFirstRegistr;
 
     @Basic(optional = false)
     @Column(name = "coefficient")

@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,5 +27,5 @@ public interface ClientReguestsDatabaseService {
 
     ClientRequests create(ClientRequests clientRequests);
 
-    ClientRequests createCoefficient(Integer id);
+    ClientRequests getCarCostClientRequests (Integer id);
 }

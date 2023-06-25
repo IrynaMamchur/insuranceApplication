@@ -14,7 +14,6 @@ import java.util.Optional;
 public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
     private final CarBrandRepository carBrandRepository;
 
-
     @Override
     public CarBrand getCarBrandByName(String carBrandName, String carModelName) {
         return carBrandRepository.getBrandByCarBrandNameAndCarModelName(carBrandName, carModelName);
@@ -38,6 +37,11 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
     @Override
     public CarBrand create(CarBrand carBrand) {
         return carBrandRepository.save(new CarBrand());
+    }
+
+    @Override
+    public double getCoefficientCarBrand(String carBrandName, String carModelName) {
+        return carBrandRepository.getCoefficientCarBrand(carBrandName, carModelName);
     }
 
     @Override

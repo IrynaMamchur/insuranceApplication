@@ -16,7 +16,7 @@ public class CarYearOfIssueController {
     private final CarYearOfIssueDatabaseService carYearOfIssueDatabaseService;
 
     @GetMapping(value = "/carYearOfIssue/find/first_year/{carFirstRegistr}")
-    public CarYearOfIssue getCarYearOfIssueByYear(@PathVariable(name = "carFirstRegistr") LocalDate carFirstRegistr) {
+    public CarYearOfIssue getCarYearOfIssueByYear(@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr) {
         CarYearOfIssue carYearOfIssue = carYearOfIssueDatabaseService.getYearOfIssueByCarFirstRegistr(carFirstRegistr);
         return carYearOfIssue;
     }
@@ -31,6 +31,11 @@ public class CarYearOfIssueController {
     public List<CarYearOfIssue> getAllCarEngineCapacity() {
         List<CarYearOfIssue> carYearOfIssues = carYearOfIssueDatabaseService.getAllCarYearOfIssue();
         return carYearOfIssues;
+    }
+
+    @GetMapping(value = "/carYearOfIssue/find/coefficient/{carFirstRegistr}")
+    public double getCoefficientCarInsuranceProgram(@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr) {
+        return carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
     }
 
     @PostMapping(value = "/carYearOfIssue/create")

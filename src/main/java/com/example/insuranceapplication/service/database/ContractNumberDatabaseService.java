@@ -4,6 +4,8 @@ import com.example.insuranceapplication.entity.ContractNumber;
 import com.example.insuranceapplication.entity.enam.InsuranceEventInContractNumber;
 import com.example.insuranceapplication.repository.ContractNumberRepository;
 
+
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +15,7 @@ public interface ContractNumberDatabaseService {
 
     List<ContractNumber> getContractNumberByInsuranceEventInContractNumber(InsuranceEventInContractNumber insuranceEventInContractNumber);
 
-//    List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt);
+   List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt);
 //
 //    List<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt);
 //
@@ -21,7 +23,6 @@ public interface ContractNumberDatabaseService {
 //
 //    List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt);
 
-    List<ContractNumber> getContractNumberByAmountAll(Double amountAll);
 
     List<ContractNumber> getContractNumberByClientId(Integer clientId);
 

@@ -19,4 +19,6 @@ public interface CarBrandDatabaseService {
 
     CarBrand create(CarBrand carBrand);
 
+    double getCoefficientCarBrand(String carBrandName, String carModelName);
+
 }

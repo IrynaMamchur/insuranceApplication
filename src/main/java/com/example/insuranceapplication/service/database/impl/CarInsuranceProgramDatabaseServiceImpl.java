@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.car.CarInsuranceProgram;
 import com.example.insuranceapplication.repository.CarInsuranceProgramRepository;
 import com.example.insuranceapplication.service.database.CarInsuranceProgramDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,6 +40,11 @@ public class CarInsuranceProgramDatabaseServiceImpl implements CarInsuranceProgr
     @Override
     public CarInsuranceProgram update(CarInsuranceProgram carInsuranceProgram) {
         return carInsuranceProgramRepository.save(carInsuranceProgram);
+    }
+
+    @Override
+    public double getCoefficientCarInsuranceProgram(String insuranceProgramName) {
+        return carInsuranceProgramRepository.getCoefficientCarInsuranceProgram(insuranceProgramName);
     }
 
 }

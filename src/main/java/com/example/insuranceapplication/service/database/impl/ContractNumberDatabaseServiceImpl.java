@@ -7,6 +7,7 @@ import com.example.insuranceapplication.service.database.ContractNumberDatabaseS
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,10 +27,10 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
         return (List<ContractNumber>) contractNumberRepository.getContractNumberByInsuranceEventInContractNumber(insuranceEventInContractNumber);
     }
 
-//    @Override
-//    public List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt) {
-//        return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAtAfter(finishedAt);
-//    }
+    @Override
+    public List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt) {
+        return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAtAfter(finishedAt);
+    }
 //
 //    @Override
 //    public List<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt) {
@@ -45,11 +46,6 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
 //    public List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt) {
 //        return null;
 //    }
-
-    @Override
-    public List<ContractNumber> getContractNumberByAmountAll(Double amountAll) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByAmountAll(amountAll);
-    }
 
 
     public List<ContractNumber> getContractNumberByClientId(Integer clientId) {

@@ -32,11 +32,18 @@ public class CarBrandController {
         return carBrands;
     }
 
+    @GetMapping(value = "/carBrand/find/coefficient/{carBrandName}/{carModelName}")
+    public double getCoefficientCarBrand(@PathVariable(name = "carBrandName") String carBrandName, @PathVariable(name = "carModelName") String carModelName) {
+        return carBrandDatabaseService.getCoefficientCarBrand(carBrandName, carModelName);
+    }
+
+
     @GetMapping(value = "/carBrand/find/all")
     public List<CarBrand> getCarBrands() {
         List<CarBrand> carBrands = carBrandDatabaseService.getCarBrands();
         return carBrands;
     }
+
 
     @PostMapping(value = "/carBrand/create")
     public CarBrand createNewCarBrand(@RequestBody CarBrand carBrand) {

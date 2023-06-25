@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Repository
 public interface ClientRequestsRepository extends JpaRepository<ClientRequests, Integer> {
@@ -20,15 +21,9 @@ public interface ClientRequestsRepository extends JpaRepository<ClientRequests, 
     Collection<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId);
 
     @Query(value = "SELECT " +
-            "CarBrand.coefficient* CarEngineCapacity.coefficient * CarInsuranceProgram.coefficient" +
-            " * CarYearOfIssue.coefficient AS coefficient " +
-            "FROM ClientRequests\n" +
-            "JOIN CarBrand ON ClientRequests.brandId= CarBrand.id \n" +
-            "JOIN CarEngineCapacity ON ClientRequests.engineCapacityId = CarEngineCapacity.id\n" +
-            "JOIN CarInsuranceProgram ON ClientRequests.insuranceProgramId =CarInsuranceProgram.id\n" +
-            "JOIN CarYearOfIssue ON ClientRequests.careFirstRegistrId = CarYearOfIssue.id\n" +
-            " where ClientRequests.id = :id ")
-    ClientRequests createNewCoefficient(@Param("id") Integer id);
-
-
+            "ClientRequests .carCost\n" +
+            "FROM ClientRequests \n" +
+            "where ClientRequests .id = :id")
+    ClientRequests getCarCostClientRequests(@Param("id") Integer id);
 }
+

@@ -38,7 +38,7 @@ public class ClientRequests {
     @Column(name = "insurance_program_id")
     private Integer insuranceProgramId;
 
-    @Column(name = "is_confirmed")
+    @Column(name = "status")
     private ClientRequestStatus clientRequestStatus;
 
     @Column(name = "created_at")
@@ -46,11 +46,15 @@ public class ClientRequests {
     private Timestamp createdAt;
 
     @Basic(optional = false)
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name = "car_cost")
+    private Double carCost;
 
     @Basic(optional = false)
-    @Column(name = "coefficient")
-    private Double coefficient;
+    @Column(name = "coefficientId")
+    private Integer coefficientId;
+
+    @Basic(optional = false)
+    @Column(name = "insurance_payment_id")
+    private Integer insurancePaymentId;
 
 }
