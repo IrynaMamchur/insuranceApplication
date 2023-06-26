@@ -6,6 +6,7 @@ import com.example.insuranceapplication.service.database.ContractNumberDatabaseS
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,10 +29,38 @@ public class ContractNumberController {
         return contractNumbers;
     }
 
+    @GetMapping(value = "/contract/find/finished/after/{finishedAt}")
+    public List<ContractNumber> getContractNumberByFinishedAtAfter(@PathVariable(name = "finishedAt") Timestamp finishedAt) {
+        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByFinishedAtAfter(finishedAt);
+        return contractNumbers;
+    }
+    @GetMapping(value = "/contract/find/finished/{finishedAt}")
+    public List<ContractNumber> getContractNumberByFinishedAt(@PathVariable(name = "finishedAt") Timestamp finishedAt) {
+        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByFinishedAt(finishedAt);
+        return contractNumbers;
+    }
+
+    @GetMapping(value = "/contract/find/started/after/{startedAt}")
+    public List<ContractNumber> getContractNumberByStartedAtAfter(@PathVariable(name = "startedAt") Timestamp startedAt) {
+        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByStartedAtAfter(startedAt);
+        return contractNumbers;
+    }
+
+    @GetMapping(value = "/contract/find/started/{startedAt}")
+    public List<ContractNumber> getContractNumberByStartedAt(@PathVariable(name = "startedAt") Timestamp startedAt) {
+        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByStartedAt(startedAt);
+        return contractNumbers;
+    }
+
+
     @GetMapping(value = "/contract/find/insuranse_event/{insuranceEventInContractNumber}")
     public List<ContractNumber> getContractNumberByInsuranceEvent(@PathVariable(name = "insuranceEventInContractNumber") InsuranceEventInContractNumber insuranceEventInContractNumber) {
         List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByInsuranceEventInContractNumber(insuranceEventInContractNumber);
         return contractNumbers;
+    }
+    @GetMapping(value = "/contract/find_insurance_event/id/{id}")
+    public InsuranceEventInContractNumber getInsuranceEvent(@PathVariable(name = "id") Integer id) {
+        return contractNumberDatabaseService.getInsuranceEvent(id);
     }
 
     @GetMapping(value = "/contract/find/client_id/{clientId}")

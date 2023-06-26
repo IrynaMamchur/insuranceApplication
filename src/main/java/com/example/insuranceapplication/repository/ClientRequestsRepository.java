@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @Repository
 public interface ClientRequestsRepository extends JpaRepository<ClientRequests, Integer> {
@@ -24,6 +23,6 @@ public interface ClientRequestsRepository extends JpaRepository<ClientRequests, 
             "ClientRequests .carCost\n" +
             "FROM ClientRequests \n" +
             "where ClientRequests .id = :id")
-    ClientRequests getCarCostClientRequests(@Param("id") Integer id);
+    double getCarCostClientRequests(@Param("id") Integer id);
 }
 
