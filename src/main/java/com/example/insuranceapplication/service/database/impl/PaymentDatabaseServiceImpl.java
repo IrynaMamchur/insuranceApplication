@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.Payment;
 import com.example.insuranceapplication.repository.PaymentRepository;
 import com.example.insuranceapplication.service.database.PaymentDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     private final PaymentRepository paymentRepository;
 

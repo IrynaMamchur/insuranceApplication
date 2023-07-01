@@ -1,16 +1,16 @@
 package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.Coefficient;
-import com.example.insuranceapplication.entity.enam.CarNumberOfPaymentsNumbers;
+import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import com.example.insuranceapplication.repository.CoefficientRepository;
 import com.example.insuranceapplication.service.database.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseService {
 
     private final CoefficientRepository coefficientRepository;
@@ -18,31 +18,37 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
     private final CarEngineCapacityDatabaseService carEngineCapacityDatabaseService;
     private final CarInsuranceProgramDatabaseService carInsuranceProgramDatabaseService;
     private final CarYearOfIssueDatabaseService carYearOfIssueDatabaseService;
-    private final CarNumberOfPaymentsDatabaseService carNumberOfPaymentsDatabaseService;
-    public Double coefFirst;
-    public Double coefSecond;
-    public Double coefThird;
-    public Double coefFor;
-    public Double coefFives;
-    public Double coefNew;
+    private final CarQuantityOfPaymentsDatabaseService carQuantityOfPaymentsDatabaseService;
 
 
-    public double createCoefficient(String carBrandName, String carModelName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarNumberOfPaymentsNumbers number) {
-        coefFirst = carBrandDatabaseService.getCoefficientCarBrand(carBrandName, carModelName);
-        coefSecond = carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
-        coefThird = carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
-        coefFor = carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
-        coefFives = carNumberOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number);
-        coefficientRepository.createCoefficient(coefFirst, coefSecond, coefThird, coefFor, coefFives);
-        {
-            coefNew = coefFirst * coefSecond * coefThird * coefFor * coefFives;
-        }
-        return coefNew;
-    }
+//    public double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
+//        Double coefCarBrand;
+//        Double coefCarEngineCapacity;
+//        Double coefCarInsuranceProgram;
+//        Double coefCarYearOfIssue;
+//        Double coefCarQuantityOfPayments;
+//        double coefficientForCar;
+//
+//        coefCarBrand = carBrandDatabaseService.getCoefficientCarBrand(carBrandName);
+//        coefCarEngineCapacity = carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
+//        coefCarInsuranceProgram = carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
+//        coefCarYearOfIssue = carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
+//        coefCarQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number);
+//        coefficientRepository.createNewCoefficient(coefCarBrand, coefCarEngineCapacity, coefCarInsuranceProgram, coefCarYearOfIssue, coefCarQuantityOfPayments);
+//        {
+//            coefficientForCar = coefCarBrand * coefCarEngineCapacity * coefCarInsuranceProgram * coefCarYearOfIssue * coefCarQuantityOfPayments;
+//        }
+//        return coefficientForCar;
+//    }
 
     @Override
     public double getCoefficient(Integer id) {
         return coefficientRepository.getCoefficient(id);
+    }
+
+    @Override
+    public Coefficient create(Coefficient coefficient) {
+        return coefficientRepository.save(coefficient);
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.insuranceapplication.entity.enam.PasswordStatus;
 import com.example.insuranceapplication.repository.ClientPasswordRepository;
 import com.example.insuranceapplication.service.database.ClientPasswordDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabaseService {
     private final ClientPasswordRepository clientPasswordRepository;
 

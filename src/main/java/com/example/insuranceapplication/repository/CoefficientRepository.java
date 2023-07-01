@@ -9,24 +9,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CoefficientRepository extends JpaRepository<Coefficient, Integer> {
 
-
-//    @Query(value = "SELECT " +
-//            "CarBrand.coefficient* CarEngineCapacity.coefficient * CarInsuranceProgram.coefficient" +
-//            " * CarYearOfIssue.coefficient AS coefficient " +
-//            "FROM ClientRequests\n" +
-//            "JOIN CarBrand ON ClientRequests.brandId= CarBrand.id \n" +
-//            "JOIN CarEngineCapacity ON ClientRequests.engineCapacityId = CarEngineCapacity.id\n" +
-//            "JOIN CarInsuranceProgram ON ClientRequests.insuranceProgramId =CarInsuranceProgram.id\n" +
-//            "JOIN CarYearOfIssue ON ClientRequests.careFirstRegistrId = CarYearOfIssue.id\n" +
-//            " where ClientRequests.id = :id ")
-//    ClientRequests createNewCoefficient(@Param("id") Integer id);
-
-    void createCoefficient(Double coefFirst, Double coefSecond, Double coefThird, Double coefFor, Double coefFives);
+//    double createNewCoefficient(Double coefCarBrand, Double coefCarEngineCapacity, Double coefCarInsuranceProgram, Double coefCarYearOfIssue, Double coefCarQuantityOfPayments);
 
     @Query(value = "SELECT " +
             "Coefficient .coefficient\n" +
             "FROM Coefficient \n" +
-            "where Coefficient .id = :id")
+            "where Coefficient .id = :id", nativeQuery = true)
     double getCoefficient (@Param("id") Integer id);
 
 }

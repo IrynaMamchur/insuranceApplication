@@ -1,8 +1,10 @@
 package com.example.insuranceapplication.controller;
 
+import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.entity.car.CarEngineCapacity;
 import com.example.insuranceapplication.service.database.CarEngineCapacityDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,38 +16,47 @@ public class CarEngineCapacityController {
 
     private final CarEngineCapacityDatabaseService carEngineCapacityDatabaseService;
 
-    @GetMapping(value = "/carEngineCapacity/find/engineCapacity/{engineCapacity}")
-    public CarEngineCapacity getCarEngineCapacity(@PathVariable(name = "engineCapacity") Double engineCapacity) {
-        CarEngineCapacity carEngineCapacity = carEngineCapacityDatabaseService.getCarEngineCapacity(engineCapacity);
-        return carEngineCapacity;
-    }
+//    @GetMapping(value = "/carEngineCapacity/find/engineCapacity/{engineCapacity}")
+//    public ResponseEntity <CarEngineCapacity> getCarEngineCapacity(@PathVariable(name = "engineCapacity") Double engineCapacity) {
+//        CarEngineCapacity carEngineCapacity = carEngineCapacityDatabaseService.getEngineCapacity(engineCapacity);
+//        return ResponseEntity.ok(carEngineCapacity);
+//    }
 
     @GetMapping(value = "/carEngineCapacity/find/id/{id}")
-    public Optional<CarEngineCapacity> getCarEngineCapacityById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity <Optional<CarEngineCapacity>> getCarEngineCapacityById(@PathVariable(name = "id") Integer id) {
         Optional<CarEngineCapacity> carEngineCapacity = carEngineCapacityDatabaseService.getCarEngineCapacityById(id);
-        return carEngineCapacity;
+        return ResponseEntity.ok(carEngineCapacity);
     }
 
     @GetMapping(value = "/carEngineCapacity/find/all")
-    public List<CarEngineCapacity> getAllCarEngineCapacity() {
+    public ResponseEntity <List<CarEngineCapacity>> getAllCarEngineCapacity() {
         List<CarEngineCapacity> carEngineCapacities = carEngineCapacityDatabaseService.getAllCarEngineCapacity();
-        return carEngineCapacities;
+        return createResponseEntity( carEngineCapacities);
     }
 
     @GetMapping(value = "/carEngineCapacity/find/coefficient/{engineCapacity}")
-    public double getCoefficientCarEngineCapacity(@PathVariable(name = "engineCapacity") Double engineCapacity) {
-        return carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
+    public ResponseEntity<Double> getCoefficientCarEngineCapacity(@PathVariable(name = "engineCapacity") Double engineCapacity) {
+        return ResponseEntity.ok(carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity));
     }
 
     @PostMapping(value = "/carEngineCapacity/create")
-    public CarEngineCapacity createNewCarEngineCapacity(@RequestBody CarEngineCapacity carEngineCapacity) {
+    public ResponseEntity <CarEngineCapacity> createNewCarEngineCapacity(@RequestBody CarEngineCapacity carEngineCapacity) {
         carEngineCapacityDatabaseService.create(carEngineCapacity);
-        return carEngineCapacity;
+        return ResponseEntity.ok(carEngineCapacity);
     }
 
     @PutMapping(value = "/carEngineCapacity/update")
-    public CarEngineCapacity updateCarBrand(@RequestBody CarEngineCapacity carEngineCapacity) {
+    public ResponseEntity <CarEngineCapacity> updateCarBrand(@RequestBody CarEngineCapacity carEngineCapacity) {
         carEngineCapacityDatabaseService.update(carEngineCapacity);
-        return carEngineCapacity;
+        return ResponseEntity.ok(carEngineCapacity);
     }
+
+    private ResponseEntity<List<CarEngineCapacity>> createResponseEntity(List<CarEngineCapacity> carEngineCapacities) {
+        if (carEngineCapacities != null && !carEngineCapacities.isEmpty()) {
+            return ResponseEntity.ok(carEngineCapacities);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 }

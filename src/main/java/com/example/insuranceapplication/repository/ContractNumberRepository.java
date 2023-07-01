@@ -30,19 +30,7 @@ public interface ContractNumberRepository extends JpaRepository<ContractNumber, 
     @Query(value = "SELECT " +
             "ContractNumber .insuranceEventInContractNumber\n" +
             "FROM ContractNumber \n" +
-            "where ContractNumber .id = :id")
+            "where ContractNumber .id = :id", nativeQuery = true)
     InsuranceEventInContractNumber getInsuranceEvent (@Param("id") Integer id);
-
-
-
-    @Query(value = "SELECT\n " +
-            "ContractNumber.id,\n" +
-            "InsurancePayment .insurancePayment,\n" +
-            "ClientRequests .carCost\n" +
-            "FROM ContractNumber \n" +
-                    "JOIN InsurancePayment ON ClientRequests.insurancePaymentId= InsurancePayment .id \n" +
-                    "JOIN ClientRequests ON ContractNumber .requestsId = ClientRequests .id\n" +
-                    "where ContractNumber .startedAt = :startedAt ")
-    Collection<ContractNumber> createFirstReport(@Param("startedAt") Timestamp startedAt);
 
 }

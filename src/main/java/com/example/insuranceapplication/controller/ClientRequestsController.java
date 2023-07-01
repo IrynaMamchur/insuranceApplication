@@ -1,9 +1,12 @@
 package com.example.insuranceapplication.controller;
 
+import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.ClientRequests;
+import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
 import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,62 +19,64 @@ public class ClientRequestsController {
     private final ClientReguestsDatabaseService clientReguestsDatabaseService;
 
     @GetMapping(value = "/clientReguests/find/status/{clientRequestStatus}")
-    public List<ClientRequests> getClientRequestsByClientRequestStatus(@PathVariable(name = "clientRequestStatus") ClientRequestStatus clientRequestStatus) {
+    public ResponseEntity <List<ClientRequests>> getClientRequestsByClientRequestStatus(@PathVariable(name = "clientRequestStatus") ClientRequestStatus clientRequestStatus) {
         List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByClientRequestStatus(clientRequestStatus);
-        return clientRequests;
+        return createResponseEntity(clientRequests);
     }
 
-    @GetMapping(value = "/clientReguests/find/insuranse_program_id/{insuranceProgramId}")
-    public List<ClientRequests> getClientRequestsByInsuranceProgramId(@PathVariable(name = "insuranceProgramId") Integer insuranceProgramId) {
+    @GetMapping(value = "/clientReguests/find/insuranseProgramId/{insuranceProgramId}")
+    public ResponseEntity <List<ClientRequests>> getClientRequestsByInsuranceProgramId(@PathVariable(name = "insuranceProgramId") Integer insuranceProgramId) {
         List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByInsuranceProgramId(insuranceProgramId);
-        return clientRequests;
+        return createResponseEntity(clientRequests);
     }
 
-    @GetMapping(value = "/clientReguests/find/brand_id/{brandId}")
-    public List<ClientRequests> getClientRequestsByBrandID(@PathVariable(name = "brandId") Integer brandId) {
-        List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByBrandID(brandId);
-        return clientRequests;
+    @GetMapping(value = "/clientReguests/find/brandId/{brandId}")
+    public ResponseEntity <List<ClientRequests>> getClientRequestsByBrandId(@PathVariable(name = "brandId") Integer brandId) {
+        List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByBrandId(brandId);
+        return createResponseEntity(clientRequests);
     }
 
-    @GetMapping(value = "/clientReguests/find/client_id/{clientId}")
-    public List<ClientRequests> getClientRequestsByClientId(@PathVariable(name = "clientId") Integer clientId) {
+    @GetMapping(value = "/clientReguests/find/clientId/{clientId}")
+    public ResponseEntity <List<ClientRequests>> getClientRequestsByClientId(@PathVariable(name = "clientId") Integer clientId) {
         List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByClientId(clientId);
-        return clientRequests;
+        return createResponseEntity(clientRequests);
     }
 
     @GetMapping(value = "/clientRequests/find/id/{id}")
-    public Optional<ClientRequests> getClientRequestById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity <Optional<ClientRequests>> getClientRequestById(@PathVariable(name = "id") Integer id) {
         Optional<ClientRequests> clientRequest = clientReguestsDatabaseService.getClientRequestById(id);
-        return clientRequest;
+        return ResponseEntity.ok(clientRequest);
     }
 
-    @GetMapping(value = "/clientRequests/find/car_cost/{id}")
-    public double getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
-        return clientReguestsDatabaseService.getCarCostClientRequests(id);
+    @GetMapping(value = "/clientRequests/find/carCost/{id}")
+    public ResponseEntity <Double> getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
+        return ResponseEntity.ok(clientReguestsDatabaseService.getCarCostClientRequests(id));
     }
 
     @GetMapping(value = "/clientRequests/find/all")
-    public List<ClientRequests> getAllClientRequests() {
+    public ResponseEntity <List<ClientRequests>> getAllClientRequests() {
         List<ClientRequests> clientRequests = clientReguestsDatabaseService.getAllClientRequests();
-        return clientRequests;
+        return createResponseEntity(clientRequests);
     }
 
     @PostMapping(value = "/clientRequests/create")
-    public ClientRequests createNewCClientRequests(@RequestBody ClientRequests clientRequests) {
+    public ResponseEntity <ClientRequests> createNewCClientRequests(@RequestBody ClientRequests clientRequests) {
         clientReguestsDatabaseService.create(clientRequests);
-        return clientRequests;
+        return ResponseEntity.ok(clientRequests);
     }
 
     @PutMapping(value = "/clientRequests/update")
-    public ClientRequests updateClientRequests(@RequestBody ClientRequests clientRequests) {
+    public ResponseEntity <ClientRequests> updateClientRequests(@RequestBody ClientRequests clientRequests) {
         clientReguestsDatabaseService.update(clientRequests);
-        return clientRequests;
+        return ResponseEntity.ok(clientRequests);
     }
 
-//    @GetMapping(value = "/clientRequests/create/coefficient/{id}")
-//    public ClientRequests createCoefficient(@PathVariable(name = "id") Integer id) {
-//        ClientRequests clientRequests = clientReguestsDatabaseService.createCoefficient(id);
-//        return clientRequests;
-//    }
+    private ResponseEntity<List<ClientRequests>> createResponseEntity(List<ClientRequests> clientRequests) {
+        if (clientRequests != null && !clientRequests.isEmpty()) {
+            return ResponseEntity.ok(clientRequests);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
 
 }

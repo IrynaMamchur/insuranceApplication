@@ -15,7 +15,7 @@ public interface ClientDatabaseService {
 
     Client getClientByDateOfBirthday(LocalDate dateOfBirthday);
 
-    List<Client> getAllClientByContractStatus(ContractInClientStatus contractInClientStatus);
+//    List<Client> getAllClientByContractStatus(ContractInClientStatus contractInClientStatus);
 
     Optional<Client> getClientById(Integer id);
 

@@ -29,6 +29,7 @@ public class ContractNumber {
     @Column(name = "paymentDetail_id")
     private Integer paymentDetailId;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "is_insurance_event")
     private InsuranceEventInContractNumber insuranceEventInContractNumber;
 

@@ -3,6 +3,7 @@ package com.example.insuranceapplication.controller;
 import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.service.database.CarBrandDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,46 +15,51 @@ public class CarBrandController {
 
     private final CarBrandDatabaseService carBrandDatabaseService;
 
-    @GetMapping(value = "/carBrand/find/name/{carBrandName}/{carModelName}")
-    public CarBrand getCarBrandByName(@PathVariable(name = "carBrandName") String carBrandName, @PathVariable(name = "carModelName") String carModelName) {
-        CarBrand carBrand = carBrandDatabaseService.getCarBrandByName(carBrandName, carModelName);
-        return carBrand;
+    @GetMapping(value = "/carBrand/find/name/{carBrandName}")
+    public ResponseEntity <CarBrand> getCarBrandByName(@PathVariable(name = "carBrandName") String carBrandName) {
+        CarBrand carBrand = carBrandDatabaseService.getCarBrandByName(carBrandName);
+        return ResponseEntity.ok (carBrand);
     }
 
     @GetMapping(value = "/carBrand/find/id/{id}")
-    public Optional<CarBrand> getCarBrandById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity <Optional<CarBrand>> getCarBrandById(@PathVariable(name = "id") Integer id) {
         Optional<CarBrand> carBrand = carBrandDatabaseService.getCarBrandById(id);
-        return carBrand;
+        return ResponseEntity.ok(carBrand);
     }
 
-    @GetMapping(value = "/carBrand/find/all-of-brand-name/{carBrandName}")
-    public List<CarBrand> getCarBrandsByCarBrandName(@PathVariable(name = "carBrandName") String carBrandName) {
-        List<CarBrand> carBrands = carBrandDatabaseService.getCarBrandByCarBrandName(carBrandName);
-        return carBrands;
-    }
 
-    @GetMapping(value = "/carBrand/find/coefficient/{carBrandName}/{carModelName}")
-    public double getCoefficientCarBrand(@PathVariable(name = "carBrandName") String carBrandName, @PathVariable(name = "carModelName") String carModelName) {
-        return carBrandDatabaseService.getCoefficientCarBrand(carBrandName, carModelName);
+    @GetMapping(value = "/carBrand/find/coefficient/{carBrandName}")
+    public ResponseEntity <Double> getCoefficientCarBrand(@PathVariable(name = "carBrandName") String carBrandName) {
+        return ResponseEntity.ok(carBrandDatabaseService.getCoefficientCarBrand(carBrandName));
     }
 
 
     @GetMapping(value = "/carBrand/find/all")
-    public List<CarBrand> getCarBrands() {
+    public ResponseEntity< List<CarBrand>> getCarBrands() {
         List<CarBrand> carBrands = carBrandDatabaseService.getCarBrands();
-        return carBrands;
+        return createResponseEntity(carBrands);
     }
 
 
     @PostMapping(value = "/carBrand/create")
-    public CarBrand createNewCarBrand(@RequestBody CarBrand carBrand) {
+    public ResponseEntity <CarBrand> createNewCarBrand(@RequestBody CarBrand carBrand) {
         carBrandDatabaseService.create(carBrand);
-        return carBrand;
+        return ResponseEntity.ok (carBrand);
     }
 
     @PutMapping(value = "/carBrand/update")
-    public CarBrand updateCarBrand(@RequestBody CarBrand carBrand) {
+    public ResponseEntity< CarBrand> updateCarBrand(@RequestBody CarBrand carBrand) {
         carBrandDatabaseService.update(carBrand);
-        return carBrand;
+        return ResponseEntity.ok(carBrand);
     }
+
+
+    private ResponseEntity<List<CarBrand>> createResponseEntity(List<CarBrand> carBrands) {
+        if (carBrands != null && !carBrands.isEmpty()) {
+            return ResponseEntity.ok(carBrands);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 }

@@ -5,6 +5,7 @@ import com.example.insuranceapplication.entity.enam.ContractInClientStatus;
 import com.example.insuranceapplication.repository.ClientRepository;
 import com.example.insuranceapplication.service.database.ClientDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ClientDatabaseServiceImpl implements ClientDatabaseService {
     private final ClientRepository clientRepository;
 
@@ -27,10 +29,10 @@ public class ClientDatabaseServiceImpl implements ClientDatabaseService {
         return clientRepository.getClientByDateOfBirthday(dateOfBirthday);
     }
 
-    @Override
-    public List<Client> getAllClientByContractStatus(ContractInClientStatus contractInClientStatus) {
-        return (List<Client>) clientRepository.getClientsByContractInClientStatus(contractInClientStatus);
-    }
+//    @Override
+//    public List<Client> getAllClientByContractStatus(ContractInClientStatus contractInClientStatus) {
+//        return (List<Client>) clientRepository.getClientsByContractInClientStatus(contractInClientStatus);
+//    }
 
     @Override
     public Optional<Client> getClientById(Integer id) {

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CarEngineCapacityDatabaseService {
-    CarEngineCapacity getCarEngineCapacity(Double engineCapacity);
+//   CarEngineCapacity getEngineCapacity(Double engineCapacity);
 
     Optional<CarEngineCapacity> getCarEngineCapacityById(Integer id);
 

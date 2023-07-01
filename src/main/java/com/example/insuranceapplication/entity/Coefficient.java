@@ -31,9 +31,8 @@ public class Coefficient {
     @Column(name = "car_year_of_issue_id")
     private Double carYearOfIssueId;
 
-    @Basic(optional = false)
     @Column(name = "coefficient")
-    private Double coefficient;
+    private Double coefficientForCar;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)

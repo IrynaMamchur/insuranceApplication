@@ -1,8 +1,10 @@
 package com.example.insuranceapplication.controller;
 
+import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
 import com.example.insuranceapplication.entity.car.CarYearOfIssue;
 import com.example.insuranceapplication.service.database.CarYearOfIssueDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -15,39 +17,46 @@ public class CarYearOfIssueController {
 
     private final CarYearOfIssueDatabaseService carYearOfIssueDatabaseService;
 
-    @GetMapping(value = "/carYearOfIssue/find/first_year/{carFirstRegistr}")
-    public CarYearOfIssue getCarYearOfIssueByYear(@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr) {
+    @GetMapping(value = "/carYearOfIssue/find/firstYear/{carFirstRegistr}")
+    public ResponseEntity <CarYearOfIssue> getCarYearOfIssueByYear(@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr) {
         CarYearOfIssue carYearOfIssue = carYearOfIssueDatabaseService.getYearOfIssueByCarFirstRegistr(carFirstRegistr);
-        return carYearOfIssue;
+        return ResponseEntity.ok(carYearOfIssue);
     }
 
     @GetMapping(value = "/carYearOfIssue/find/id/{id}")
-    public Optional<CarYearOfIssue> getCarEngineCapacityById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity <Optional<CarYearOfIssue>> getCarEngineCapacityById(@PathVariable(name = "id") Integer id) {
         Optional<CarYearOfIssue> carYearOfIssue = carYearOfIssueDatabaseService.getCarYearOfIssueById(id);
-        return carYearOfIssue;
+        return ResponseEntity.ok(carYearOfIssue);
     }
 
     @GetMapping(value = "/carYearOfIssue/find/all")
-    public List<CarYearOfIssue> getAllCarEngineCapacity() {
+    public ResponseEntity< List<CarYearOfIssue>> getAllCarEngineCapacity() {
         List<CarYearOfIssue> carYearOfIssues = carYearOfIssueDatabaseService.getAllCarYearOfIssue();
-        return carYearOfIssues;
+        return createResponseEntity(carYearOfIssues);
     }
 
     @GetMapping(value = "/carYearOfIssue/find/coefficient/{carFirstRegistr}")
-    public double getCoefficientCarInsuranceProgram(@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr) {
-        return carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
+    public ResponseEntity <Double> getCoefficientCarInsuranceProgram(@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr) {
+        return ResponseEntity.ok(carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr));
     }
 
     @PostMapping(value = "/carYearOfIssue/create")
-    public CarYearOfIssue createNewCarYearOfIssue(@RequestBody CarYearOfIssue carYearOfIssue) {
+    public ResponseEntity <CarYearOfIssue> createNewCarYearOfIssue(@RequestBody CarYearOfIssue carYearOfIssue) {
         carYearOfIssueDatabaseService.create(carYearOfIssue);
-        return carYearOfIssue;
+        return ResponseEntity.ok(carYearOfIssue);
     }
 
     @PutMapping(value = "/carYearOfIssue/update")
-    public CarYearOfIssue updateCarYearOfIssue(@RequestBody CarYearOfIssue carYearOfIssue) {
+    public ResponseEntity <CarYearOfIssue> updateCarYearOfIssue(@RequestBody CarYearOfIssue carYearOfIssue) {
         carYearOfIssueDatabaseService.update(carYearOfIssue);
-        return carYearOfIssue;
+        return ResponseEntity.ok(carYearOfIssue);
+    }
+    private ResponseEntity<List<CarYearOfIssue>> createResponseEntity(List<CarYearOfIssue> carYearOfIssues) {
+        if ( carYearOfIssues != null && ! carYearOfIssues.isEmpty()) {
+            return ResponseEntity.ok( carYearOfIssues);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
 }

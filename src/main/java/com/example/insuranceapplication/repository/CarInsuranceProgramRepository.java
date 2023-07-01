@@ -14,6 +14,6 @@ public interface CarInsuranceProgramRepository extends JpaRepository<CarInsuranc
     @Query(value = "SELECT " +
             "CarInsuranceProgram.coefficient\n" +
             "FROM CarInsuranceProgram \n" +
-            "where CarInsuranceProgram .insuranceProgramName = :insuranceProgramName ")
+            "where CarInsuranceProgram .insuranceProgramName = :insuranceProgramName ", nativeQuery = true)
     double getCoefficientCarInsuranceProgram(@Param("insuranceProgramName") String insuranceProgramName);
 }

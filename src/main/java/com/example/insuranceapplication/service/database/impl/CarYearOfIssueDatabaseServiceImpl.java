@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.car.CarYearOfIssue;
 import com.example.insuranceapplication.repository.CarYearOfIssueRepository;
 import com.example.insuranceapplication.service.database.CarYearOfIssueDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CarYearOfIssueDatabaseServiceImpl implements CarYearOfIssueDatabaseService {
 
     private final CarYearOfIssueRepository carYearOfIssueRepository;
