@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,25 +18,9 @@ public class ClientRequests {
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
-    @Column(name = "client_id")
-    private Integer clientId;
-
-    @Basic(optional = false)
-    @Column(name = "brand_id")
-    private Integer brandId;
-
-    @Basic(optional = false)
-    @Column(name = "engine_capacity_id")
-    private Integer engineCapacityId;
-
-    @Basic(optional = false)
-    @Column(name = "car_first_registr_id")
-    private Integer careFirstRegistrId;
-
-    @Basic(optional = false)
-    @Column(name = "insurance_program_id")
-    private Integer insuranceProgramId;
+    @ManyToOne
+    @JoinColumn (name = "client_id")
+    private Client client;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
@@ -49,15 +34,12 @@ public class ClientRequests {
     @Column(name = "car_cost")
     private Double carCost;
 
-    @Basic(optional = false)
-    @Column(name = "coefficientId")
-    private Integer coefficientId;
+    @OneToOne
+    @JoinColumn(name = "insurance_payment_id")
+    private InsurancePayment insurancePayment;
 
-    @Basic(optional = false)
-    @Column(name = "insurance_payment_id")
-    private Integer insurancePaymentId;
 
-    @Column(name = "car_number_of_payments_id")
-    private Integer carNumberOfPaymentsId;
+    @OneToOne(mappedBy = "clientRequests")
+    private ContractNumber contractNumber;
 
 }

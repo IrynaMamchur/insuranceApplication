@@ -17,10 +17,10 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     private final PaymentRepository paymentRepository;
 
 
-    @Override
-    public List<Payment> getPaymentsByContractNumberId(Integer contractNumberId) {
-        return (List<Payment>) paymentRepository.getPaymentsByContractNumberId(contractNumberId);
-    }
+//    @Override
+//    public List<Payment> getPaymentsByContractNumberId(Integer contractNumberId) {
+//        return (List<Payment>) paymentRepository.getPaymentsByContractNumberId(contractNumberId);
+//    }
 
     @Override
     public List<Payment> getPaymentsByAmount(Integer amount) {

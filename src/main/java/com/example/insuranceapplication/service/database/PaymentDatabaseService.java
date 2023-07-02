@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PaymentDatabaseService {
 
-    List<Payment> getPaymentsByContractNumberId(Integer contractNumberId);
+//    List<Payment> getPaymentsByContractNumberId(Integer contractNumberId);
 
     List<Payment> getPaymentsByAmount(Integer amount);
 

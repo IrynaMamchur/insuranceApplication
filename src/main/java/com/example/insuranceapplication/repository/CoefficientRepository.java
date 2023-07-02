@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CoefficientRepository extends JpaRepository<Coefficient, Integer> {
 
-//    double createNewCoefficient(Double coefCarBrand, Double coefCarEngineCapacity, Double coefCarInsuranceProgram, Double coefCarYearOfIssue, Double coefCarQuantityOfPayments);
+    void createNewCoefficient(double coefCarBrand, double coefCarEngineCapacity, double coefCarInsuranceProgram, double coefCarYearOfIssue, double coefCarQuantityOfPayments);
 
     @Query(value = "SELECT " +
             "Coefficient .coefficient\n" +

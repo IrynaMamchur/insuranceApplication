@@ -23,15 +23,15 @@ public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabase
         return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByClientRequestStatus(clientRequestStatus);
     }
 
-    @Override
-    public List<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId) {
-        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByInsuranceProgramId(insuranceProgramId);
-    }
+//    @Override
+//    public List<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId) {
+//        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByInsuranceProgramId(insuranceProgramId);
+//    }
 
-    @Override
-    public List<ClientRequests> getClientRequestsByBrandId(Integer brandId) {
-        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByBrandId(brandId);
-    }
+//    @Override
+//    public List<ClientRequests> getClientRequestsByBrandId(Integer brandId) {
+//        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByBrandId(brandId);
+//    }
 
     @Override
     public List<ClientRequests> getClientRequestsByClientId(Integer clientId) {

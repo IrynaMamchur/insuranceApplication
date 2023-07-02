@@ -15,14 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReportDatabaseServiceImpl implements ReportDatabaseService {
 
-    private final ContractNumberRepository contractNumberRepository;
-    private final ClientRequestsRepository clientRequestsRepository;
-    private final InsurancePaymentRepository insurancePaymentRepository;
     private final ReportRepository reportRepository;
 
 
-    @Override
-    public List<ContractNumber> createFirstReport(Timestamp startedAt) {
-        return (List<ContractNumber>) reportRepository.createFirstReport(startedAt);
-    }
+//    @Override
+//    public List<ContractNumber> createFirstReport(Timestamp startedAt) {
+//        return (List<ContractNumber>) reportRepository.createFirstReport(startedAt);
+//    }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,8 +16,9 @@ public class InsurancePayment {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "coefficient_id")
-    private Integer coefficientID;
+    @OneToOne
+    @JoinColumn(name = "coefficient_id")
+    private Coefficient coefficient;
 
     @Column(name = "insurance_payment")
     private Double insurancePayment;
@@ -24,4 +26,8 @@ public class InsurancePayment {
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
+
+    @OneToOne(mappedBy = "insurancePayment")
+    private ClientRequests clientRequests;
+
 }

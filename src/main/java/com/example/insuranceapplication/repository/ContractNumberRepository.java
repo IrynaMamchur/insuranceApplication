@@ -17,7 +17,7 @@ public interface ContractNumberRepository extends JpaRepository<ContractNumber, 
 
     Collection<ContractNumber> getContractNumberByInsuranceEventInContractNumber(InsuranceEventInContractNumber insuranceEventInContractNumber);
 
-    ContractNumberRepository getContractNumberByClientId(Integer clientId);
+//    ContractNumberRepository getContractNumberByClientId(Integer clientId);
 
     Collection<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt);
 

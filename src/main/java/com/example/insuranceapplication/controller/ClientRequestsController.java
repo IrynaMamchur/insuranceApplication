@@ -24,17 +24,17 @@ public class ClientRequestsController {
         return createResponseEntity(clientRequests);
     }
 
-    @GetMapping(value = "/clientReguests/find/insuranseProgramId/{insuranceProgramId}")
-    public ResponseEntity <List<ClientRequests>> getClientRequestsByInsuranceProgramId(@PathVariable(name = "insuranceProgramId") Integer insuranceProgramId) {
-        List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByInsuranceProgramId(insuranceProgramId);
-        return createResponseEntity(clientRequests);
-    }
+//    @GetMapping(value = "/clientReguests/find/insuranseProgramId/{insuranceProgramId}")
+//    public ResponseEntity <List<ClientRequests>> getClientRequestsByInsuranceProgramId(@PathVariable(name = "insuranceProgramId") Integer insuranceProgramId) {
+//        List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByInsuranceProgramId(insuranceProgramId);
+//        return createResponseEntity(clientRequests);
+//    }
 
-    @GetMapping(value = "/clientReguests/find/brandId/{brandId}")
-    public ResponseEntity <List<ClientRequests>> getClientRequestsByBrandId(@PathVariable(name = "brandId") Integer brandId) {
-        List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByBrandId(brandId);
-        return createResponseEntity(clientRequests);
-    }
+//    @GetMapping(value = "/clientReguests/find/brandId/{brandId}")
+//    public ResponseEntity <List<ClientRequests>> getClientRequestsByBrandId(@PathVariable(name = "brandId") Integer brandId) {
+//        List<ClientRequests> clientRequests = clientReguestsDatabaseService.getClientRequestsByBrandId(brandId);
+//        return createResponseEntity(clientRequests);
+//    }
 
     @GetMapping(value = "/clientReguests/find/clientId/{clientId}")
     public ResponseEntity <List<ClientRequests>> getClientRequestsByClientId(@PathVariable(name = "clientId") Integer clientId) {

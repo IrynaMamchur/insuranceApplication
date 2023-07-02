@@ -49,9 +49,9 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
     }
 
 
-    public List<ContractNumber> getContractNumberByClientId(Integer clientId) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByClientId(clientId);
-    }
+//    public List<ContractNumber> getContractNumberByClientId(Integer clientId) {
+//        return (List<ContractNumber>) contractNumberRepository.getContractNumberByClientId(clientId);
+//    }
 
     public Optional<ContractNumber> getContractNumberById(Integer id) {
         return contractNumberRepository.findById(id);

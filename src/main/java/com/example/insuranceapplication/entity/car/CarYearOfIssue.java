@@ -1,10 +1,12 @@
 package com.example.insuranceapplication.entity.car;
 
+import com.example.insuranceapplication.entity.Coefficient;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -31,4 +33,6 @@ public class CarYearOfIssue {
     @Column(name = "finished_at")
     private Timestamp finishedAt;
 
+    @OneToMany(mappedBy = "carYearOfIssue")
+    private List<Coefficient> coefficients;
 }

@@ -21,25 +21,33 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
     private final CarQuantityOfPaymentsDatabaseService carQuantityOfPaymentsDatabaseService;
 
 
-//    public double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
-//        Double coefCarBrand;
-//        Double coefCarEngineCapacity;
-//        Double coefCarInsuranceProgram;
-//        Double coefCarYearOfIssue;
-//        Double coefCarQuantityOfPayments;
-//        double coefficientForCar;
-//
-//        coefCarBrand = carBrandDatabaseService.getCoefficientCarBrand(carBrandName);
-//        coefCarEngineCapacity = carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
-//        coefCarInsuranceProgram = carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
-//        coefCarYearOfIssue = carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
-//        coefCarQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number);
-//        coefficientRepository.createNewCoefficient(coefCarBrand, coefCarEngineCapacity, coefCarInsuranceProgram, coefCarYearOfIssue, coefCarQuantityOfPayments);
-//        {
-//            coefficientForCar = coefCarBrand * coefCarEngineCapacity * coefCarInsuranceProgram * coefCarYearOfIssue * coefCarQuantityOfPayments;
+    public double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
+        double coefCarBrand;
+        double coefCarEngineCapacity ;
+        double coefCarInsuranceProgram ;
+        double coefCarYearOfIssue;
+        double coefCarQuantityOfPayments ;
+        double coefficientForCar;
+
+
+        coefCarBrand = carBrandDatabaseService.getCoefficientCarBrand(carBrandName);
+        coefCarEngineCapacity = carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
+        coefCarInsuranceProgram = carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
+        coefCarYearOfIssue = carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
+        coefCarQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number);
+         if (coefCarBrand <=0 || coefCarEngineCapacity <=0 || coefCarInsuranceProgram<=0 || coefCarYearOfIssue <=0 ||coefCarQuantityOfPayments <=0){
+           throw new IllegalArgumentException();
+        }
+//        if (coefCarBrand == null || coefCarEngineCapacity == null || coefCarInsuranceProgram== null || coefCarYearOfIssue == null ||coefCarQuantityOfPayments == null){
+//            throw new IllegalArgumentException();
 //        }
-//        return coefficientForCar;
-//    }
+
+        coefficientRepository.createNewCoefficient(coefCarBrand, coefCarEngineCapacity, coefCarInsuranceProgram, coefCarYearOfIssue, coefCarQuantityOfPayments);
+        {
+            coefficientForCar = coefCarBrand * coefCarEngineCapacity * coefCarInsuranceProgram * coefCarYearOfIssue * coefCarQuantityOfPayments;
+        }
+        return coefficientForCar;
+    }
 
     @Override
     public double getCoefficient(Integer id) {

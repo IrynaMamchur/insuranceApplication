@@ -64,11 +64,11 @@ public class ContractNumberController {
         return ResponseEntity.ok(contractNumberDatabaseService.getInsuranceEvent(id));
     }
 
-    @GetMapping(value = "/contract/find/clientId/{clientId}")
-    public ResponseEntity <List<ContractNumber>> getContractNumberByClientId(@PathVariable(name = "clientId") Integer clientId) {
-        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByClientId(clientId);
-        return createResponseEntity(contractNumbers);
-    }
+//    @GetMapping(value = "/contract/find/clientId/{clientId}")
+//    public ResponseEntity <List<ContractNumber>> getContractNumberByClientId(@PathVariable(name = "clientId") Integer clientId) {
+//        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByClientId(clientId);
+//        return createResponseEntity(contractNumbers);
+//    }
 
     @GetMapping(value = "/contract/find/id/{id}")
     public ResponseEntity <Optional<ContractNumber>>getContractNumberById(@PathVariable(name = "id") Integer id) {
