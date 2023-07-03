@@ -16,12 +16,6 @@ import java.util.Optional;
 public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     private final PaymentRepository paymentRepository;
 
-
-//    @Override
-//    public List<Payment> getPaymentsByContractNumberId(Integer contractNumberId) {
-//        return (List<Payment>) paymentRepository.getPaymentsByContractNumberId(contractNumberId);
-//    }
-
     @Override
     public List<Payment> getPaymentsByAmount(Integer amount) {
         return (List<Payment>) paymentRepository.getPaymentsByAmount(amount);
@@ -45,5 +39,10 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     @Override
     public Payment update(Payment payment) {
         return paymentRepository.save(payment);
+    }
+
+    @Override
+    public Integer getPaymentId(Integer id) {
+        return (int) paymentRepository.getPaymentId(id);
     }
 }

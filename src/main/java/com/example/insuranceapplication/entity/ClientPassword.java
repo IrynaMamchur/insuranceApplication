@@ -21,7 +21,6 @@ public class ClientPassword {
     @Column(name = "id")
     private Integer id;
 
-
     @Basic(optional = false)
     @Column(name = "login", length = 30)
     private String login;

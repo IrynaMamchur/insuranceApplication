@@ -38,12 +38,102 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
     }
 
     @Override
-    public ClientPassword create(ClientPassword clientPassword) {
+    public ClientPassword create(ClientPassword clientPassword, String passwort, String login) {
+    creatPassword(passwort);
+    creatLogin(login);
         return clientPasswordRepository.save(new ClientPassword());
     }
 
     @Override
     public ClientPassword update(ClientPassword clientPassword) {
         return clientPasswordRepository.save(clientPassword);
+    }
+
+    @Override
+    public void creatPassword(String password) {
+        {
+            if (clientPasswordRepository.getClientPasswordByPassword(password) != null) {
+                log.info("Такой пароль существует");
+                throw new IllegalArgumentException();
+            }
+            log.info("Можно продолжать");
+
+            for (int i = 0; i < password.length(); i++) {
+                int length = password.length();
+                if (length <= 8) {
+                    log.info("Пароль не соответствует требованиям, поскольку в нем количество букв меньше 8");
+                    throw new IllegalArgumentException();
+                }
+            }
+            String bigLetter = password.toLowerCase();
+            if (bigLetter.equals(password)) {
+                log.info("Пароль не соответствует требованиям, поскольку в нем отсутствуют заглавные буквы");
+                throw new IllegalArgumentException();
+            }
+            String lowercaseLetter = password.toUpperCase();
+            if (lowercaseLetter.equals(password)) {
+                log.info("Пароль не соответствует требованиям, поскольку в нем отсутствуют строчные буквы");
+                throw new IllegalArgumentException();
+            }
+            for (int i = 0; i < password.length(); i++) {
+                int num = Character.getNumericValue(password.charAt(i));
+                if (num >= 10) {
+                    log.info("Пароль не соответствует требованиям, поскольку в нем отсутствуют цифры");
+                    throw new IllegalArgumentException();
+                }
+            }
+            log.info("Пароль идеален");
+        }
+    }
+
+
+    @Override
+    public ClientPassword getClientPasswordByPassword(String password) {
+        return clientPasswordRepository.getClientPasswordByPassword(password);
+    }
+
+    @Override
+    public void creatLogin(String login) {
+        {
+            if (clientPasswordRepository.getClientPasswordByLogin(login) != null) {
+                log.info("Такой логин существует");
+                throw new IllegalArgumentException();
+            } else {
+                log.info("Можно продолжать");
+
+                for (int i = 0; i < login.length(); i++) {
+                    int length = login.length();
+                    if (length <= 6) {
+                        log.info("Логин не соответствует требованиям, поскольку в нем количество букв меньше 6");
+                        throw new IllegalArgumentException();
+                    }
+                }
+                String bigLetter = login.toLowerCase();
+                if (bigLetter.equals(login)) {
+                    log.info("Логин не соответствует требованиям, поскольку в нем отсутствуют заглавные буквы");
+                    throw new IllegalArgumentException();
+                }
+                String lowercaseLetter = login.toUpperCase();
+                if (lowercaseLetter.equals(login)) {
+                    log.info("Логин не соответствует требованиям, поскольку в нем отсутствуют строчные буквы");
+                    throw new IllegalArgumentException();
+                }
+                for (int i = 0; i < login.length(); i++) {
+                    int num = Character.getNumericValue(login.charAt(i));
+                    if (num >= 10) {
+                        log.info("Логин не соответствует требованиям, поскольку в нем отсутствуют цифры");
+                        throw new IllegalArgumentException();
+                    }
+                }
+                log.info("Логин идеален");
+            }
+
+        }
+
+    }
+
+    @Override
+    public ClientPassword getClientPasswordByLogin(String login) {
+        return clientPasswordRepository.getClientPasswordByLogin(login);
     }
 }

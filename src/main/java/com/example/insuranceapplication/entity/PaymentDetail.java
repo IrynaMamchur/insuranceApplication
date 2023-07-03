@@ -16,9 +16,8 @@ public class PaymentDetail {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "payment_1_id")
-    private Payment payment1;
+    @Column(name = "payment_1_id")
+    private Integer payment1;
 
     @Column(name = "date_payment_1plan")
     private LocalDate datePayment1Plan;
@@ -26,9 +25,8 @@ public class PaymentDetail {
     @Column(name = "amount_1plan")
     private Double amount1Plan;
 
-    @OneToOne
-    @JoinColumn(name = "payment_2_id")
-    private Payment payment2;
+    @Column(name = "payment_2_id")
+    private Integer payment2;
 
     @Column(name = "date_payment_2plan")
     private LocalDate datePayment2Plan;

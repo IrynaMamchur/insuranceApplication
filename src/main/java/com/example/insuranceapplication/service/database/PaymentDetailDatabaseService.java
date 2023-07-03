@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface PaymentDetailDatabaseService {
 
-//    List<PaymentDetail> getPaymentDetailByAmountAll(Double amountAll);
-
     List<PaymentDetail> getAllPaymentDetails();
 
     Optional<PaymentDetail> getPaymentDetailById(Integer id);
@@ -19,4 +17,5 @@ public interface PaymentDetailDatabaseService {
     PaymentDetail update(PaymentDetail paymentDetail);
 
 
+    Optional<PaymentDetail> updatePayment(Integer id, Integer payment1, Integer payment2);
 }

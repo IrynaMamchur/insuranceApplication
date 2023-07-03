@@ -1,12 +1,8 @@
 package com.example.insuranceapplication.service.database;
 
-import com.example.insuranceapplication.entity.Client;
 import com.example.insuranceapplication.entity.ClientPassword;
-import com.example.insuranceapplication.entity.enam.ContractInClientStatus;
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
 
-import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,9 +16,19 @@ public interface ClientPasswordDatabaseService {
 
     List<ClientPassword> getAllClientPassword();
 
-    ClientPassword create(ClientPassword clientPassword);
+    ClientPassword create(ClientPassword clientPassword, String passwort, String login);
 
     ClientPassword update(ClientPassword clientPassword);
+
+    void creatPassword(String password);
+
+    ClientPassword getClientPasswordByPassword (String password);
+
+    void creatLogin(String login);
+
+    ClientPassword getClientPasswordByLogin (String login);
+
+
 }
 
 

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,11 +17,6 @@ public class CoefficientController {
 
     private final CoefficientDatabaseService coefficientDatabaseService;
 
-    @GetMapping(value = "/coefficient/create/{carBrandName}/{engineCapacity}/{insuranceProgramName}/{carFirstRegistr}/{number}")
-    public ResponseEntity <Double> getNewCoefficient(@PathVariable(name = "carBrandName") String carBrandName,@PathVariable(name = "engineCapacity") Double engineCapacity, @PathVariable(name = "insuranceProgramName")String insuranceProgramName,@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr, @PathVariable(name = "number")CarQuantityOfPaymentsNumbers number) {
-        Double coefficientForCar = coefficientDatabaseService.createCoefficient(carBrandName, engineCapacity, insuranceProgramName, carFirstRegistr, number);
-        return ResponseEntity.ok(coefficientForCar);
-    }
 
 
     @PostMapping(value = "/coefficient/create")
@@ -33,6 +29,13 @@ public class CoefficientController {
     public ResponseEntity <Double>  getCoefficientByID(@PathVariable(name = "id") Integer id) {
         return ResponseEntity.ok(coefficientDatabaseService.getCoefficient(id));
     }
+
+    @PutMapping(value = "/coefficient/update/coefficientForCar")
+    public ResponseEntity <Optional<Coefficient>> updateCoefficientForCar(@RequestBody Integer id, String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
+        Optional<Coefficient> coefficient =  coefficientDatabaseService.updateCoefficientForCar(id, carBrandName, engineCapacity, insuranceProgramName, carFirstRegistr, number);
+        return ResponseEntity.ok(coefficient);
+    }
+
 
     private ResponseEntity<List<Coefficient>> createResponseEntity(List<Coefficient> coefficients) {
         if (coefficients != null && !coefficients.isEmpty()) {

@@ -1,13 +1,12 @@
 package com.example.insuranceapplication.service.database;
 
 import com.example.insuranceapplication.entity.Payment;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PaymentDatabaseService {
-
-//    List<Payment> getPaymentsByContractNumberId(Integer contractNumberId);
 
     List<Payment> getPaymentsByAmount(Integer amount);
 
@@ -18,4 +17,6 @@ public interface PaymentDatabaseService {
     Payment create(Payment payment);
 
     Payment update(Payment payment);
+
+    Integer getPaymentId (@Param("id") Integer id);
 }

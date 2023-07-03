@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -29,7 +31,6 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
         double coefCarQuantityOfPayments ;
         double coefficientForCar;
 
-
         coefCarBrand = carBrandDatabaseService.getCoefficientCarBrand(carBrandName);
         coefCarEngineCapacity = carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
         coefCarInsuranceProgram = carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
@@ -38,14 +39,7 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
          if (coefCarBrand <=0 || coefCarEngineCapacity <=0 || coefCarInsuranceProgram<=0 || coefCarYearOfIssue <=0 ||coefCarQuantityOfPayments <=0){
            throw new IllegalArgumentException();
         }
-//        if (coefCarBrand == null || coefCarEngineCapacity == null || coefCarInsuranceProgram== null || coefCarYearOfIssue == null ||coefCarQuantityOfPayments == null){
-//            throw new IllegalArgumentException();
-//        }
-
-        coefficientRepository.createNewCoefficient(coefCarBrand, coefCarEngineCapacity, coefCarInsuranceProgram, coefCarYearOfIssue, coefCarQuantityOfPayments);
-        {
             coefficientForCar = coefCarBrand * coefCarEngineCapacity * coefCarInsuranceProgram * coefCarYearOfIssue * coefCarQuantityOfPayments;
-        }
         return coefficientForCar;
     }
 
@@ -57,6 +51,18 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
     @Override
     public Coefficient create(Coefficient coefficient) {
         return coefficientRepository.save(coefficient);
+    }
+
+    @Override
+    public Optional<Coefficient> updateCoefficientForCar(Integer id, String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
+        Optional<Coefficient> coefficientOptional = coefficientRepository.findById(id);
+        if (coefficientOptional.isPresent()) {
+            Coefficient coefficient = coefficientOptional.get();
+            coefficient.setCoefficientForCar(createCoefficient(carBrandName, engineCapacity, insuranceProgramName, carFirstRegistr, number));
+           coefficientRepository.save(coefficient);
+            return Optional.of(coefficient);
+        }
+        return null;
     }
 
 }
