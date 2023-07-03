@@ -15,6 +15,7 @@ public interface ClientReguestsDatabaseService {
     List<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId);
 
     List<ClientRequests> getClientRequestsByBrandID(Integer brandId);
+
     List<ClientRequests> getClientRequestsByClientId(Integer clientId);
 
     Optional<ClientRequests> getClientRequestById(Integer id);
@@ -24,4 +25,6 @@ public interface ClientReguestsDatabaseService {
     ClientRequests update(ClientRequests clientRequests);
 
     ClientRequests create(ClientRequests clientRequests);
+
+    ClientRequests createCoefficient(Integer id);
 }

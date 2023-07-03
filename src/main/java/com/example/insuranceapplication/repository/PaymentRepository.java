@@ -11,7 +11,7 @@ public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 
     Collection<Payment> getPaymentsByContractNumberId(Integer contractNumberId);
 
-    Collection<Payment> getPaymentsByAmount (Integer amount);
+    Collection<Payment> getPaymentsByAmount(Integer amount);
 
 
 }

@@ -12,10 +12,10 @@ import java.util.Collection;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
-    Client getClientByNameAndSurname (String name, String surname);
+    Client getClientByNameAndSurname(String name, String surname);
 
-    Client getClientByDateOfBirthday (LocalDate dateOfBirthday);
+    Client getClientByDateOfBirthday(LocalDate dateOfBirthday);
 
-    Collection<Client> getClientsByContractInClientStatus (ContractInClientStatus contractInClientStatus);
+    Collection<Client> getClientsByContractInClientStatus(ContractInClientStatus contractInClientStatus);
 
 }

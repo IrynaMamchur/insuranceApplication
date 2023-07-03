@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ClientDatabaseServiceImpl implements ClientDatabaseService {
-private final ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
 
     @Override

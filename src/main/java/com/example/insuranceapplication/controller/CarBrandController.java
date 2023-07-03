@@ -15,24 +15,25 @@ public class CarBrandController {
     private final CarBrandDatabaseService carBrandDatabaseService;
 
     @GetMapping(value = "/carBrand/find/name/{carBrandName}/{carModelName}")
-    public CarBrand getCarBrandByName(@PathVariable(name = "carBrandName") String carBrandName, @PathVariable(name = "carModelName")String carModelName){
+    public CarBrand getCarBrandByName(@PathVariable(name = "carBrandName") String carBrandName, @PathVariable(name = "carModelName") String carModelName) {
         CarBrand carBrand = carBrandDatabaseService.getCarBrandByName(carBrandName, carModelName);
         return carBrand;
     }
 
     @GetMapping(value = "/carBrand/find/id/{id}")
-    public Optional<CarBrand> getCarBrandById(@PathVariable(name = "id") Integer id){
+    public Optional<CarBrand> getCarBrandById(@PathVariable(name = "id") Integer id) {
         Optional<CarBrand> carBrand = carBrandDatabaseService.getCarBrandById(id);
         return carBrand;
     }
 
     @GetMapping(value = "/carBrand/find/all-of-brand-name/{carBrandName}")
-    public List<CarBrand> getCarBrandsByCarBrandName(@PathVariable(name = "carBrandName") String carBrandName){
+    public List<CarBrand> getCarBrandsByCarBrandName(@PathVariable(name = "carBrandName") String carBrandName) {
         List<CarBrand> carBrands = carBrandDatabaseService.getCarBrandByCarBrandName(carBrandName);
         return carBrands;
     }
+
     @GetMapping(value = "/carBrand/find/all")
-    public List<CarBrand> getCarBrands(){
+    public List<CarBrand> getCarBrands() {
         List<CarBrand> carBrands = carBrandDatabaseService.getCarBrands();
         return carBrands;
     }

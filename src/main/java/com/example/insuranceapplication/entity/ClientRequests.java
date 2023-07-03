@@ -24,7 +24,7 @@ public class ClientRequests {
 
     @Basic(optional = false)
     @Column(name = "brand_id")
-    private String brandId;
+    private Integer brandId;
 
     @Basic(optional = false)
     @Column(name = "engine_capacity_id")
@@ -42,5 +42,15 @@ public class ClientRequests {
     private ClientRequestStatus clientRequestStatus;
 
     @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
+
+    @Basic(optional = false)
+    @Column(name = "amount")
+    private Double amount;
+
+    @Basic(optional = false)
+    @Column(name = "coefficient")
+    private Double coefficient;
+
 }

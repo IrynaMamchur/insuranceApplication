@@ -16,11 +16,12 @@ public interface ClientDatabaseService {
     Client getClientByDateOfBirthday(LocalDate dateOfBirthday);
 
     List<Client> getAllClientByContractStatus(ContractInClientStatus contractInClientStatus);
+
     Optional<Client> getClientById(Integer id);
 
     List<Client> getAllClients();
 
-    Client create (Client client);
+    Client create(Client client);
 
-    Client update (Client client);
+    Client update(Client client);
 }

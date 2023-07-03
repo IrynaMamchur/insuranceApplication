@@ -9,15 +9,15 @@ import java.util.Optional;
 
 public interface CarYearOfIssueDatabaseService {
 
-    CarYearOfIssue getYearOfIssueByCarFirstRegistr (LocalDate carFirstRegistr);
+    CarYearOfIssue getYearOfIssueByCarFirstRegistr(LocalDate carFirstRegistr);
 
     Optional<CarYearOfIssue> getCarYearOfIssueById(Integer id);
 
     List<CarYearOfIssue> getAllCarYearOfIssue();
 
-    CarYearOfIssue create (CarYearOfIssue carYearOfIssue);
+    CarYearOfIssue create(CarYearOfIssue carYearOfIssue);
 
-    CarYearOfIssue update (CarYearOfIssue carYearOfIssue);
+    CarYearOfIssue update(CarYearOfIssue carYearOfIssue);
 }
 
 

@@ -25,11 +25,11 @@ public interface ContractNumberDatabaseService {
 
     List<ContractNumber> getContractNumberByClientId(Integer clientId);
 
-    List<ContractNumber>  getAllContractNumbers();
+    List<ContractNumber> getAllContractNumbers();
 
     Optional<ContractNumber> getContractNumberById(Integer id);
 
     ContractNumber create(ContractNumber contractNumber);
 
     ContractNumber update(ContractNumber contractNumber);
-   }
+}

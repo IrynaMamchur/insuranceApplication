@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface CarInsuranceProgramDatabaseService {
 
 
-    CarInsuranceProgram getInsuranceProgramByName (String insuranceProgramName);
+    CarInsuranceProgram getInsuranceProgramByName(String insuranceProgramName);
 
     Optional<CarInsuranceProgram> getInsuranceProgramById(int id);
 

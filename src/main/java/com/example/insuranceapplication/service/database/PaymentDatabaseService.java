@@ -9,7 +9,7 @@ public interface PaymentDatabaseService {
 
     List<Payment> getPaymentsByContractNumberId(Integer contractNumberId);
 
-    List<Payment> getPaymentsByAmount (Integer amount);
+    List<Payment> getPaymentsByAmount(Integer amount);
 
     List<Payment> getAllPayments();
 

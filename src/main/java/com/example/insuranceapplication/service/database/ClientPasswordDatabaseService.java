@@ -15,6 +15,7 @@ public interface ClientPasswordDatabaseService {
     ClientPassword getClientPassword(String login, String password);
 
     List<ClientPassword> getAllClientPasswordsByPasswordStatus(PasswordStatus passwordStatus);
+
     Optional<ClientPassword> getClientPasswordById(Integer id);
 
     List<ClientPassword> getAllClientPassword();

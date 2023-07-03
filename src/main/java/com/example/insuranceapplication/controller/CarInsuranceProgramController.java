@@ -1,9 +1,6 @@
 package com.example.insuranceapplication.controller;
 
-import com.example.insuranceapplication.entity.car.CarBrand;
-import com.example.insuranceapplication.entity.car.CarEngineCapacity;
 import com.example.insuranceapplication.entity.car.CarInsuranceProgram;
-import com.example.insuranceapplication.service.database.CarEngineCapacityDatabaseService;
 import com.example.insuranceapplication.service.database.CarInsuranceProgramDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,19 +15,19 @@ public class CarInsuranceProgramController {
     private final CarInsuranceProgramDatabaseService carInsuranceProgramDatabaseService;
 
     @GetMapping(value = "/carInsuranceProgram/find/name/{insuranceProgramName}")
-    public CarInsuranceProgram getCarInsuranceProgramByName(@PathVariable(name = "insuranceProgramName") String insuranceProgramName){
-        CarInsuranceProgram carInsuranceProgram = carInsuranceProgramDatabaseService.getInsuranceProgramByName (insuranceProgramName);
+    public CarInsuranceProgram getCarInsuranceProgramByName(@PathVariable(name = "insuranceProgramName") String insuranceProgramName) {
+        CarInsuranceProgram carInsuranceProgram = carInsuranceProgramDatabaseService.getInsuranceProgramByName(insuranceProgramName);
         return carInsuranceProgram;
     }
 
     @GetMapping(value = "/carInsuranceProgram/find/id/{id}")
-    public Optional<CarInsuranceProgram> getCarInsuranceProgramById(@PathVariable(name = "id") Integer id){
+    public Optional<CarInsuranceProgram> getCarInsuranceProgramById(@PathVariable(name = "id") Integer id) {
         Optional<CarInsuranceProgram> carInsuranceProgram = carInsuranceProgramDatabaseService.getInsuranceProgramById(id);
         return carInsuranceProgram;
     }
 
     @GetMapping(value = "/carInsuranceProgram/find/all")
-    public List<CarInsuranceProgram> getAllCarInsuranceProgram(){
+    public List<CarInsuranceProgram> getAllCarInsuranceProgram() {
         List<CarInsuranceProgram> carInsurancePrograms = carInsuranceProgramDatabaseService.getAllInsuranceProgram();
         return carInsurancePrograms;
     }

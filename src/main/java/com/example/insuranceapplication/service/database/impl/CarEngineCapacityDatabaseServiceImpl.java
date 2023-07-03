@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CarEngineCapacityDatabaseServiceImpl implements CarEngineCapacityDatabaseService {
-private final CarEngineCapacityRepository carEngineCapacityRepository;
+    private final CarEngineCapacityRepository carEngineCapacityRepository;
 
     @Override
     public CarEngineCapacity getCarEngineCapacity(Double engineCapacity) {
