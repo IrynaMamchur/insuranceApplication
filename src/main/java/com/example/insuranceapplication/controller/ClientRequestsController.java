@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.controller;
 
 import com.example.insuranceapplication.entity.ClientRequests;
-import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
 import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +45,11 @@ public class ClientRequestsController {
         return clientRequest;
     }
 
+    @GetMapping(value = "/clientRequests/find/car_cost/{id}")
+    public ClientRequests getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
+        return clientReguestsDatabaseService.getCarCostClientRequests(id);
+    }
+
     @GetMapping(value = "/clientRequests/find/all")
     public List<ClientRequests> getAllClientRequests() {
         List<ClientRequests> clientRequests = clientReguestsDatabaseService.getAllClientRequests();
@@ -64,10 +68,10 @@ public class ClientRequestsController {
         return clientRequests;
     }
 
-    @GetMapping(value = "/clientRequests/create/coefficient/{id}")
-    public ClientRequests createCoefficient(@PathVariable(name = "id") Integer id) {
-        ClientRequests clientRequests = clientReguestsDatabaseService.createCoefficient(id);
-        return clientRequests;
-    }
+//    @GetMapping(value = "/clientRequests/create/coefficient/{id}")
+//    public ClientRequests createCoefficient(@PathVariable(name = "id") Integer id) {
+//        ClientRequests clientRequests = clientReguestsDatabaseService.createCoefficient(id);
+//        return clientRequests;
+//    }
 
 }

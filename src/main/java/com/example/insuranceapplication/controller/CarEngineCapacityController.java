@@ -32,6 +32,11 @@ public class CarEngineCapacityController {
         return carEngineCapacities;
     }
 
+    @GetMapping(value = "/carEngineCapacity/find/coefficient/{engineCapacity}")
+    public double getCoefficientCarEngineCapacity(@PathVariable(name = "engineCapacity") Double engineCapacity) {
+        return carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
+    }
+
     @PostMapping(value = "/carEngineCapacity/create")
     public CarEngineCapacity createNewCarEngineCapacity(@RequestBody CarEngineCapacity carEngineCapacity) {
         carEngineCapacityDatabaseService.create(carEngineCapacity);

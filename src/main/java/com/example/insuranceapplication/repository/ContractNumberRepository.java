@@ -25,7 +25,4 @@ public interface ContractNumberRepository extends JpaRepository<ContractNumber, 
 
     Collection<ContractNumber> getContractNumberByStartedAtAfter(Timestamp startedAt);
 
-    Collection<ContractNumber> getContractNumberByAmountAll(Double amountAll);
-
-
 }

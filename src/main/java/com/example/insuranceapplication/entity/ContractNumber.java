@@ -26,26 +26,8 @@ public class ContractNumber {
     private Integer requestsId;
 
     @Basic(optional = false)
-    @Column(name = "amount_all")
-    private Double amountAll;
-
-    @Column(name = "payment_1_id")
-    private Integer payment1Id;
-
-    @Column(name = "date_payment_1plan")
-    private LocalDate datePayment1Plan;
-
-    @Column(name = "amount_1plan")
-    private Double amount1Plan;
-
-    @Column(name = "payment_2_id")
-    private Integer payment2Id;
-
-    @Column(name = "date_payment_2plan")
-    private LocalDate datePayment2Plan;
-
-    @Column(name = "amount_2plan")
-    private Double amount2Plan;
+    @Column(name = "paymentDetail_id")
+    private Integer paymentDetailId;
 
     @Column(name = "is_insurance_event")
     private InsuranceEventInContractNumber insuranceEventInContractNumber;

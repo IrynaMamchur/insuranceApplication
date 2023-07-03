@@ -32,6 +32,11 @@ public class CarInsuranceProgramController {
         return carInsurancePrograms;
     }
 
+    @GetMapping(value = "/carInsuranceProgram/find/coefficient/{insuranceProgramName}")
+    public double getCoefficientCarInsuranceProgram(@PathVariable(name = "insuranceProgramName") String insuranceProgramName) {
+        return carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
+    }
+
     @PostMapping(value = "/carInsuranceProgram/create")
     public CarInsuranceProgram createNewCarInsuranceProgram(@RequestBody CarInsuranceProgram carInsuranceProgram) {
         carInsuranceProgramDatabaseService.create(carInsuranceProgram);

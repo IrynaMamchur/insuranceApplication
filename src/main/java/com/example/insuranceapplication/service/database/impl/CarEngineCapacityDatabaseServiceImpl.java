@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.car.CarEngineCapacity;
 import com.example.insuranceapplication.repository.CarEngineCapacityRepository;
 import com.example.insuranceapplication.service.database.CarEngineCapacityDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class CarEngineCapacityDatabaseServiceImpl implements CarEngineCapacityDa
     @Override
     public CarEngineCapacity update(CarEngineCapacity carEngineCapacity) {
         return carEngineCapacityRepository.save(carEngineCapacity);
+    }
+
+    @Override
+    public double getCoefficientCarEngineCapacity(Double engineCapacity) {
+        return carEngineCapacityRepository.getCoefficientCarEngineCapacity(engineCapacity);
     }
 }

@@ -52,9 +52,14 @@ public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabase
     }
 
     @Override
-    public ClientRequests createCoefficient(Integer id) {
-        return clientRequestsRepository.createNewCoefficient(id);
+    public ClientRequests getCarCostClientRequests(Integer id) {
+        return clientRequestsRepository.getCarCostClientRequests(id);
     }
+
+//    @Override
+//    public ClientRequests createCoefficient(Integer id) {
+//        return clientRequestsRepository.createNewCoefficient(id);
+//    }
 
     @Override
     public ClientRequests update(ClientRequests clientRequests) {

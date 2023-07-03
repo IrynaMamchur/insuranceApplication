@@ -15,11 +15,6 @@ public class ContractNumberController {
 
     private final ContractNumberDatabaseService contractNumberDatabaseService;
 
-    @GetMapping(value = "/contract/find/amount_all/{amountAll}")
-    public List<ContractNumber> getContractNumberByAmountAll(@PathVariable(name = "amountAll") Double amountAll) {
-        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByAmountAll(amountAll);
-        return contractNumbers;
-    }
 
     @GetMapping(value = "/contract/find/amount_all")
     public List<ContractNumber> getAllContractNumbers() {
