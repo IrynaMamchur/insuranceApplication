@@ -5,6 +5,7 @@ import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
 import com.example.insuranceapplication.repository.ClientRequestsRepository;
 import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabaseService {
     private final ClientRequestsRepository clientRequestsRepository;
 
@@ -27,8 +29,8 @@ public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabase
     }
 
     @Override
-    public List<ClientRequests> getClientRequestsByBrandID(Integer brandId) {
-        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByBrandID(brandId);
+    public List<ClientRequests> getClientRequestsByBrandId(Integer brandId) {
+        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByBrandId(brandId);
     }
 
     @Override

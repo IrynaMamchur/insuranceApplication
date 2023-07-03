@@ -1,17 +1,16 @@
 package com.example.insuranceapplication.service.database;
 
 import com.example.insuranceapplication.entity.car.CarBrand;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CarBrandDatabaseService {
 
-    CarBrand getCarBrandByName(String carBrandName, String carModelName);
+    CarBrand getCarBrandByName(String carBrandName);
 
     Optional<CarBrand> getCarBrandById(int id);
-
-    List<CarBrand> getCarBrandByCarBrandName(String carBrandName);
 
     List<CarBrand> getCarBrands();
 
@@ -19,6 +18,6 @@ public interface CarBrandDatabaseService {
 
     CarBrand create(CarBrand carBrand);
 
-    double getCoefficientCarBrand(String carBrandName, String carModelName);
+    double getCoefficientCarBrand(String carBrandName);
 
 }

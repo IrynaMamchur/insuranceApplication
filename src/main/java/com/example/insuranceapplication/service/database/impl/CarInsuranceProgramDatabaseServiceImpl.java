@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.car.CarInsuranceProgram;
 import com.example.insuranceapplication.repository.CarInsuranceProgramRepository;
 import com.example.insuranceapplication.service.database.CarInsuranceProgramDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CarInsuranceProgramDatabaseServiceImpl implements CarInsuranceProgramDatabaseService {
 
     private final CarInsuranceProgramRepository carInsuranceProgramRepository;

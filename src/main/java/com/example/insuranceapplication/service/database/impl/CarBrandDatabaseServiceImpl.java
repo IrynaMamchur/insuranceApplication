@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.repository.CarBrandRepository;
 import com.example.insuranceapplication.service.database.CarBrandDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,12 +12,13 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
     private final CarBrandRepository carBrandRepository;
 
     @Override
-    public CarBrand getCarBrandByName(String carBrandName, String carModelName) {
-        return carBrandRepository.getBrandByCarBrandNameAndCarModelName(carBrandName, carModelName);
+    public CarBrand getCarBrandByName(String carBrandName) {
+        return carBrandRepository.getBrandByCarBrandName(carBrandName);
     }
 
     @Override
@@ -24,10 +26,6 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
         return carBrandRepository.findById(id);
     }
 
-    @Override
-    public List<CarBrand> getCarBrandByCarBrandName(String carBrandName) {
-        return (List<CarBrand>) carBrandRepository.getCarBrandByCarBrandName(carBrandName);
-    }
 
     @Override
     public List<CarBrand> getCarBrands() {
@@ -40,8 +38,8 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
     }
 
     @Override
-    public double getCoefficientCarBrand(String carBrandName, String carModelName) {
-        return carBrandRepository.getCoefficientCarBrand(carBrandName, carModelName);
+    public double getCoefficientCarBrand(String carBrandName) {
+        return carBrandRepository.getCoefficientCarBrand(carBrandName);
     }
 
     @Override

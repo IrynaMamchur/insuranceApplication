@@ -1,6 +1,6 @@
 package com.example.insuranceapplication.entity.enam;
 
-public enum CarNumberOfPaymentsNumbers {
+public enum CarQuantityOfPaymentsNumbers {
 
     ONE,
     TWO,

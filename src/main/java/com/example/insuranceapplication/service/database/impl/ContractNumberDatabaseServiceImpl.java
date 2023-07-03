@@ -5,6 +5,7 @@ import com.example.insuranceapplication.entity.enam.InsuranceEventInContractNumb
 import com.example.insuranceapplication.repository.ContractNumberRepository;
 import com.example.insuranceapplication.service.database.ContractNumberDatabaseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabaseService {
     private final ContractNumberRepository contractNumberRepository;
 

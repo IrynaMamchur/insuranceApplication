@@ -10,13 +10,11 @@ import java.util.Collection;
 
 @Repository
 public interface CarBrandRepository extends JpaRepository<CarBrand, Integer> {
-    CarBrand getBrandByCarBrandNameAndCarModelName(String carBrandName, String carModelName);
-
-    Collection<CarBrand> getCarBrandByCarBrandName(String carBrandName);
+    CarBrand getBrandByCarBrandName(String carBrandName);
 
     @Query(value = "SELECT " +
             "CarBrand.coefficient\n" +
             "FROM CarBrand \n" +
-            "where CarBrand.carBrandName = :carBrandName AND CarBrand .carModelName = :carModelName")
-    double getCoefficientCarBrand(@Param("carBrandName") String carBrandName, @Param("carModelName") String carModelName);
+            "where CarBrand.carBrandName = :carBrandName", nativeQuery = true)
+    double getCoefficientCarBrand(@Param("carBrandName") String carBrandName);
 }

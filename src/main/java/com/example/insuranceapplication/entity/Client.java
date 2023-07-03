@@ -43,8 +43,9 @@ public class Client {
     @Column(name = "address", length = 120)
     private String address;
 
-    @Column(name = "is_contract")
-    private ContractInClientStatus contractInClientStatus;
+    @Basic(optional = false)
+    @Column(name = "client_password_id")
+    private Integer clientPasswordId;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)

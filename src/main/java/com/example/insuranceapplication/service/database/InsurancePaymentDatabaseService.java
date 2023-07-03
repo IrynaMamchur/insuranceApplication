@@ -1,6 +1,9 @@
 package com.example.insuranceapplication.service.database;
 
-public interface InsurancePaymentDatabaseService {
+import com.example.insuranceapplication.entity.Coefficient;
+import com.example.insuranceapplication.entity.InsurancePayment;
 
-    double createInsurancePayment(Integer coefficientId, Integer carCost);
+public interface InsurancePaymentDatabaseService {
+    InsurancePayment create(InsurancePayment insurancePayment);
+//    double createInsurancePayment(Integer coefficientId, Integer carCost);
 }

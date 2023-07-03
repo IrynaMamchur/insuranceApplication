@@ -20,9 +20,6 @@ public class ClientPassword {
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
-    @Column(name = "client_id")
-    private Integer clientId;
 
     @Basic(optional = false)
     @Column(name = "login", length = 30)
@@ -36,6 +33,7 @@ public class ClientPassword {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
     private PasswordStatus passwordStatus;
 

@@ -9,5 +9,5 @@ import java.util.Collection;
 
 @Repository
 public interface PaymentDetailRepository extends JpaRepository<PaymentDetail, Integer> {
-    Collection<PaymentDetail> getPaymentDetailByAmountAll(Double amountAll);
+//    Collection<PaymentDetail> getPaymentDetailByAmountAll(Double amountAll);
 }

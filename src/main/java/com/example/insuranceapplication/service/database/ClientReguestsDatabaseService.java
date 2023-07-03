@@ -15,7 +15,7 @@ public interface ClientReguestsDatabaseService {
 
     List<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId);
 
-    List<ClientRequests> getClientRequestsByBrandID(Integer brandId);
+    List<ClientRequests> getClientRequestsByBrandId(Integer brandId);
 
     List<ClientRequests> getClientRequestsByClientId(Integer clientId);
 

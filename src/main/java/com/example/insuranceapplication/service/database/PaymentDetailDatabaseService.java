@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface PaymentDetailDatabaseService {
 
-    List<PaymentDetail> getPaymentDetailByAmountAll(Double amountAll);
+//    List<PaymentDetail> getPaymentDetailByAmountAll(Double amountAll);
 
     List<PaymentDetail> getAllPaymentDetails();
 

@@ -1,6 +1,5 @@
 package com.example.insuranceapplication.entity;
 
-import com.example.insuranceapplication.entity.enam.CarNumberOfPaymentsNumbers;
 import jakarta.persistence.*;
 import lombok.Data;
 

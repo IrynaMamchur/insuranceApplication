@@ -5,6 +5,7 @@ import com.example.insuranceapplication.entity.Payment;
 import com.example.insuranceapplication.entity.PaymentDetail;
 import com.example.insuranceapplication.service.database.PaymentDetailDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,35 +17,41 @@ public class PaymentDetailController {
 
     private final PaymentDetailDatabaseService paymentDetailDatabaseService;
 
-    @GetMapping(value = "/paymentDetail/find/amount_all/{amountAll}")
-    public List<PaymentDetail> getPaymentDetailByAmountAll(@PathVariable(name = "amountAll") Double amountAll) {
-        List<PaymentDetail> paymentDetails = paymentDetailDatabaseService.getPaymentDetailByAmountAll(amountAll);
-        return paymentDetails;
-    }
+//    @GetMapping(value = "/paymentDetail/find/amountAll/{amountAll}")
+//    public ResponseEntity <List<PaymentDetail>> getPaymentDetailByAmountAll(@PathVariable(name = "amountAll") Double amountAll) {
+//        List<PaymentDetail> paymentDetails = paymentDetailDatabaseService.getPaymentDetailByAmountAll(amountAll);
+//        return createResponseEntity(paymentDetails);
+//    }
 
     @GetMapping(value = "/paymentDetail/find/all")
-    public List<PaymentDetail> getAllPaymentDetails() {
+    public ResponseEntity <List<PaymentDetail>> getAllPaymentDetails() {
         List<PaymentDetail> paymentDetails = paymentDetailDatabaseService.getAllPaymentDetails();
-        return paymentDetails;
+        return createResponseEntity(paymentDetails);
     }
 
     @GetMapping(value = "/paymentDetail/find/id/{id}")
-    public Optional<PaymentDetail> getPaymentDetailById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity <Optional<PaymentDetail>> getPaymentDetailById(@PathVariable(name = "id") Integer id) {
         Optional<PaymentDetail> paymentDetail = paymentDetailDatabaseService.getPaymentDetailById(id);
-        return paymentDetail;
+        return ResponseEntity.ok(paymentDetail);
     }
 
     @PostMapping(value = "/paymentDetail/create")
-    public PaymentDetail createNewPaymentDetail(@RequestBody PaymentDetail paymentDetail) {
+    public ResponseEntity <PaymentDetail> createNewPaymentDetail(@RequestBody PaymentDetail paymentDetail) {
         paymentDetailDatabaseService.create(paymentDetail);
-        return paymentDetail;
+        return ResponseEntity.ok(paymentDetail);
     }
 
     @PutMapping(value = "/paymentDetail/update")
-    public PaymentDetail updatePaymentDetail(@RequestBody PaymentDetail paymentDetail) {
+    public ResponseEntity <PaymentDetail> updatePaymentDetail(@RequestBody PaymentDetail paymentDetail) {
         paymentDetailDatabaseService.update(paymentDetail);
-        return paymentDetail;
+        return ResponseEntity.ok(paymentDetail);
     }
-
+    private ResponseEntity<List<PaymentDetail>> createResponseEntity(List<PaymentDetail> paymentDetails) {
+        if (paymentDetails != null && !paymentDetails.isEmpty()) {
+            return ResponseEntity.ok(paymentDetails);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
 
 }

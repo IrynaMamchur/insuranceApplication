@@ -19,10 +19,6 @@ public class CarBrand {
     private String carBrandName;
 
     @Basic(optional = false)
-    @Column(name = "car_model_name", length = 30)
-    private String carModelName;
-
-    @Basic(optional = false)
     @Column(name = "coefficient")
     private Double coefficient;
 

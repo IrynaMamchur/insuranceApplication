@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InsurancePaymentRepository extends JpaRepository<InsurancePayment, Integer> {
 
-    void createInsurancePayment(Double coefForCar, Double carCost);
+//    double createInsurancePayment(Double coefForCar, Double carCost);
 }

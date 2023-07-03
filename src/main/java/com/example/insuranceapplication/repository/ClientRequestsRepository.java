@@ -13,7 +13,7 @@ import java.util.Collection;
 public interface ClientRequestsRepository extends JpaRepository<ClientRequests, Integer> {
     Collection<ClientRequests> getClientRequestsByClientRequestStatus(ClientRequestStatus clientRequestStatus);
 
-    Collection<ClientRequests> getClientRequestsByBrandID(Integer brandId);
+    Collection<ClientRequests> getClientRequestsByBrandId(Integer brandId);
 
     Collection<ClientRequests> getClientRequestsByClientId(Integer clientId);
 
@@ -22,7 +22,7 @@ public interface ClientRequestsRepository extends JpaRepository<ClientRequests, 
     @Query(value = "SELECT " +
             "ClientRequests .carCost\n" +
             "FROM ClientRequests \n" +
-            "where ClientRequests .id = :id")
+            "where ClientRequests .id = :id", nativeQuery = true)
     double getCarCostClientRequests(@Param("id") Integer id);
 }
 

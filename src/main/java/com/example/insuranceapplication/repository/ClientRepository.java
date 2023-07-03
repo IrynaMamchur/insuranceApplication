@@ -16,6 +16,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
     Client getClientByDateOfBirthday(LocalDate dateOfBirthday);
 
-    Collection<Client> getClientsByContractInClientStatus(ContractInClientStatus contractInClientStatus);
+   //Collection<Client> getClientsByContractInClientStatus(ContractInClientStatus contractInClientStatus);
 
 }

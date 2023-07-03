@@ -37,6 +37,7 @@ public class ClientRequests {
     @Column(name = "insurance_program_id")
     private Integer insuranceProgramId;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
     private ClientRequestStatus clientRequestStatus;
 
