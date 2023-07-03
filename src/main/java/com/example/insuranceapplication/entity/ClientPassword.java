@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Entity
@@ -36,5 +37,9 @@ public class ClientPassword {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
     private PasswordStatus passwordStatus;
+
+
+    @OneToMany(mappedBy = "clientPassword")
+    private List<Client> clients;
 
 }

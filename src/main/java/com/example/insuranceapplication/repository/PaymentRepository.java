@@ -9,7 +9,7 @@ import java.util.Collection;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 
-    Collection<Payment> getPaymentsByContractNumberId(Integer contractNumberId);
+//    Collection<Payment> getPaymentsByContractNumberId(Integer contractNumberId);
 
     Collection<Payment> getPaymentsByAmount(Integer amount);
 

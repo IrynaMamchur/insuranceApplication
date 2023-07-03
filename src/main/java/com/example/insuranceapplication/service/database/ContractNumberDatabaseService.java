@@ -23,7 +23,7 @@ public interface ContractNumberDatabaseService {
     List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt);
 
 
-    List<ContractNumber> getContractNumberByClientId(Integer clientId);
+//    List<ContractNumber> getContractNumberByClientId(Integer clientId);
 
     List<ContractNumber> getAllContractNumbers();
 

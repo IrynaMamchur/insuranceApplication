@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -43,12 +44,16 @@ public class Client {
     @Column(name = "address", length = 120)
     private String address;
 
-    @Basic(optional = false)
-    @Column(name = "client_password_id")
-    private Integer clientPasswordId;
+    @ManyToOne
+    @JoinColumn(name = "client_password_id")
+    private ClientPassword clientPassword;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
+
+
+    @OneToMany(mappedBy = "client")
+    private List<ClientRequests> clientRequestsList;
 
 }

@@ -17,11 +17,11 @@ public class InsurancePaymentController {
 
     private final InsurancePaymentDatabaseService insurancePaymentDatabaseService;
 
-//    @GetMapping(value = "/insurancePayment/create/{coefficientId}/{id}")
-//    public ResponseEntity<Double> createNewInsurancePayment(@PathVariable(name = "coefficientId") Integer coefficientId, @PathVariable(name = "id") Integer id) {
-//        Double amount = insurancePaymentDatabaseService.createInsurancePayment(coefficientId, id);
-//        return ResponseEntity.ok(amount);
-//    }
+    @GetMapping(value = "/insurancePayment/create/{coefficientId}/{id}")
+    public ResponseEntity<Double> createNewInsurancePayment(@PathVariable(name = "coefficientId") Integer coefficientId, @PathVariable(name = "id") Integer id) {
+        Double amount = insurancePaymentDatabaseService.createInsurancePayment(coefficientId, id);
+        return ResponseEntity.ok(amount);
+    }
 
     @PostMapping(value = "/insurancePayment/create")
     public ResponseEntity <InsurancePayment> create(@RequestBody InsurancePayment insurancePayment) {

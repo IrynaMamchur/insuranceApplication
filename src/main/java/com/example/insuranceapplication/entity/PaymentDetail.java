@@ -16,12 +16,9 @@ public class PaymentDetail {
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
-    @Column(name = "insurance_payment_id")
-    private Integer insurancePaymentId;
-
-    @Column(name = "payment_1_id")
-    private Integer payment1Id;
+    @OneToOne
+    @JoinColumn(name = "payment_1_id")
+    private Payment payment1;
 
     @Column(name = "date_payment_1plan")
     private LocalDate datePayment1Plan;
@@ -29,8 +26,9 @@ public class PaymentDetail {
     @Column(name = "amount_1plan")
     private Double amount1Plan;
 
-    @Column(name = "payment_2_id")
-    private Integer payment2Id;
+    @OneToOne
+    @JoinColumn(name = "payment_2_id")
+    private Payment payment2;
 
     @Column(name = "date_payment_2plan")
     private LocalDate datePayment2Plan;
@@ -41,5 +39,8 @@ public class PaymentDetail {
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
+
+    @OneToOne(mappedBy = "paymentDetail")
+    private ContractNumber contractNumber;
 
 }

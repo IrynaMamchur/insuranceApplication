@@ -17,10 +17,10 @@ import java.util.Optional;
 public class CarEngineCapacityDatabaseServiceImpl implements CarEngineCapacityDatabaseService {
     private final CarEngineCapacityRepository carEngineCapacityRepository;
 
-//    @Override
-//    public CarEngineCapacity getEngineCapacity(Double engineCapacity) {
-//        return carEngineCapacityRepository.getEngineCapacity(engineCapacity);
-//    }
+    @Override
+    public CarEngineCapacity getEngineCapacity(Double engineCapacity) {
+        return carEngineCapacityRepository.getEngineCapacityByEngineCapacityEquals(engineCapacity);
+    }
 
     @Override
     public Optional<CarEngineCapacity> getCarEngineCapacityById(Integer id) {

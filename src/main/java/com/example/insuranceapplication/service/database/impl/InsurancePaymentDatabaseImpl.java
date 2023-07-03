@@ -24,17 +24,21 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
         return insurancePaymentRepository.save(insurancePayment);
     }
 
-//    @Override
-//    public double createInsurancePayment(Integer coefficientId, Integer id) {
-//        Double coefficientForCar;
-//        double amount;
-//        Double carCost;
-//        coefficientForCar = coefficientDatabaseService.getCoefficient(coefficientId);
-//        carCost = clientReguestsDatabaseService.getCarCostClientRequests(id);
-//        insurancePaymentRepository.createInsurancePayment(coefficientForCar, carCost);
-//        {
-//            amount = coefficientForCar * carCost;
-//        }
-//        return amount;
-//    }
+    @Override
+    public double createInsurancePayment(Integer coefficientId, Integer id) {
+        double coefficientForCar;
+        double amount;
+        double carCost;
+        coefficientForCar = coefficientDatabaseService.getCoefficient(coefficientId);
+        carCost = clientReguestsDatabaseService.getCarCostClientRequests(id);
+        if (coefficientForCar <=0 || carCost <=0) {
+            throw new IllegalArgumentException();
+        }
+
+        insurancePaymentRepository.createInsurancePayment(coefficientForCar, carCost);
+        {
+            amount = coefficientForCar * carCost;
+        }
+        return amount;
+    }
 }

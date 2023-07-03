@@ -8,5 +8,5 @@ import java.util.List;
 
 
 public interface ReportDatabaseService {
-    List<ContractNumber> createFirstReport(Timestamp startedAt);
+//    List<ContractNumber> createFirstReport(Timestamp startedAt);
 }

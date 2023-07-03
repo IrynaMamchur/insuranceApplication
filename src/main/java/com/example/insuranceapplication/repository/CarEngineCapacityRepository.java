@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapacity, Integer> {
-//   CarEngineCapacity getEngineCapacity(Double engineCapacity);
+   CarEngineCapacity getEngineCapacityByEngineCapacityEquals(Double engineCapacity);
 
     @Query(value = "SELECT " +
             "CarEngineCapacity.coefficient\n" +

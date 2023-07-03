@@ -1,9 +1,11 @@
 package com.example.insuranceapplication.entity;
 
+import com.example.insuranceapplication.entity.car.*;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,21 +17,21 @@ public class Coefficient {
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
-    @Column(name = "car_brand_id")
-    private Double carBrandId;
+    @ManyToOne
+    @JoinColumn(name = "car_brand_id")
+    private CarBrand carBrand;
 
-    @Basic(optional = false)
-    @Column(name = "car_engine_id")
-    private Double carEngineId;
+    @ManyToOne
+    @JoinColumn(name = "car_engine_id")
+    private CarEngineCapacity carEngineCapacity;
 
-    @Basic(optional = false)
-    @Column(name = "car_insurance_program_id")
-    private Double carInsuranceProgramId;
+    @ManyToOne
+    @JoinColumn(name = "car_insurance_program_id")
+    private CarInsuranceProgram carInsuranceProgram;
 
-    @Basic(optional = false)
-    @Column(name = "car_year_of_issue_id")
-    private Double carYearOfIssueId;
+    @ManyToOne
+    @JoinColumn(name = "car_year_of_issue_id")
+    private CarYearOfIssue carYearOfIssue;
 
     @Column(name = "coefficient")
     private Double coefficientForCar;
@@ -38,8 +40,12 @@ public class Coefficient {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
-    @Basic(optional = false)
-    @Column(name = "car_number_of_payments_id")
-    private Double carNumberOfPaymentsId;
+    @ManyToOne
+    @JoinColumn(name = "carQuantityOfPaymentsId")
+    private CarQuantityOfPayments carQuantityOfPayments;
+
+
+    @OneToOne(mappedBy = "coefficient")
+    private InsurancePayment insurancePayment;
 
 }

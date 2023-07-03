@@ -16,11 +16,11 @@ public class CoefficientController {
 
     private final CoefficientDatabaseService coefficientDatabaseService;
 
-//    @GetMapping(value = "/coefficient/create/{carBrandName}/{engineCapacity}/{insuranceProgramName}/{carFirstRegistr}/{number}")
-//    public ResponseEntity <Double> getNewCoefficient(@PathVariable(name = "carBrandName") String carBrandName,@PathVariable(name = "engineCapacity") Double engineCapacity, @PathVariable(name = "insuranceProgramName")String insuranceProgramName,@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr, @PathVariable(name = "number")CarQuantityOfPaymentsNumbers number) {
-//        Double coefficientForCar = coefficientDatabaseService.createCoefficient(carBrandName, engineCapacity, insuranceProgramName, carFirstRegistr, number);
-//        return ResponseEntity.ok(coefficientForCar);
-//    }
+    @GetMapping(value = "/coefficient/create/{carBrandName}/{engineCapacity}/{insuranceProgramName}/{carFirstRegistr}/{number}")
+    public ResponseEntity <Double> getNewCoefficient(@PathVariable(name = "carBrandName") String carBrandName,@PathVariable(name = "engineCapacity") Double engineCapacity, @PathVariable(name = "insuranceProgramName")String insuranceProgramName,@PathVariable(name = "carFirstRegistr") Integer carFirstRegistr, @PathVariable(name = "number")CarQuantityOfPaymentsNumbers number) {
+        Double coefficientForCar = coefficientDatabaseService.createCoefficient(carBrandName, engineCapacity, insuranceProgramName, carFirstRegistr, number);
+        return ResponseEntity.ok(coefficientForCar);
+    }
 
 
     @PostMapping(value = "/coefficient/create")

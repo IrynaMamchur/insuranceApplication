@@ -16,11 +16,11 @@ public class PaymentController {
 
     private final PaymentDatabaseService paymentDatabaseService;
 
-    @GetMapping(value = "/payment/find/contractNumberId/{contractNumberId}")
-    public ResponseEntity <List<Payment>> getPaymentsByContractNumberId(@PathVariable(name = "contractNumberId") Integer contractNumberId) {
-        List<Payment> payments = paymentDatabaseService.getPaymentsByContractNumberId(contractNumberId);
-        return createResponseEntity(payments);
-    }
+//    @GetMapping(value = "/payment/find/contractNumberId/{contractNumberId}")
+//    public ResponseEntity <List<Payment>> getPaymentsByContractNumberId(@PathVariable(name = "contractNumberId") Integer contractNumberId) {
+//        List<Payment> payments = paymentDatabaseService.getPaymentsByContractNumberId(contractNumberId);
+//        return createResponseEntity(payments);
+//    }
 
     @GetMapping(value = "/payment/find/amount/{amount}")
     public ResponseEntity <List<Payment>>getPaymentsByAmount(@PathVariable(name = "amount") Integer amount) {

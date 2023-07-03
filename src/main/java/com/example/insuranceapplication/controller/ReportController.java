@@ -17,11 +17,11 @@ import java.util.List;
 public class ReportController {
     private final ReportDatabaseService reportDatabaseService;
 
-    @GetMapping(value = "/report/find/{startedAt}")
-    public ResponseEntity <List<ContractNumber>> getAllPaymentDetails(@PathVariable(name = "startedAt") Timestamp startedAt) {
-        List<ContractNumber> contractNumbers = reportDatabaseService.createFirstReport(startedAt);
-        return createResponseEntity(contractNumbers);
-    }
+//    @GetMapping(value = "/report/find/{startedAt}")
+//    public ResponseEntity <List<ContractNumber>> getAllPaymentDetails(@PathVariable(name = "startedAt") Timestamp startedAt) {
+//        List<ContractNumber> contractNumbers = reportDatabaseService.createFirstReport(startedAt);
+//        return createResponseEntity(contractNumbers);
+//    }
 
     private ResponseEntity<List<ContractNumber>> createResponseEntity(List<ContractNumber> contractNumbers) {
         if (contractNumbers != null && !contractNumbers.isEmpty()) {

@@ -16,11 +16,11 @@ public class CarEngineCapacityController {
 
     private final CarEngineCapacityDatabaseService carEngineCapacityDatabaseService;
 
-//    @GetMapping(value = "/carEngineCapacity/find/engineCapacity/{engineCapacity}")
-//    public ResponseEntity <CarEngineCapacity> getCarEngineCapacity(@PathVariable(name = "engineCapacity") Double engineCapacity) {
-//        CarEngineCapacity carEngineCapacity = carEngineCapacityDatabaseService.getEngineCapacity(engineCapacity);
-//        return ResponseEntity.ok(carEngineCapacity);
-//    }
+    @GetMapping(value = "/carEngineCapacity/find/engineCapacity/{engineCapacity}")
+    public ResponseEntity <CarEngineCapacity> getCarEngineCapacity(@PathVariable(name = "engineCapacity") Double engineCapacity) {
+        CarEngineCapacity carEngineCapacity = carEngineCapacityDatabaseService.getEngineCapacity(engineCapacity);
+        return ResponseEntity.ok(carEngineCapacity);
+    }
 
     @GetMapping(value = "/carEngineCapacity/find/id/{id}")
     public ResponseEntity <Optional<CarEngineCapacity>> getCarEngineCapacityById(@PathVariable(name = "id") Integer id) {

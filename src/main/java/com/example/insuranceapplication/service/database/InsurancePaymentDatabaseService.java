@@ -5,5 +5,5 @@ import com.example.insuranceapplication.entity.InsurancePayment;
 
 public interface InsurancePaymentDatabaseService {
     InsurancePayment create(InsurancePayment insurancePayment);
-//    double createInsurancePayment(Integer coefficientId, Integer carCost);
+    double createInsurancePayment(Integer coefficientId, Integer carCost);
 }

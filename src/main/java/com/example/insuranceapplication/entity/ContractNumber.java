@@ -17,17 +17,13 @@ public class ContractNumber {
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
-    @Column(name = "client_id")
-    private Integer clientId;
+    @OneToOne
+    @JoinColumn(name = "requests_id")
+    private ClientRequests clientRequests;
 
-    @Basic(optional = false)
-    @Column(name = "requests_id")
-    private Integer requestsId;
-
-    @Basic(optional = false)
-    @Column(name = "paymentDetail_id")
-    private Integer paymentDetailId;
+    @OneToOne
+    @JoinColumn(name = "paymentDetail_id")
+    private PaymentDetail paymentDetail;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "is_insurance_event")

@@ -2,9 +2,11 @@ package com.example.insuranceapplication.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.core.parameters.P;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,11 +25,11 @@ public class Payment {
     @Column(name = "amount")
     private Double amount;
 
-    @Basic(optional = false)
-    @Column(name = "contract_number_id")
-    private Integer contractNumberId;
-
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
+
+    @OneToOne(mappedBy = "payment1")
+    private PaymentDetail paymentDetail;
+
 }
