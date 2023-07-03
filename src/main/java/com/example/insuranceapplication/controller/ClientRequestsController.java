@@ -46,7 +46,7 @@ public class ClientRequestsController {
     }
 
     @GetMapping(value = "/clientRequests/find/car_cost/{id}")
-    public ClientRequests getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
+    public double getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
         return clientReguestsDatabaseService.getCarCostClientRequests(id);
     }
 

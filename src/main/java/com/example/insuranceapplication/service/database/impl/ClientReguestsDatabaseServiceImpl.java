@@ -52,7 +52,7 @@ public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabase
     }
 
     @Override
-    public ClientRequests getCarCostClientRequests(Integer id) {
+    public double getCarCostClientRequests(Integer id) {
         return clientRequestsRepository.getCarCostClientRequests(id);
     }
 

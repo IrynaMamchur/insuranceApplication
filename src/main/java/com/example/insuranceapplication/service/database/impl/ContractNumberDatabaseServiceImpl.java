@@ -16,7 +16,6 @@ import java.util.Optional;
 public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabaseService {
     private final ContractNumberRepository contractNumberRepository;
 
-
     @Override
     public List<ContractNumber> getContractNumbersByIdAfter(Integer id) {
         return (List<ContractNumber>) contractNumberRepository.getContractNumbersByIdAfter(id);
@@ -31,21 +30,21 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
     public List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt) {
         return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAtAfter(finishedAt);
     }
-//
-//    @Override
-//    public List<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<ContractNumber> getContractNumberByStartedAtAfter(Timestamp startedAt) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt) {
-//        return null;
-//    }
+
+    @Override
+    public List<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt) {
+        return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAt(finishedAt);
+    }
+
+    @Override
+    public List<ContractNumber> getContractNumberByStartedAtAfter(Timestamp startedAt) {
+        return (List<ContractNumber>) contractNumberRepository.getContractNumberByStartedAtAfter(startedAt);
+    }
+
+    @Override
+    public List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt) {
+        return (List<ContractNumber>) contractNumberRepository.getContractNumberByStartedAt(startedAt);
+    }
 
 
     public List<ContractNumber> getContractNumberByClientId(Integer clientId) {
@@ -67,7 +66,15 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
     }
 
     @Override
+    public InsuranceEventInContractNumber getInsuranceEvent(Integer id) {
+        return contractNumberRepository.getInsuranceEvent(id);
+    }
+
+
+    @Override
     public List<ContractNumber> getAllContractNumbers() {
         return contractNumberRepository.findAll();
     }
+
+
 }

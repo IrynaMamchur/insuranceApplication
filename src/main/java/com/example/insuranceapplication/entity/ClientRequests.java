@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 
 @Data
 @Entity
@@ -56,5 +55,8 @@ public class ClientRequests {
     @Basic(optional = false)
     @Column(name = "insurance_payment_id")
     private Integer insurancePaymentId;
+
+    @Column(name = "car_number_of_payments_id")
+    private Integer carNumberOfPaymentsId;
 
 }

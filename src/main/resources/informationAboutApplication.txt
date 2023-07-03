@@ -1,0 +1,66 @@
+1. Вручную заполняются андеррайтером следующие таблицы:
+CarBrand
+CarEngineCapacity
+CarInsuranceProgram
+CarYearOfIssue
+2. Заходит пользователь и регистрируется.
+3. Как только человек начинает выбирать машину, на него регистрируется
+в таблице ClientRequests присваивается номер заявки и в него заполняется инфо, которую выбрал клиент и
+довел до калькулятора. Как нажимается кнопка "рассчитать", рассчитывается калькулятор сначала коэффициента,
+а потом размер страхового платежа.
+4. Если клиент согласен, нажимает оплатить.
+5. После оплаты создается таблица ContractNumber, по которой далее ведется страхователь.
+6. Админ имеет право внести инфо по поводу наступления страхового платежа.
+7. Клиент имеет право заплатить второй платеж, если страховой платеж разбит на 2 части.
+8. Отчеты
+
+
+Бизнес-процесс:
+1. Клиент заходит и регистрируется
+ @PostMapping(value = "/clientPassword/create")
+    public ClientPassword createNewClientPassword(@RequestBody ClientPassword clientPassword) {
+        clientPasswordDatabaseService.create(clientPassword);
+        return clientPassword;
+    }
+2. Клиент заполняет инфо о себе:
+  @PostMapping(value = "/client/create")
+    public Client createNewClient(@RequestBody Client client) {
+        clientDatabaseService.create(client);
+        return client;
+    }
+
+  3. Клиент создает заявку
+   @PostMapping(value = "/coefficient/create")
+      public Coefficient createCoefficient(@RequestBody String carBrandName, String carModelName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr) {
+          coefficientDatabaseService.createCoefficient(carBrandName, carModelName, engineCapacity, insuranceProgramName, carFirstRegistr);
+          return new Coefficient();
+      }
+      и
+         @PostMapping(value = "/insurancePayment/create")
+          public double createInsurancePayment(@RequestBody Integer coefficientId, Integer id) {
+              return insurancePaymentDatabaseService.createInsurancePayment(coefficientId, id);
+          }
+          В результате человек получает сумму страхового платежа. Если устраивает, то создаем договор
+
+         4. Создать Договор
+          @PostMapping(value = "/contract/create")
+             public ContractNumber createNewContractNumber(@RequestBody ContractNumber contractNumber) {
+                 contractNumberDatabaseService.create(contractNumber);
+                 return contractNumber;
+             }
+
+             5. После этого человек оплачивает. Но тут, насколько я понимаю, я не создаю транзакцию, поскольку все транзакции идут через банковские приложения
+             Получили платеж, создали новый (админ)
+               @PostMapping(value = "/payment/create")
+                 public Payment createNewPayment(@RequestBody Payment payment) {
+                     paymentDatabaseService.create(payment);
+                     return payment;
+                 }
+
+                 6. Внести инфо по страховому событию.
+                 Делает админ через
+                 @PutMapping(value = "/contract/update")
+                                        public ContractNumber updateContractNumber(@RequestBody ContractNumber contractNumber) {
+                                            contractNumberDatabaseService.update(contractNumber);
+                                            return contractNumber;
+                                        }
