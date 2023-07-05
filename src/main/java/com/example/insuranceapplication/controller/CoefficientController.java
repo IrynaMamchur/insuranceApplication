@@ -1,8 +1,7 @@
 package com.example.insuranceapplication.controller;
 
-import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.Coefficient;
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
+import com.example.insuranceapplication.entity.dto.CoefficientDto;
 import com.example.insuranceapplication.service.database.CoefficientDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +30,8 @@ public class CoefficientController {
     }
 
     @PutMapping(value = "/coefficient/update/coefficientForCar")
-    public ResponseEntity <Optional<Coefficient>> updateCoefficientForCar(@RequestBody Integer id, String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
-        Optional<Coefficient> coefficient =  coefficientDatabaseService.updateCoefficientForCar(id, carBrandName, engineCapacity, insuranceProgramName, carFirstRegistr, number);
+    public ResponseEntity <Optional<Coefficient>> updateCoefficientForCar(@RequestBody CoefficientDto coefficientDto) {
+        Optional<Coefficient> coefficient =  coefficientDatabaseService.updateCoefficientForCar(coefficientDto);
         return ResponseEntity.ok(coefficient);
     }
 

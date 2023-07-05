@@ -17,6 +17,6 @@ public interface PaymentDatabaseService {
     Payment create(Payment payment);
 
     Payment update(Payment payment);
-
-    Integer getPaymentId (@Param("id") Integer id);
+//
+//    Integer getPaymentId (@Param("id") Integer id);
 }

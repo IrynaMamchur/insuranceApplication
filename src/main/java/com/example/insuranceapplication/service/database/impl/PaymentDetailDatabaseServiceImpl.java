@@ -1,6 +1,9 @@
 package com.example.insuranceapplication.service.database.impl;
 
+import com.example.insuranceapplication.entity.ContractNumber;
+import com.example.insuranceapplication.entity.Payment;
 import com.example.insuranceapplication.entity.PaymentDetail;
+import com.example.insuranceapplication.entity.dto.PaymentDetailDto;
 import com.example.insuranceapplication.repository.PaymentDetailRepository;
 import com.example.insuranceapplication.service.database.PaymentDatabaseService;
 import com.example.insuranceapplication.service.database.PaymentDetailDatabaseService;
@@ -15,8 +18,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class PaymentDetailDatabaseServiceImpl implements PaymentDetailDatabaseService {
-private final PaymentDetailRepository paymentDetailRepository;
-private final PaymentDatabaseService paymentDatabaseService;
+    private final PaymentDetailRepository paymentDetailRepository;
+    private final PaymentDatabaseService paymentDatabaseService;
 
     @Override
     public List<PaymentDetail> getAllPaymentDetails() {
@@ -39,22 +42,28 @@ private final PaymentDatabaseService paymentDatabaseService;
     }
 
     @Override
-    public Optional<PaymentDetail> updatePayment(Integer id, Integer payment1, Integer payment2) {
-        Optional<PaymentDetail> paymentDetailOptional = paymentDetailRepository.findById(id);
-        if (paymentDetailOptional.isPresent() && payment1 ==null) {
-            PaymentDetail paymentDetail = paymentDetailOptional.get();
-            paymentDetail.setPayment1 (paymentDatabaseService.getPaymentId(id));
-            paymentDetailRepository.save(paymentDetail);
-            return Optional.of(paymentDetail);
-        } else if (paymentDetailOptional.isPresent() && payment1 !=null && payment2 ==null) {
-            PaymentDetail paymentDetail = paymentDetailOptional.get();
-            paymentDetail.setPayment2(paymentDatabaseService.getPaymentId(id));
-            paymentDetailRepository.save(paymentDetail);
-            return Optional.of(paymentDetail);
+    public List<PaymentDetail> getAllPaymentDetailsByContractNumber(ContractNumber contractNumber) {
+        return (List<PaymentDetail>) paymentDetailRepository.findAllByContractNumber(contractNumber);
+    }
+
+    @Override
+    public Integer getPayment(Integer id) {
+        return paymentDetailRepository.getPayment(id);
+    }
+
+    @Override
+    public Optional<PaymentDetail> updatePayment(PaymentDetailDto paymentDetailDto) {
+        ContractNumber contractNumber = paymentDetailDto.getContractNumberId();
+        Payment paymentId = paymentDetailDto.getPaymentId();
+        List<PaymentDetail> paymentDetailsWithOnceContractNumber = getAllPaymentDetailsByContractNumber(contractNumber);
+        for (int i = 0; i < paymentDetailsWithOnceContractNumber.size(); i++) {
+            if (getPayment(i) == null) {
+                PaymentDetail paymentDetail = paymentDetailsWithOnceContractNumber.get(i);
+                paymentDetail.setPayment(paymentId);
+                paymentDetailRepository.save(paymentDetail);
+                return Optional.of(paymentDetail);
+            }
         }
         return null;
     }
-
-
-
 }

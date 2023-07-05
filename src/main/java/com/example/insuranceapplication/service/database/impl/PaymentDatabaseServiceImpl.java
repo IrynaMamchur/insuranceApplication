@@ -40,9 +40,9 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     public Payment update(Payment payment) {
         return paymentRepository.save(payment);
     }
-
-    @Override
-    public Integer getPaymentId(Integer id) {
-        return (int) paymentRepository.getPaymentId(id);
-    }
 }
+//    @Override
+//    public Integer getPaymentId(Integer id) {
+//        return paymentRepository.getPaymentId(id);
+//    }
+////}

@@ -13,15 +13,13 @@ import java.util.Collection;
 public interface PaymentDetailRepository extends JpaRepository<PaymentDetail, Integer> {
 
 @Query(value = "SELECT " +
-        "PaymentDetail.payment1\n" +
+        "PaymentDetail.payment\n" +
         "FROM PaymentDetail \n" +
         "where PaymentDetail .id = :id", nativeQuery = true)
-double getPayment1 (@Param("id") Integer id);
+Integer getPayment (@Param("id") Integer id);
 
-    @Query(value = "SELECT " +
-            "PaymentDetail.payment2\n" +
-            "FROM PaymentDetail \n" +
-            "where PaymentDetail .id = :id", nativeQuery = true)
-    double getPayment2 (@Param("id") Integer id);
+
+
+    Collection<PaymentDetail> findAllByContractNumber(ContractNumber contractNumber);
 
 }

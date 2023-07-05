@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.Coefficient;
+import com.example.insuranceapplication.entity.dto.CoefficientDto;
 import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import com.example.insuranceapplication.repository.CoefficientRepository;
 import com.example.insuranceapplication.service.database.*;
@@ -54,7 +55,13 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
     }
 
     @Override
-    public Optional<Coefficient> updateCoefficientForCar(Integer id, String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
+    public Optional<Coefficient> updateCoefficientForCar(CoefficientDto coefficientDto) {
+        Integer id = coefficientDto.getId();
+        String carBrandName = coefficientDto.getCarBrandName();
+        Double engineCapacity = coefficientDto.getEngineCapacity();
+        String insuranceProgramName = coefficientDto.getInsuranceProgramName();
+        Integer carFirstRegistr = coefficientDto. getCarFirstRegistr();
+        CarQuantityOfPaymentsNumbers number = coefficientDto.getNumber();
         Optional<Coefficient> coefficientOptional = coefficientRepository.findById(id);
         if (coefficientOptional.isPresent()) {
             Coefficient coefficient = coefficientOptional.get();

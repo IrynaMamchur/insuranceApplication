@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,10 +22,6 @@ public class ContractNumber {
     @JoinColumn(name = "requests_id")
     private ClientRequests clientRequests;
 
-    @OneToOne
-    @JoinColumn(name = "paymentDetail_id")
-    private PaymentDetail paymentDetail;
-
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "is_insurance_event")
     private InsuranceEventInContractNumber insuranceEventInContractNumber;
@@ -38,4 +35,9 @@ public class ContractNumber {
 
     @Column(name = "finished_at")
     private Timestamp finishedAt;
+
+    @OneToMany(mappedBy = "contractNumber")
+    private List<PaymentDetail> paymentDetails;
+
+
 }
