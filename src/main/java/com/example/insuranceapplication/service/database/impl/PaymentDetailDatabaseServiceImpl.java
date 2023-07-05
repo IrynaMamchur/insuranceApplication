@@ -1,8 +1,8 @@
 package com.example.insuranceapplication.service.database.impl;
 
-import com.example.insuranceapplication.entity.Payment;
 import com.example.insuranceapplication.entity.PaymentDetail;
 import com.example.insuranceapplication.repository.PaymentDetailRepository;
+import com.example.insuranceapplication.service.database.PaymentDatabaseService;
 import com.example.insuranceapplication.service.database.PaymentDetailDatabaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +16,7 @@ import java.util.Optional;
 @Slf4j
 public class PaymentDetailDatabaseServiceImpl implements PaymentDetailDatabaseService {
 private final PaymentDetailRepository paymentDetailRepository;
-//    @Override
-//    public List<PaymentDetail> getPaymentDetailByAmountAll(Double amountAll) {
-//        return (List<PaymentDetail>) paymentDetailRepository.getPaymentDetailByAmountAll(amountAll);
-//    }
+private final PaymentDatabaseService paymentDatabaseService;
 
     @Override
     public List<PaymentDetail> getAllPaymentDetails() {
@@ -40,5 +37,24 @@ private final PaymentDetailRepository paymentDetailRepository;
     public PaymentDetail update(PaymentDetail paymentDetail) {
         return paymentDetailRepository.save(paymentDetail);
     }
+
+    @Override
+    public Optional<PaymentDetail> updatePayment(Integer id, Integer payment1, Integer payment2) {
+        Optional<PaymentDetail> paymentDetailOptional = paymentDetailRepository.findById(id);
+        if (paymentDetailOptional.isPresent() && payment1 ==null) {
+            PaymentDetail paymentDetail = paymentDetailOptional.get();
+            paymentDetail.setPayment1 (paymentDatabaseService.getPaymentId(id));
+            paymentDetailRepository.save(paymentDetail);
+            return Optional.of(paymentDetail);
+        } else if (paymentDetailOptional.isPresent() && payment1 !=null && payment2 ==null) {
+            PaymentDetail paymentDetail = paymentDetailOptional.get();
+            paymentDetail.setPayment2(paymentDatabaseService.getPaymentId(id));
+            paymentDetailRepository.save(paymentDetail);
+            return Optional.of(paymentDetail);
+        }
+        return null;
+    }
+
+
 
 }

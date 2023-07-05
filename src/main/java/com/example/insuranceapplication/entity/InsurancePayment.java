@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "insurance_payment")
+@Table(name = "insurancePayment")
 public class InsurancePayment {
 
     @Id
@@ -21,7 +21,7 @@ public class InsurancePayment {
     private Coefficient coefficient;
 
     @Column(name = "insurance_payment")
-    private Double insurancePayment;
+    private Double insurancePaymentAmount;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)

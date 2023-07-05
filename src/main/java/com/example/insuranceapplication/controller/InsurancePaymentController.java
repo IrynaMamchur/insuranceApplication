@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,6 +30,16 @@ public class InsurancePaymentController {
         return ResponseEntity.ok(insurancePayment);
     }
 
+    @PutMapping(value = "/insurancePayment/update/insurancePaymentAmount")
+    public ResponseEntity <Optional<InsurancePayment>> updateInsurancePayment(@RequestBody Integer id, Integer coefficientId, Integer carCostId) {
+        Optional<InsurancePayment> insurancePayment =  insurancePaymentDatabaseService.updateInsurancePayment(id, coefficientId, carCostId);
+        return ResponseEntity.ok(insurancePayment);
+    }
+
+    @GetMapping(value = "/insurancePayment/find/insurancePaymentAmount/id/{id}")
+    public ResponseEntity <Double>  getAmount(@PathVariable(name = "id") Integer id) {
+        return ResponseEntity.ok(insurancePaymentDatabaseService.getAmount(id));
+    }
 
     private ResponseEntity<List<InsurancePayment>> createResponseEntity(List<InsurancePayment> insurancePayments) {
         if (insurancePayments != null && !insurancePayments.isEmpty()) {

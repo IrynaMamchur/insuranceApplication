@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -25,20 +27,35 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
     }
 
     @Override
-    public double createInsurancePayment(Integer coefficientId, Integer id) {
+    public double createInsurancePayment(Integer coefficientId, Integer carCostId) {
         double coefficientForCar;
         double amount;
         double carCost;
         coefficientForCar = coefficientDatabaseService.getCoefficient(coefficientId);
-        carCost = clientReguestsDatabaseService.getCarCostClientRequests(id);
-        if (coefficientForCar <=0 || carCost <=0) {
+        carCost = clientReguestsDatabaseService.getCarCostClientRequests(carCostId);
+        if (coefficientForCar <= 0 || carCost <= 0) {
             throw new IllegalArgumentException();
         }
-
-        insurancePaymentRepository.createInsurancePayment(coefficientForCar, carCost);
-        {
-            amount = coefficientForCar * carCost;
-        }
+        amount = coefficientForCar * carCost;
         return amount;
     }
+    @Override
+    public double getAmount(Integer id) {
+        return insurancePaymentRepository.getAmount(id);
+    }
+
+    @Override
+    public Optional<InsurancePayment> updateInsurancePayment(Integer id, Integer coefficientId, Integer carCostId) {
+        Optional<InsurancePayment> insurancePaymentOptional = insurancePaymentRepository.findById(id);
+        if (insurancePaymentOptional.isPresent()) {
+            InsurancePayment insurancePayment = insurancePaymentOptional.get();
+            insurancePayment.setInsurancePaymentAmount (createInsurancePayment(coefficientId,carCostId));
+            insurancePaymentRepository.save(insurancePayment);
+            return Optional.of(insurancePayment);
+        }
+        return null;
+    }
+
 }
+
+

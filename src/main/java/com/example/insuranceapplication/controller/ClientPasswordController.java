@@ -1,6 +1,5 @@
 package com.example.insuranceapplication.controller;
 
-import com.example.insuranceapplication.entity.Client;
 import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
 import com.example.insuranceapplication.service.database.ClientPasswordDatabaseService;
@@ -42,10 +41,23 @@ public class ClientPasswordController {
         return createResponseEntity(clientPasswords);
     }
 
+    @GetMapping(value = "/clientPassword/find/password/{password}")
+    public ResponseEntity <ClientPassword> getClientPasswordByPassword(@PathVariable(name = "password") String password) {
+        ClientPassword clientPassword = clientPasswordDatabaseService.getClientPasswordByPassword(password);
+        return ResponseEntity.ok(clientPassword);
+    }
+
+
+    @GetMapping(value = "/clientPassword/find/login/{login}")
+    public ResponseEntity <ClientPassword> getClientPasswordByLogin(@PathVariable(name = "login") String login) {
+        ClientPassword clientPassword = clientPasswordDatabaseService.getClientPasswordByLogin(login);
+        return ResponseEntity.ok(clientPassword);
+    }
+
 
     @PostMapping(value = "/clientPassword/create")
-    public ResponseEntity <ClientPassword> createNewClientPassword(@RequestBody ClientPassword clientPassword) {
-        clientPasswordDatabaseService.create(clientPassword);
+    public ResponseEntity <ClientPassword> createNewClientPassword(@RequestBody ClientPassword clientPassword, String login, String passwort) {
+        clientPasswordDatabaseService.create(clientPassword, login, passwort);
         return ResponseEntity.ok(clientPassword);
     }
 

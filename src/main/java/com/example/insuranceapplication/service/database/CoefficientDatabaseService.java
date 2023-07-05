@@ -4,6 +4,8 @@ import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 
+import java.util.Optional;
+
 public interface CoefficientDatabaseService {
 
     double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number);
@@ -11,4 +13,6 @@ public interface CoefficientDatabaseService {
     double getCoefficient(Integer id);
 
     Coefficient create(Coefficient coefficient);
+
+    Optional<Coefficient> updateCoefficientForCar(Integer id, String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number);
 }
