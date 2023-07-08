@@ -13,11 +13,7 @@ import java.util.Collection;
 public interface ClientRequestsRepository extends JpaRepository<ClientRequests, Integer> {
     Collection<ClientRequests> getClientRequestsByClientRequestStatus(ClientRequestStatus clientRequestStatus);
 
-   // Collection<ClientRequests> getClientRequestsByBrandId(Integer brandId);
-
     Collection<ClientRequests> getClientRequestsByClientId(Integer clientId);
-
- //   Collection<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId);
 
     @Query(value = "SELECT " +
             "ClientRequests .carCost\n" +

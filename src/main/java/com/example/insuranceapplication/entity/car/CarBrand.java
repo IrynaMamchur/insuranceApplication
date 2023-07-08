@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.entity.car;
 
 import com.example.insuranceapplication.entity.Coefficient;
-import com.example.insuranceapplication.entity.InsurancePayment;
 import jakarta.persistence.*;
 import lombok.Data;
 

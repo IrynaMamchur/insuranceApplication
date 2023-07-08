@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 @Entity
@@ -19,7 +18,7 @@ public class ClientRequests {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn (name = "client_id")
+    @JoinColumn(name = "client_id")
     private Client client;
 
     @Enumerated(EnumType.ORDINAL)

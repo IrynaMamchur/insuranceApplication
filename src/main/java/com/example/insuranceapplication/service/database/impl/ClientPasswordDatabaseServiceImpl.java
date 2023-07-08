@@ -2,6 +2,7 @@ package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
+import com.example.insuranceapplication.entity.updateDto.ClientPasswordUpdateDto;
 import com.example.insuranceapplication.repository.ClientPasswordRepository;
 import com.example.insuranceapplication.service.database.ClientPasswordDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -38,12 +39,11 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
     }
 
     @Override
-    public ClientPassword create(ClientPassword clientPassword, String password, String login) {
-    creatPassword(password);
-    creatLogin(login);
+    public ClientPassword create(ClientPassword clientPassword) {
+        verificationPassword(clientPassword.getPassword());
+        verificationLogin(clientPassword.getLogin());
         return clientPasswordRepository.save(clientPassword);
-    }/// поправить     creatPassword(clientPassword.getPassword());
-    //creatLogin(clientPassword.getLogin());
+    }
 
     @Override
     public ClientPassword update(ClientPassword clientPassword) {
@@ -51,14 +51,13 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
     }
 
     @Override
-    public void creatPassword(String password) {
+    public void verificationPassword(String password) {
         {
             if (clientPasswordRepository.getClientPasswordByPassword(password) != null) {
                 log.info("Такой пароль существует");
                 throw new IllegalArgumentException();
             }
             log.info("Можно продолжать");
-
             for (int i = 0; i < password.length(); i++) {
                 int length = password.length();
                 if (length <= 8) {
@@ -94,7 +93,7 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
     }
 
     @Override
-    public void creatLogin(String login) {
+    public void verificationLogin(String login) {
         {
             if (clientPasswordRepository.getClientPasswordByLogin(login) != null) {
                 log.info("Такой логин существует");
@@ -137,4 +136,31 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
     public ClientPassword getClientPasswordByLogin(String login) {
         return clientPasswordRepository.getClientPasswordByLogin(login);
     }
+
+    @Override
+    public void delete(Integer id) {
+        clientPasswordRepository.deleteById(id);
+    }
+
+
+    @Override
+    public Optional<ClientPassword> updateWithCheck(Integer id, ClientPasswordUpdateDto clientPasswordUpdateDto) {
+        Optional<ClientPassword> clientPasswordOptional = clientPasswordRepository.findById(id);
+        if (clientPasswordOptional.isPresent() && clientPasswordUpdateDto != null) {
+            ClientPassword clientPassword = clientPasswordOptional.get();
+            if (clientPasswordUpdateDto.getLogin() != null) {
+                clientPassword.setLogin(clientPasswordUpdateDto.getLogin());
+            }
+            if (clientPasswordUpdateDto.getPassword() != null) {
+                clientPassword.setPassword(clientPasswordUpdateDto.getPassword());
+            }
+            if (clientPasswordUpdateDto.getPasswordStatus() != null) {
+                clientPassword.setPasswordStatus(clientPasswordUpdateDto.getPasswordStatus());
+            }
+            clientPasswordRepository.save(clientPassword);
+            return Optional.of(clientPassword);
+        }
+        return Optional.empty();
+    }
+
 }

@@ -1,7 +1,8 @@
 package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.car.CarBrand;
-import com.example.insuranceapplication.repository.CarBrandRepository;
+import com.example.insuranceapplication.entity.updateDto.CarBrandUpdateDto;
+import com.example.insuranceapplication.repository.carRepository.CarBrandRepository;
 import com.example.insuranceapplication.service.database.CarBrandDatabaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,6 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
         return carBrandRepository.findById(id);
     }
 
-
     @Override
     public List<CarBrand> getCarBrands() {
         return carBrandRepository.findAll();
@@ -43,9 +43,30 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
     }
 
     @Override
+    public void delete(Integer id) {
+        carBrandRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<CarBrand> updateWithCheck(Integer id, CarBrandUpdateDto carBrandUpdateDto) {
+        Optional<CarBrand> carBrandOptional = carBrandRepository.findById(id);
+        if (carBrandOptional.isPresent() && carBrandUpdateDto != null) {
+            CarBrand carBrand = carBrandOptional.get();
+            if (carBrandUpdateDto.getCarBrandName() != null) {
+                carBrand.setCarBrandName(carBrandUpdateDto.getCarBrandName());
+            }
+            if (carBrandUpdateDto.getCoefficient() != null) {
+                carBrand.setCoefficient(carBrandUpdateDto.getCoefficient());
+            }
+            carBrandRepository.save(carBrand);
+            return Optional.of(carBrand);
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public CarBrand update(CarBrand carBrand) {
         return carBrandRepository.save(carBrand);
     }
-
 
 }

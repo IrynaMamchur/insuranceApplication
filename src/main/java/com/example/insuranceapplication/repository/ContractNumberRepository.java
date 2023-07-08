@@ -17,8 +17,6 @@ public interface ContractNumberRepository extends JpaRepository<ContractNumber, 
 
     Collection<ContractNumber> getContractNumberByInsuranceEventInContractNumber(InsuranceEventInContractNumber insuranceEventInContractNumber);
 
-//    ContractNumberRepository getContractNumberByClientId(Integer clientId);
-
     Collection<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt);
 
     Collection<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt);
@@ -31,6 +29,6 @@ public interface ContractNumberRepository extends JpaRepository<ContractNumber, 
             "ContractNumber .insuranceEventInContractNumber\n" +
             "FROM ContractNumber \n" +
             "where ContractNumber .id = :id", nativeQuery = true)
-    InsuranceEventInContractNumber getInsuranceEvent (@Param("id") Integer id);
+    InsuranceEventInContractNumber getInsuranceEvent(@Param("id") Integer id);
 
 }

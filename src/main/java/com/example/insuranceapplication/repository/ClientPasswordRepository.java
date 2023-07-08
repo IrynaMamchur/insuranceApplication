@@ -2,10 +2,7 @@ package com.example.insuranceapplication.repository;
 
 import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
-import jakarta.persistence.Column;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -17,9 +14,8 @@ public interface ClientPasswordRepository extends JpaRepository<ClientPassword, 
 
     Collection<ClientPassword> getClientPasswordsByPasswordStatus(PasswordStatus passwordStatus);
 
-    ClientPassword getClientPasswordByLogin (String login);
+    ClientPassword getClientPasswordByLogin(String login);
 
-    ClientPassword getClientPasswordByPassword (String password);
-
+    ClientPassword getClientPasswordByPassword(String password);
 
 }

@@ -1,11 +1,11 @@
 package com.example.insuranceapplication.entity;
 
 import com.example.insuranceapplication.entity.enam.InsuranceEventInContractNumber;
+import com.example.insuranceapplication.entity.payment.PaymentDetail;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -38,6 +38,5 @@ public class ContractNumber {
 
     @OneToMany(mappedBy = "contractNumber")
     private List<PaymentDetail> paymentDetails;
-
 
 }

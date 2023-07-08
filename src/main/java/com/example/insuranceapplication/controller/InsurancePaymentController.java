@@ -2,6 +2,7 @@ package com.example.insuranceapplication.controller;
 
 import com.example.insuranceapplication.entity.InsurancePayment;
 import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
+import com.example.insuranceapplication.entity.updateDto.InsurancePaymentUpdateDto;
 import com.example.insuranceapplication.service.database.InsurancePaymentDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,21 +23,33 @@ public class InsurancePaymentController {
         return ResponseEntity.ok(amount);
     }
 
+    @GetMapping(value = "/insurancePayment/find/insurancePaymentAmount/id/{id}")
+    public ResponseEntity<Double> getAmount(@PathVariable(name = "id") Integer id) {
+        return ResponseEntity.ok(insurancePaymentDatabaseService.getAmount(id));
+    }
+
     @PostMapping(value = "/insurancePayment/create")
-    public ResponseEntity <InsurancePayment> create(@RequestBody InsurancePayment insurancePayment) {
+    public ResponseEntity<InsurancePayment> create(@RequestBody InsurancePayment insurancePayment) {
         insurancePaymentDatabaseService.create(insurancePayment);
         return ResponseEntity.ok(insurancePayment);
     }
 
     @PutMapping(value = "/insurancePayment/update/insurancePaymentAmount")
-    public ResponseEntity <Optional<InsurancePayment>> updateInsurancePayment(@RequestBody InsurancePaymentDto insurancePaymentDto) {
-        Optional<InsurancePayment> insurancePayment =  insurancePaymentDatabaseService.updateInsurancePayment(insurancePaymentDto);
+    public ResponseEntity<Optional<InsurancePayment>> updateInsurancePayment(@RequestBody InsurancePaymentDto insurancePaymentDto) {
+        Optional<InsurancePayment> insurancePayment = insurancePaymentDatabaseService.updateInsurancePayment(insurancePaymentDto);
         return ResponseEntity.ok(insurancePayment);
     }
 
-    @GetMapping(value = "/insurancePayment/find/insurancePaymentAmount/id/{id}")
-    public ResponseEntity <Double>  getAmount(@PathVariable(name = "id") Integer id) {
-        return ResponseEntity.ok(insurancePaymentDatabaseService.getAmount(id));
+    @PutMapping(value = "/insurancePayment/update/withCheck/{id}")
+    public ResponseEntity<Optional<InsurancePayment>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody InsurancePaymentUpdateDto insurancePaymentUpdateDto) {
+        Optional<InsurancePayment> insurancePayment = insurancePaymentDatabaseService.updateWithCheck(id, insurancePaymentUpdateDto);
+        return ResponseEntity.ok(insurancePayment);
+    }
+
+    @DeleteMapping(value = "/insurancePayment/delete/{id}")
+    public ResponseEntity<Integer> delete(@PathVariable Integer id) {
+        insurancePaymentDatabaseService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
     private ResponseEntity<List<InsurancePayment>> createResponseEntity(List<InsurancePayment> insurancePayments) {

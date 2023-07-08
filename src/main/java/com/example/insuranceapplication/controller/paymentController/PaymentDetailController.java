@@ -1,10 +1,10 @@
-package com.example.insuranceapplication.controller;
+package com.example.insuranceapplication.controller.paymentController;
 
+import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.ContractNumber;
-import com.example.insuranceapplication.entity.InsurancePayment;
-import com.example.insuranceapplication.entity.Payment;
-import com.example.insuranceapplication.entity.PaymentDetail;
+import com.example.insuranceapplication.entity.payment.PaymentDetail;
 import com.example.insuranceapplication.entity.dto.PaymentDetailDto;
+import com.example.insuranceapplication.entity.updateDto.PaymentDetailUpdateDto;
 import com.example.insuranceapplication.service.database.PaymentDetailDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +55,20 @@ public class PaymentDetailController {
         return ResponseEntity.ok(paymentDetail);
     }
 
-    private ResponseEntity<List<PaymentDetail>> createResponseEntity(List<PaymentDetail> paymentDetails) {
+    @DeleteMapping(value = "/paymentDetail/delete/{id}")
+    public ResponseEntity<Integer> delete(@PathVariable Integer id){
+        paymentDetailDatabaseService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
+        @PutMapping(value = "/paymentDetail/update/withCheck/{id}")
+        public ResponseEntity< Optional<PaymentDetail>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody PaymentDetailUpdateDto paymentDetailUpdateDto) {
+            Optional<PaymentDetail> paymentDetail =  paymentDetailDatabaseService.updateWithCheck(id, paymentDetailUpdateDto);
+            return ResponseEntity.ok(paymentDetail);
+        }
+
+
+        private ResponseEntity<List<PaymentDetail>> createResponseEntity(List<PaymentDetail> paymentDetails) {
         if (paymentDetails != null && !paymentDetails.isEmpty()) {
             return ResponseEntity.ok(paymentDetails);
         } else {

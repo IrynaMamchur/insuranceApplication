@@ -13,6 +13,6 @@ public interface CoefficientRepository extends JpaRepository<Coefficient, Intege
             "Coefficient .coefficient\n" +
             "FROM Coefficient \n" +
             "where Coefficient .id = :id", nativeQuery = true)
-    double getCoefficient (@Param("id") Integer id);
+    double getCoefficient(@Param("id") Integer id);
 
 }

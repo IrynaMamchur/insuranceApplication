@@ -2,6 +2,7 @@ package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.ContractNumber;
 import com.example.insuranceapplication.entity.enam.InsuranceEventInContractNumber;
+import com.example.insuranceapplication.entity.updateDto.ContractNumberUpdateDto;
 import com.example.insuranceapplication.repository.ContractNumberRepository;
 import com.example.insuranceapplication.service.database.ContractNumberDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -49,10 +50,6 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
     }
 
 
-//    public List<ContractNumber> getContractNumberByClientId(Integer clientId) {
-//        return (List<ContractNumber>) contractNumberRepository.getContractNumberByClientId(clientId);
-//    }
-
     public Optional<ContractNumber> getContractNumberById(Integer id) {
         return contractNumberRepository.findById(id);
     }
@@ -72,11 +69,33 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
         return contractNumberRepository.getInsuranceEvent(id);
     }
 
-
     @Override
     public List<ContractNumber> getAllContractNumbers() {
         return contractNumberRepository.findAll();
     }
 
+    @Override
+    public void delete(Integer id) {
+        contractNumberRepository.deleteById(id);
+    }
 
+    @Override
+    public Optional<ContractNumber> updateWithCheck(Integer id, ContractNumberUpdateDto contractNumberUpdateDto) {
+        Optional<ContractNumber> contractNumberOptional = contractNumberRepository.findById(id);
+        if (contractNumberOptional.isPresent() && contractNumberUpdateDto != null) {
+            ContractNumber contractNumber = contractNumberOptional.get();
+            if (contractNumberUpdateDto.getInsuranceEventInContractNumber() != null) {
+                contractNumber.setInsuranceEventInContractNumber(contractNumberUpdateDto.getInsuranceEventInContractNumber());
+            }
+            if (contractNumberUpdateDto.getStartedAt() != null) {
+                contractNumber.setStartedAt(contractNumberUpdateDto.getStartedAt());
+            }
+            if (contractNumberUpdateDto.getFinishedAt() != null) {
+                contractNumber.setFinishedAt(contractNumberUpdateDto.getFinishedAt());
+            }
+            contractNumberRepository.save(contractNumber);
+            return Optional.of(contractNumber);
+        }
+        return Optional.empty();
+    }
 }
