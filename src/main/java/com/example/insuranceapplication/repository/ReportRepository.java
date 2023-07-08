@@ -12,12 +12,9 @@ import java.util.Collection;
 @Repository
 public interface ReportRepository extends JpaRepository <ContractNumber, Integer>  {
 
-    @Query(value = "SELECT\n " +
-            "ContractNumber.id,\n" +
-            "InsurancePayment .insurancePaymentAmount,\n" +
-            "ClientRequests .carCost\n" +
-            "FROM ContractNumber \n" +
-            "where ContractNumber .startedAt = :startedAt ")
+
+    @Query("SELECT cn.id, cr.carCost, ir.insurancePaymentAmount FROM ContractNumber cn, ClientRequests cr, InsurancePayment ir" +
+            " WHERE cn.startedAt = :startedAt")
     Collection<ContractNumber> createFirstReport(@Param("startedAt") Timestamp startedAt);
 
 }

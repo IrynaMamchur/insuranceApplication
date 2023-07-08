@@ -29,6 +29,7 @@ public class Payment {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
-
+    @OneToOne(mappedBy = "payment")
+    private PaymentDetail paymentDetail;
 
 }

@@ -27,7 +27,7 @@ public class CarQuantityOfPaymentsController {
         return ResponseEntity.ok(carQuantityOfPayments);
     }
 
-    @PutMapping(value = "/carInsuranceProgram/update")
+    @PutMapping(value = "/carQuantityOfPayments/update")
     public ResponseEntity <CarQuantityOfPayments> update(@RequestBody CarQuantityOfPayments carQuantityOfPayments) {
         carQuantityOfPaymentsDatabaseService.update(carQuantityOfPayments);
         return ResponseEntity.ok(carQuantityOfPayments);

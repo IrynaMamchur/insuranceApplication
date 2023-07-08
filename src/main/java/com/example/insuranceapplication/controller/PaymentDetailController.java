@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.ContractNumber;
 import com.example.insuranceapplication.entity.InsurancePayment;
 import com.example.insuranceapplication.entity.Payment;
 import com.example.insuranceapplication.entity.PaymentDetail;
+import com.example.insuranceapplication.entity.dto.PaymentDetailDto;
 import com.example.insuranceapplication.service.database.PaymentDetailDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,11 @@ public class PaymentDetailController {
         Optional<PaymentDetail> paymentDetail = paymentDetailDatabaseService.getPaymentDetailById(id);
         return ResponseEntity.ok(paymentDetail);
     }
+    @GetMapping(value = "/paymentDetail/find/all/contractNumberId/{contractNumberId}")
+    public ResponseEntity<List<PaymentDetail>> getAllPaymentDetailsByContractNumber(@PathVariable(name = "contractNumberId") ContractNumber contractNumber) {
+        List<PaymentDetail> paymentDetails = paymentDetailDatabaseService.getAllPaymentDetailsByContractNumber(contractNumber);
+        return createResponseEntity(paymentDetails);
+    }
 
     @PostMapping(value = "/paymentDetail/create")
     public ResponseEntity<PaymentDetail> createNewPaymentDetail(@RequestBody PaymentDetail paymentDetail) {
@@ -44,8 +50,8 @@ public class PaymentDetailController {
     }
 
     @PutMapping(value = "/paymentDetail/update/payment")
-    public ResponseEntity<Optional<PaymentDetail>> updatePayment(@RequestBody Integer id, Integer payment1, Integer payment2) {
-        Optional<PaymentDetail> paymentDetail = paymentDetailDatabaseService.updatePayment(id, payment1, payment2);
+    public ResponseEntity<Optional<PaymentDetail>> updatePayment(@RequestBody PaymentDetailDto paymentDetailDto) {
+        Optional<PaymentDetail> paymentDetail = paymentDetailDatabaseService.updatePayment(paymentDetailDto);
         return ResponseEntity.ok(paymentDetail);
     }
 

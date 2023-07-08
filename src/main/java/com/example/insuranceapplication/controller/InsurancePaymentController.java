@@ -1,9 +1,7 @@
 package com.example.insuranceapplication.controller;
 
-import com.example.insuranceapplication.entity.Coefficient;
-import com.example.insuranceapplication.entity.ContractNumber;
 import com.example.insuranceapplication.entity.InsurancePayment;
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
+import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 import com.example.insuranceapplication.service.database.InsurancePaymentDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +29,8 @@ public class InsurancePaymentController {
     }
 
     @PutMapping(value = "/insurancePayment/update/insurancePaymentAmount")
-    public ResponseEntity <Optional<InsurancePayment>> updateInsurancePayment(@RequestBody Integer id, Integer coefficientId, Integer carCostId) {
-        Optional<InsurancePayment> insurancePayment =  insurancePaymentDatabaseService.updateInsurancePayment(id, coefficientId, carCostId);
+    public ResponseEntity <Optional<InsurancePayment>> updateInsurancePayment(@RequestBody InsurancePaymentDto insurancePaymentDto) {
+        Optional<InsurancePayment> insurancePayment =  insurancePaymentDatabaseService.updateInsurancePayment(insurancePaymentDto);
         return ResponseEntity.ok(insurancePayment);
     }
 

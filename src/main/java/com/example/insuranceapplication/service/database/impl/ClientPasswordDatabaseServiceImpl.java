@@ -38,11 +38,12 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
     }
 
     @Override
-    public ClientPassword create(ClientPassword clientPassword, String passwort, String login) {
-    creatPassword(passwort);
+    public ClientPassword create(ClientPassword clientPassword, String password, String login) {
+    creatPassword(password);
     creatLogin(login);
-        return clientPasswordRepository.save(new ClientPassword());
-    }
+        return clientPasswordRepository.save(clientPassword);
+    }/// поправить     creatPassword(clientPassword.getPassword());
+    //creatLogin(clientPassword.getLogin());
 
     @Override
     public ClientPassword update(ClientPassword clientPassword) {

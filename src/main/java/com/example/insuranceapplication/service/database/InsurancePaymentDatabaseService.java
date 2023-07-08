@@ -1,7 +1,7 @@
 package com.example.insuranceapplication.service.database;
 
-import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.InsurancePayment;
+import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 
 import java.util.Optional;
 
@@ -11,5 +11,5 @@ public interface InsurancePaymentDatabaseService {
 
     double getAmount(Integer id);
 
-    Optional<InsurancePayment> updateInsurancePayment(Integer id, Integer coefficientId, Integer carCostId);
+    Optional<InsurancePayment> updateInsurancePayment(InsurancePaymentDto insurancePaymentDto);
 }

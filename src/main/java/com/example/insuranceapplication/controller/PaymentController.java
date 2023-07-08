@@ -28,10 +28,10 @@ public class PaymentController {
         return createResponseEntity(payments);
     }
 
-    @GetMapping(value = "/payment/find/id/{id}")
-    public ResponseEntity <Integer>getPaymentId(@PathVariable(name = "id") Integer id) {
-        return ResponseEntity.ok(paymentDatabaseService.getPaymentId(id));
-    }
+//    @GetMapping(value = "/payment/find/id/{id}")
+//    public ResponseEntity <Integer>getPaymentId(@PathVariable(name = "id") Integer id) {
+//        return ResponseEntity.ok(paymentDatabaseService.getPaymentId(id));
+//    }
 
     @GetMapping(value = "/payment/find/all")
     public ResponseEntity <List<Payment>> getAllPayments() {

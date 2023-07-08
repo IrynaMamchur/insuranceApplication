@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.InsurancePayment;
+import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 import com.example.insuranceapplication.repository.InsurancePaymentRepository;
 import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import com.example.insuranceapplication.service.database.CoefficientDatabaseService;
@@ -20,7 +21,7 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
     private final CoefficientDatabaseService coefficientDatabaseService;
     private final ClientReguestsDatabaseService clientReguestsDatabaseService;
 
-
+//private final InsurancePaymentDto insurancePaymentDto;
     @Override
     public InsurancePayment create(InsurancePayment insurancePayment) {
         return insurancePaymentRepository.save(insurancePayment);
@@ -44,8 +45,13 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
         return insurancePaymentRepository.getAmount(id);
     }
 
+
+
     @Override
-    public Optional<InsurancePayment> updateInsurancePayment(Integer id, Integer coefficientId, Integer carCostId) {
+    public Optional<InsurancePayment> updateInsurancePayment(InsurancePaymentDto insurancePaymentDto) {
+       Integer coefficientId = insurancePaymentDto.getCoefficientId();
+       Integer carCostId = insurancePaymentDto.getCarCostId();
+       Integer id = insurancePaymentDto.getId();
         Optional<InsurancePayment> insurancePaymentOptional = insurancePaymentRepository.findById(id);
         if (insurancePaymentOptional.isPresent()) {
             InsurancePayment insurancePayment = insurancePaymentOptional.get();
