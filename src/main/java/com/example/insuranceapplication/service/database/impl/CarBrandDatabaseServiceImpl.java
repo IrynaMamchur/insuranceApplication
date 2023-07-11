@@ -64,9 +64,4 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
         return Optional.empty();
     }
 
-    @Override
-    public CarBrand update(CarBrand carBrand) {
-        return carBrandRepository.save(carBrand);
-    }
-
 }

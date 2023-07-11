@@ -48,12 +48,6 @@ public class CarBrandController {
         return ResponseEntity.ok(carBrand);
     }
 
-    @PutMapping(value = "/carBrand/update")
-    public ResponseEntity<CarBrand> updateCarBrand(@RequestBody CarBrand carBrand) {
-        carBrandDatabaseService.update(carBrand);
-        return ResponseEntity.ok(carBrand);
-    }
-
     @PutMapping(value = "/carBrand/update/withCheck/{id}")
     public ResponseEntity<Optional<CarBrand>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody CarBrandUpdateDto carBrandUpdateDto) {
         Optional<CarBrand> carBrand = carBrandDatabaseService.updateWithCheck(id, carBrandUpdateDto);

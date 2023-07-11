@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,9 +25,10 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
     }
 
     @Override
-    public CarQuantityOfPayments update(CarQuantityOfPayments carQuantityOfPayments) {
-        return carQuantityOfPaymentsRepository.save(carQuantityOfPayments);
+    public List<CarQuantityOfPayments> getAllCarQuantityOfPayments() {
+        return carQuantityOfPaymentsRepository.findAll();
     }
+
 
     @Override
     public double getCoefficientCarNumberOfPayments(CarQuantityOfPaymentsNumbers number) {
