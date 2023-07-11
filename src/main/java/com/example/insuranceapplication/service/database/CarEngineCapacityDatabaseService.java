@@ -1,22 +1,26 @@
 package com.example.insuranceapplication.service.database;
 
-import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.entity.car.CarEngineCapacity;
-import org.springframework.data.repository.query.Param;
+import com.example.insuranceapplication.entity.updateDto.CarEngineCapacityUpdateDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CarEngineCapacityDatabaseService {
-   CarEngineCapacity getEngineCapacity(Double engineCapacity);
+ CarEngineCapacity getEngineCapacity(Double engineCapacity);
 
-    Optional<CarEngineCapacity> getCarEngineCapacityById(Integer id);
+ Optional<CarEngineCapacity> getCarEngineCapacityById(Integer id);
 
-    List<CarEngineCapacity> getAllCarEngineCapacity();
+ List<CarEngineCapacity> getAllCarEngineCapacity();
 
-    CarEngineCapacity create(CarEngineCapacity carEngineCapacity);
+ CarEngineCapacity create(CarEngineCapacity carEngineCapacity);
 
-    CarEngineCapacity update(CarEngineCapacity carEngineCapacity);
+ CarEngineCapacity update(CarEngineCapacity carEngineCapacity);
 
-    double getCoefficientCarEngineCapacity (Double engineCapacity);
+ double getCoefficientCarEngineCapacity(Double engineCapacity);
+
+ void delete(Integer id);
+
+ Optional<CarEngineCapacity> updateWithCheck(Integer id, CarEngineCapacityUpdateDto carEngineCapacityUpdateDto);
+
 }

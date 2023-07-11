@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.controller;
 
 import com.example.insuranceapplication.entity.ContractNumber;
-import com.example.insuranceapplication.entity.PaymentDetail;
 import com.example.insuranceapplication.service.database.ReportDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

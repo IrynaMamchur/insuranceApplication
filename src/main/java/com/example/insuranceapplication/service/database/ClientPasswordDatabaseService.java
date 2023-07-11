@@ -2,6 +2,7 @@ package com.example.insuranceapplication.service.database;
 
 import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
+import com.example.insuranceapplication.entity.updateDto.ClientPasswordUpdateDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,18 +17,21 @@ public interface ClientPasswordDatabaseService {
 
     List<ClientPassword> getAllClientPassword();
 
-    ClientPassword create(ClientPassword clientPassword, String passwort, String login);
+    ClientPassword create(ClientPassword clientPassword);
 
     ClientPassword update(ClientPassword clientPassword);
 
-    void creatPassword(String password);
+    void verificationPassword(String password);
 
-    ClientPassword getClientPasswordByPassword (String password);
+    ClientPassword getClientPasswordByPassword(String password);
 
-    void creatLogin(String login);
+    void verificationLogin(String login);
 
-    ClientPassword getClientPasswordByLogin (String login);
+    ClientPassword getClientPasswordByLogin(String login);
 
+    void delete(Integer id);
+
+    Optional<ClientPassword> updateWithCheck(Integer id, ClientPasswordUpdateDto clientPasswordUpdateDto);
 
 }
 

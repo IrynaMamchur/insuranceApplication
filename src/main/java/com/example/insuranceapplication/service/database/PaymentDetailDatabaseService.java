@@ -1,9 +1,9 @@
 package com.example.insuranceapplication.service.database;
 
 import com.example.insuranceapplication.entity.ContractNumber;
-import com.example.insuranceapplication.entity.PaymentDetail;
+import com.example.insuranceapplication.entity.payment.PaymentDetail;
 import com.example.insuranceapplication.entity.dto.PaymentDetailDto;
-import com.example.insuranceapplication.repository.PaymentDetailRepository;
+import com.example.insuranceapplication.entity.updateDto.PaymentDetailUpdateDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +20,11 @@ public interface PaymentDetailDatabaseService {
 
     List<PaymentDetail> getAllPaymentDetailsByContractNumber(ContractNumber contractNumber);
 
-    public Integer getPayment(Integer id);
+    Integer getPayment(Integer id);
+
     Optional<PaymentDetail> updatePayment(PaymentDetailDto paymentDetailDto);
+
+    void delete(Integer id);
+
+    Optional<PaymentDetail> updateWithCheck(Integer id, PaymentDetailUpdateDto paymentDetailUpdateDto);
 }

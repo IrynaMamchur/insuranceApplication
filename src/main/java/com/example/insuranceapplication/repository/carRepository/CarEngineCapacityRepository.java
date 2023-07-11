@@ -1,4 +1,4 @@
-package com.example.insuranceapplication.repository;
+package com.example.insuranceapplication.repository.carRepository;
 
 import com.example.insuranceapplication.entity.car.CarEngineCapacity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapacity, Integer> {
-   CarEngineCapacity getEngineCapacityByEngineCapacityEquals(Double engineCapacity);
+    CarEngineCapacity getEngineCapacityByEngineCapacityEquals(Double engineCapacity);
 
     @Query(value = "SELECT " +
             "CarEngineCapacity.coefficient\n" +

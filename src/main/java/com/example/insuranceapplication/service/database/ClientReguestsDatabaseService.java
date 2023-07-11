@@ -1,10 +1,8 @@
 package com.example.insuranceapplication.service.database;
 
-import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
-import com.example.insuranceapplication.entity.enam.PasswordStatus;
-import org.springframework.data.repository.query.Param;
+import com.example.insuranceapplication.entity.updateDto.ClientRequestUpdateDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,10 +10,6 @@ import java.util.Optional;
 public interface ClientReguestsDatabaseService {
 
     List<ClientRequests> getClientRequestsByClientRequestStatus(ClientRequestStatus clientRequestStatus);
-
-//    List<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId);
-//
-//    List<ClientRequests> getClientRequestsByBrandId(Integer brandId);
 
     List<ClientRequests> getClientRequestsByClientId(Integer clientId);
 
@@ -27,5 +21,10 @@ public interface ClientReguestsDatabaseService {
 
     ClientRequests create(ClientRequests clientRequests);
 
-    double getCarCostClientRequests (Integer id);
+    double getCarCostClientRequests(Integer id);
+
+    void delete(Integer id);
+
+    Optional<ClientRequests> updateWithCheck(Integer id, ClientRequestUpdateDto clientRequestUpdateDto);
+
 }

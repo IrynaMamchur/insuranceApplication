@@ -2,6 +2,7 @@ package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
+import com.example.insuranceapplication.entity.updateDto.ClientRequestUpdateDto;
 import com.example.insuranceapplication.repository.ClientRequestsRepository;
 import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -17,21 +18,10 @@ import java.util.Optional;
 public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabaseService {
     private final ClientRequestsRepository clientRequestsRepository;
 
-
     @Override
     public List<ClientRequests> getClientRequestsByClientRequestStatus(ClientRequestStatus clientRequestStatus) {
         return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByClientRequestStatus(clientRequestStatus);
     }
-
-//    @Override
-//    public List<ClientRequests> getClientRequestsByInsuranceProgramId(Integer insuranceProgramId) {
-//        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByInsuranceProgramId(insuranceProgramId);
-//    }
-
-//    @Override
-//    public List<ClientRequests> getClientRequestsByBrandId(Integer brandId) {
-//        return (List<ClientRequests>) clientRequestsRepository.getClientRequestsByBrandId(brandId);
-//    }
 
     @Override
     public List<ClientRequests> getClientRequestsByClientId(Integer clientId) {
@@ -58,14 +48,37 @@ public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabase
         return clientRequestsRepository.getCarCostClientRequests(id);
     }
 
-//    @Override
-//    public ClientRequests createCoefficient(Integer id) {
-//        return clientRequestsRepository.createNewCoefficient(id);
-//    }
 
     @Override
     public ClientRequests update(ClientRequests clientRequests) {
         return clientRequestsRepository.save(clientRequests);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        clientRequestsRepository.deleteById(id);
+    }
+
+
+    @Override
+    public Optional<ClientRequests> updateWithCheck(Integer id, ClientRequestUpdateDto clientRequestUpdateDto) {
+        Optional<ClientRequests> clientRequestsOptional = clientRequestsRepository.findById(id);
+        if (clientRequestsOptional.isPresent() && clientRequestUpdateDto != null) {
+            ClientRequests clientRequests = clientRequestsOptional.get();
+            if (clientRequestUpdateDto.getClientRequestStatus() != null) {
+                clientRequests.setClientRequestStatus(clientRequestUpdateDto.getClientRequestStatus());
+            }
+            if (clientRequestUpdateDto.getCarCost() != null) {
+                clientRequests.setCarCost(clientRequestUpdateDto.getCarCost());
+            }
+            if (clientRequestUpdateDto.getInsurancePayment() != null) {
+                clientRequests.setInsurancePayment(clientRequestUpdateDto.getInsurancePayment());
+            }
+
+            clientRequestsRepository.save(clientRequests);
+            return Optional.of(clientRequests);
+        }
+        return Optional.empty();
     }
 
 }

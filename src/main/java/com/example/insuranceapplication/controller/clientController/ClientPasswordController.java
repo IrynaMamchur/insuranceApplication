@@ -1,7 +1,8 @@
-package com.example.insuranceapplication.controller;
+package com.example.insuranceapplication.controller.clientController;
 
 import com.example.insuranceapplication.entity.ClientPassword;
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
+import com.example.insuranceapplication.entity.updateDto.ClientPasswordUpdateDto;
 import com.example.insuranceapplication.service.database.ClientPasswordDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,53 +19,65 @@ public class ClientPasswordController {
 
 
     @GetMapping(value = "/clientPassword/find/name/{login}/{password}")
-    public ResponseEntity <ClientPassword> getClientPassword(@PathVariable(name = "login") String login, @PathVariable(name = "password") String password) {
+    public ResponseEntity<ClientPassword> getClientPassword(@PathVariable(name = "login") String login, @PathVariable(name = "password") String password) {
         ClientPassword clientPassword = clientPasswordDatabaseService.getClientPassword(login, password);
         return ResponseEntity.ok(clientPassword);
     }
 
     @GetMapping(value = "/clientPassword/find/id/{id}")
-    public   ResponseEntity <Optional<ClientPassword>> getClientPasswordById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<Optional<ClientPassword>> getClientPasswordById(@PathVariable(name = "id") Integer id) {
         Optional<ClientPassword> clientPassword = clientPasswordDatabaseService.getClientPasswordById(id);
         return ResponseEntity.ok(clientPassword);
     }
 
     @GetMapping(value = "/clientPassword/find/status/{passwordStatus}")
-    public ResponseEntity <List<ClientPassword>> getAllClientByContractStatus(@PathVariable(name = "passwordStatus") PasswordStatus passwordStatus) {
+    public ResponseEntity<List<ClientPassword>> getAllClientByContractStatus(@PathVariable(name = "passwordStatus") PasswordStatus passwordStatus) {
         List<ClientPassword> clientPasswords = clientPasswordDatabaseService.getAllClientPasswordsByPasswordStatus(passwordStatus);
         return createResponseEntity(clientPasswords);
     }
 
     @GetMapping(value = "/clientPassword/find/all")
-    public ResponseEntity <List<ClientPassword>> getAllClientPasswords() {
+    public ResponseEntity<List<ClientPassword>> getAllClientPasswords() {
         List<ClientPassword> clientPasswords = clientPasswordDatabaseService.getAllClientPassword();
         return createResponseEntity(clientPasswords);
     }
 
     @GetMapping(value = "/clientPassword/find/password/{password}")
-    public ResponseEntity <ClientPassword> getClientPasswordByPassword(@PathVariable(name = "password") String password) {
+    public ResponseEntity<ClientPassword> getClientPasswordByPassword(@PathVariable(name = "password") String password) {
         ClientPassword clientPassword = clientPasswordDatabaseService.getClientPasswordByPassword(password);
         return ResponseEntity.ok(clientPassword);
     }
 
 
     @GetMapping(value = "/clientPassword/find/login/{login}")
-    public ResponseEntity <ClientPassword> getClientPasswordByLogin(@PathVariable(name = "login") String login) {
+    public ResponseEntity<ClientPassword> getClientPasswordByLogin(@PathVariable(name = "login") String login) {
         ClientPassword clientPassword = clientPasswordDatabaseService.getClientPasswordByLogin(login);
         return ResponseEntity.ok(clientPassword);
     }
 
 
     @PostMapping(value = "/clientPassword/create")
-    public ResponseEntity <ClientPassword> createNewClientPassword(@RequestBody ClientPassword clientPassword, String login, String passwort) {
-        clientPasswordDatabaseService.create(clientPassword, login, passwort);
+    public ResponseEntity<ClientPassword> createNewClientPassword(@RequestBody ClientPassword clientPassword) {
+        clientPasswordDatabaseService.create(clientPassword);
         return ResponseEntity.ok(clientPassword);
     }
 
     @PutMapping(value = "/clientPassword/update")
-    public ResponseEntity <ClientPassword> updateClientPassword(@RequestBody ClientPassword clientPassword) {
+    public ResponseEntity<ClientPassword> updateClientPassword(@RequestBody ClientPassword clientPassword) {
         clientPasswordDatabaseService.update(clientPassword);
         return ResponseEntity.ok(clientPassword);
+    }
+
+    @PutMapping(value = "/clientPassword/update/withCheck/{id}")
+    public ResponseEntity<Optional<ClientPassword>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody ClientPasswordUpdateDto clientPasswordUpdateDto) {
+        Optional<ClientPassword> clientPassword = clientPasswordDatabaseService.updateWithCheck(id, clientPasswordUpdateDto);
+        return ResponseEntity.ok(clientPassword);
+    }
+
+    @DeleteMapping(value = "/clientPassword/delete/{id}")
+    public ResponseEntity<Integer> delete(@PathVariable Integer id) {
+        clientPasswordDatabaseService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
     private ResponseEntity<List<ClientPassword>> createResponseEntity(List<ClientPassword> clientPasswords) {

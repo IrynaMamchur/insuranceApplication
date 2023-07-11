@@ -1,4 +1,4 @@
-package com.example.insuranceapplication.repository;
+package com.example.insuranceapplication.repository.carRepository;
 
 import com.example.insuranceapplication.entity.car.CarInsuranceProgram;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,8 +1,7 @@
-package com.example.insuranceapplication.controller;
+package com.example.insuranceapplication.controller.clientController;
 
 import com.example.insuranceapplication.entity.Client;
-import com.example.insuranceapplication.entity.car.CarYearOfIssue;
-import com.example.insuranceapplication.entity.enam.ContractInClientStatus;
+import com.example.insuranceapplication.entity.updateDto.ClientUpdateDto;
 import com.example.insuranceapplication.service.database.ClientDatabaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,45 +18,51 @@ public class ClientController {
     private final ClientDatabaseService clientDatabaseService;
 
     @GetMapping(value = "/client/find/name/{name}/{surname}")
-    public  ResponseEntity <Client> getClientByName(@PathVariable(name = "name") String name, @PathVariable(name = "surname") String surname) {
+    public ResponseEntity<Client> getClientByName(@PathVariable(name = "name") String name, @PathVariable(name = "surname") String surname) {
         Client client = clientDatabaseService.getClientByName(name, surname);
         return ResponseEntity.ok(client);
     }
 
     @GetMapping(value = "/client/find/dateOfBirthday/{dateOfBirthday}")
-    public ResponseEntity <Client> getClientByDateOfBirthday(@PathVariable(name = "dateOfBirthday") LocalDate dateOfBirthday) {
+    public ResponseEntity<Client> getClientByDateOfBirthday(@PathVariable(name = "dateOfBirthday") LocalDate dateOfBirthday) {
         Client client = clientDatabaseService.getClientByDateOfBirthday(dateOfBirthday);
         return ResponseEntity.ok(client);
     }
 
     @GetMapping(value = "/client/find/id/{id}")
-    public ResponseEntity <Optional<Client>> getClientById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<Optional<Client>> getClientById(@PathVariable(name = "id") Integer id) {
         Optional<Client> client = clientDatabaseService.getClientById(id);
         return ResponseEntity.ok(client);
     }
 
-//    @GetMapping(value = "/client/find/status/{contractInClientStatus}")
-//    public ResponseEntity <List<Client>> getAllClientByContractStatus(@PathVariable(name = "contractInClientStatus") ContractInClientStatus contractInClientStatus) {
-//        List<Client> clients = clientDatabaseService.getAllClientByContractStatus(contractInClientStatus);
-//        return clients;
-//    }
-
     @GetMapping(value = "/client/find/all")
-    public ResponseEntity <List<Client>> getAllClients() {
+    public ResponseEntity<List<Client>> getAllClients() {
         List<Client> clients = clientDatabaseService.getAllClients();
         return createResponseEntity(clients);
     }
 
     @PostMapping(value = "/client/create")
-    public ResponseEntity <Client> createNewClient(@RequestBody Client client) {
+    public ResponseEntity<Client> createNewClient(@RequestBody Client client) {
         clientDatabaseService.create(client);
         return ResponseEntity.ok(client);
     }
 
     @PutMapping(value = "/client/update")
-    public ResponseEntity <Client> updateClient(@RequestBody Client client) {
+    public ResponseEntity<Client> updateClient(@RequestBody Client client) {
         clientDatabaseService.update(client);
         return ResponseEntity.ok(client);
+    }
+
+    @PutMapping(value = "/client/update/withCheck/{id}")
+    public ResponseEntity<Optional<Client>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody ClientUpdateDto clientUpdateDto) {
+        Optional<Client> client = clientDatabaseService.updateWithCheck(id, clientUpdateDto);
+        return ResponseEntity.ok(client);
+    }
+
+    @DeleteMapping(value = "/client/delete/{id}")
+    public ResponseEntity<Integer> delete(@PathVariable Integer id) {
+        clientDatabaseService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
     private ResponseEntity<List<Client>> createResponseEntity(List<Client> clients) {

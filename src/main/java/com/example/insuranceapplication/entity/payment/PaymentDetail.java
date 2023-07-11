@@ -1,5 +1,7 @@
-package com.example.insuranceapplication.entity;
+package com.example.insuranceapplication.entity.payment;
 
+import com.example.insuranceapplication.entity.ContractNumber;
+import com.example.insuranceapplication.entity.payment.Payment;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,7 +26,7 @@ public class PaymentDetail {
     private LocalDate datePaymentPlan;
 
     @Column(name = "amount_plan")
-    private Double amount1Plan;
+    private Double amountPlan;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)

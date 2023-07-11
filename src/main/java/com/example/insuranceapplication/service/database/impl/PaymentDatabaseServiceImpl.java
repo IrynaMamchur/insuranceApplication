@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.service.database.impl;
 
-import com.example.insuranceapplication.entity.Payment;
+import com.example.insuranceapplication.entity.payment.Payment;
+import com.example.insuranceapplication.entity.updateDto.PaymentUpdateDto;
 import com.example.insuranceapplication.repository.PaymentRepository;
 import com.example.insuranceapplication.service.database.PaymentDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -40,9 +41,27 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     public Payment update(Payment payment) {
         return paymentRepository.save(payment);
     }
+
+    @Override
+    public void delete(Integer id) {
+        paymentRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Payment> updateWithCheck(Integer id, PaymentUpdateDto paymentUpdateDto) {
+        Optional<Payment> paymentOptional = paymentRepository.findById(id);
+        if (paymentOptional.isPresent() && paymentUpdateDto != null) {
+            Payment payment = paymentOptional.get();
+            if (paymentUpdateDto.getDateOfPayment() != null) {
+                payment.setDateOfPayment(paymentUpdateDto.getDateOfPayment());
+            }
+            if (paymentUpdateDto.getAmount() != null) {
+                payment.setAmount(paymentUpdateDto.getAmount());
+            }
+            paymentRepository.save(payment);
+            return Optional.of(payment);
+        }
+        return Optional.empty();
+    }
 }
-//    @Override
-//    public Integer getPaymentId(Integer id) {
-//        return paymentRepository.getPaymentId(id);
-//    }
-////}
+

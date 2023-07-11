@@ -13,7 +13,6 @@ public interface InsurancePaymentRepository extends JpaRepository<InsurancePayme
             "InsurancePayment.insurancePaymentAmount\n" +
             "FROM InsurancePayment \n" +
             "where InsurancePayment .id = :id", nativeQuery = true)
-    double getAmount (@Param("id") Integer id);
-
+    double getAmount(@Param("id") Integer id);
 
 }

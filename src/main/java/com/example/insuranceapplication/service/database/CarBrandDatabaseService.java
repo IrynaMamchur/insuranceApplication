@@ -1,7 +1,7 @@
 package com.example.insuranceapplication.service.database;
 
 import com.example.insuranceapplication.entity.car.CarBrand;
-import org.springframework.data.repository.query.Param;
+import com.example.insuranceapplication.entity.updateDto.CarBrandUpdateDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,5 +19,9 @@ public interface CarBrandDatabaseService {
     CarBrand create(CarBrand carBrand);
 
     double getCoefficientCarBrand(String carBrandName);
+
+    void delete(Integer id);
+
+    Optional<CarBrand> updateWithCheck(Integer id, CarBrandUpdateDto carBrandUpdateDto);
 
 }

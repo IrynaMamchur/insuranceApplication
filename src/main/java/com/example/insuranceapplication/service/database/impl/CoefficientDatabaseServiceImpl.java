@@ -3,6 +3,7 @@ package com.example.insuranceapplication.service.database.impl;
 import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.dto.CoefficientDto;
 import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
+import com.example.insuranceapplication.entity.updateDto.CoefficientUpdateDto;
 import com.example.insuranceapplication.repository.CoefficientRepository;
 import com.example.insuranceapplication.service.database.*;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +27,10 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
 
     public double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
         double coefCarBrand;
-        double coefCarEngineCapacity ;
-        double coefCarInsuranceProgram ;
+        double coefCarEngineCapacity;
+        double coefCarInsuranceProgram;
         double coefCarYearOfIssue;
-        double coefCarQuantityOfPayments ;
+        double coefCarQuantityOfPayments;
         double coefficientForCar;
 
         coefCarBrand = carBrandDatabaseService.getCoefficientCarBrand(carBrandName);
@@ -37,10 +38,10 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
         coefCarInsuranceProgram = carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
         coefCarYearOfIssue = carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
         coefCarQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number);
-         if (coefCarBrand <=0 || coefCarEngineCapacity <=0 || coefCarInsuranceProgram<=0 || coefCarYearOfIssue <=0 ||coefCarQuantityOfPayments <=0){
-           throw new IllegalArgumentException();
+        if (coefCarBrand <= 0 || coefCarEngineCapacity <= 0 || coefCarInsuranceProgram <= 0 || coefCarYearOfIssue <= 0 || coefCarQuantityOfPayments <= 0) {
+            throw new IllegalArgumentException();
         }
-            coefficientForCar = coefCarBrand * coefCarEngineCapacity * coefCarInsuranceProgram * coefCarYearOfIssue * coefCarQuantityOfPayments;
+        coefficientForCar = coefCarBrand * coefCarEngineCapacity * coefCarInsuranceProgram * coefCarYearOfIssue * coefCarQuantityOfPayments;
         return coefficientForCar;
     }
 
@@ -60,16 +61,51 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
         String carBrandName = coefficientDto.getCarBrandName();
         Double engineCapacity = coefficientDto.getEngineCapacity();
         String insuranceProgramName = coefficientDto.getInsuranceProgramName();
-        Integer carFirstRegistr = coefficientDto. getCarFirstRegistr();
+        Integer carFirstRegistr = coefficientDto.getCarFirstRegistr();
         CarQuantityOfPaymentsNumbers number = coefficientDto.getNumber();
         Optional<Coefficient> coefficientOptional = coefficientRepository.findById(id);
         if (coefficientOptional.isPresent()) {
             Coefficient coefficient = coefficientOptional.get();
             coefficient.setCoefficientForCar(createCoefficient(carBrandName, engineCapacity, insuranceProgramName, carFirstRegistr, number));
-           coefficientRepository.save(coefficient);
+            coefficientRepository.save(coefficient);
             return Optional.of(coefficient);
         }
-        return null;
+        return Optional.empty();
+    }
+
+    @Override
+    public void delete(Integer id) {
+        coefficientRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Coefficient> updateWithCheck(Integer id, CoefficientUpdateDto coefficientUpdateDto) {
+        Optional<Coefficient> coefficientOptional = coefficientRepository.findById(id);
+        if (coefficientOptional.isPresent() && coefficientUpdateDto != null) {
+            Coefficient coefficient = coefficientOptional.get();
+            if (coefficientUpdateDto.getCarBrand() != null) {
+                coefficient.setCarBrand(coefficientUpdateDto.getCarBrand());
+            }
+            if (coefficientUpdateDto.getCarEngineCapacity() != null) {
+                coefficient.setCarEngineCapacity(coefficientUpdateDto.getCarEngineCapacity());
+            }
+            if (coefficientUpdateDto.getCarInsuranceProgram() != null) {
+                coefficient.setCarInsuranceProgram(coefficientUpdateDto.getCarInsuranceProgram());
+            }
+            if (coefficientUpdateDto.getCarYearOfIssue() != null) {
+                coefficient.setCarYearOfIssue(coefficientUpdateDto.getCarYearOfIssue());
+            }
+            if (coefficientUpdateDto.getCoefficientForCar() != null) {
+                coefficient.setCoefficientForCar(coefficientUpdateDto.getCoefficientForCar());
+            }
+            if (coefficientUpdateDto.getCarQuantityOfPayments() != null) {
+                coefficient.setCarQuantityOfPayments(coefficientUpdateDto.getCarQuantityOfPayments());
+            }
+
+            coefficientRepository.save(coefficient);
+            return Optional.of(coefficient);
+        }
+        return Optional.empty();
     }
 
 }

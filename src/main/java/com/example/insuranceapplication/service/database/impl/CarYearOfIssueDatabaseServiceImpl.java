@@ -1,13 +1,13 @@
 package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.car.CarYearOfIssue;
-import com.example.insuranceapplication.repository.CarYearOfIssueRepository;
+import com.example.insuranceapplication.entity.updateDto.CarYearOfIssueUpdateDto;
+import com.example.insuranceapplication.repository.carRepository.CarYearOfIssueRepository;
 import com.example.insuranceapplication.service.database.CarYearOfIssueDatabaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +17,6 @@ import java.util.Optional;
 public class CarYearOfIssueDatabaseServiceImpl implements CarYearOfIssueDatabaseService {
 
     private final CarYearOfIssueRepository carYearOfIssueRepository;
-
 
     @Override
     public CarYearOfIssue getYearOfIssueByCarFirstRegistr(Integer carFirstRegistr) {
@@ -47,5 +46,27 @@ public class CarYearOfIssueDatabaseServiceImpl implements CarYearOfIssueDatabase
     @Override
     public double getCoefficientCarYearOfIssue(Integer carFirstRegistr) {
         return carYearOfIssueRepository.getCoefficientCarYearOfIssue(carFirstRegistr);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        carYearOfIssueRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<CarYearOfIssue> updateWithCheck(Integer id, CarYearOfIssueUpdateDto carYearOfIssueUpdateDto) {
+        Optional<CarYearOfIssue> carYearOfIssueOptional = carYearOfIssueRepository.findById(id);
+        if (carYearOfIssueOptional.isPresent() && carYearOfIssueUpdateDto != null) {
+            CarYearOfIssue carYearOfIssue = carYearOfIssueOptional.get();
+            if (carYearOfIssueUpdateDto.getCarFirstRegistr() != null) {
+                carYearOfIssue.setCarFirstRegistr(carYearOfIssueUpdateDto.getCarFirstRegistr());
+            }
+            if (carYearOfIssueUpdateDto.getCoefficient() != null) {
+                carYearOfIssue.setCoefficient(carYearOfIssueUpdateDto.getCoefficient());
+            }
+            carYearOfIssueRepository.save(carYearOfIssue);
+            return Optional.of(carYearOfIssue);
+        }
+        return Optional.empty();
     }
 }

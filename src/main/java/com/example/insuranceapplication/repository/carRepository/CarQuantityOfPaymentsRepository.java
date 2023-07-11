@@ -1,4 +1,4 @@
-package com.example.insuranceapplication.repository;
+package com.example.insuranceapplication.repository.carRepository;
 
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
 import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;

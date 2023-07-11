@@ -2,6 +2,7 @@ package com.example.insuranceapplication.service.database;
 
 import com.example.insuranceapplication.entity.ContractNumber;
 import com.example.insuranceapplication.entity.enam.InsuranceEventInContractNumber;
+import com.example.insuranceapplication.entity.updateDto.ContractNumberUpdateDto;
 
 
 import java.sql.Timestamp;
@@ -14,16 +15,13 @@ public interface ContractNumberDatabaseService {
 
     List<ContractNumber> getContractNumberByInsuranceEventInContractNumber(InsuranceEventInContractNumber insuranceEventInContractNumber);
 
-   List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt);
+    List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt);
 
     List<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt);
 
     List<ContractNumber> getContractNumberByStartedAtAfter(Timestamp startedAt);
 
     List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt);
-
-
-//    List<ContractNumber> getContractNumberByClientId(Integer clientId);
 
     List<ContractNumber> getAllContractNumbers();
 
@@ -33,6 +31,10 @@ public interface ContractNumberDatabaseService {
 
     ContractNumber update(ContractNumber contractNumber);
 
-    InsuranceEventInContractNumber getInsuranceEvent (Integer id);
+    InsuranceEventInContractNumber getInsuranceEvent(Integer id);
+
+    void delete(Integer id);
+
+    Optional<ContractNumber> updateWithCheck(Integer id, ContractNumberUpdateDto contractNumberUpdateDto);
 
 }

@@ -1,15 +1,12 @@
 package com.example.insuranceapplication.service.database;
 
-import com.example.insuranceapplication.entity.car.CarBrand;
-import com.example.insuranceapplication.entity.car.CarEngineCapacity;
 import com.example.insuranceapplication.entity.car.CarInsuranceProgram;
-import org.springframework.data.repository.query.Param;
+import com.example.insuranceapplication.entity.updateDto.CarInsuranceProgramUpdateDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CarInsuranceProgramDatabaseService {
-
 
     CarInsuranceProgram getInsuranceProgramByName(String insuranceProgramName);
 
@@ -21,5 +18,10 @@ public interface CarInsuranceProgramDatabaseService {
 
     CarInsuranceProgram update(CarInsuranceProgram carInsuranceProgram);
 
-    double getCoefficientCarInsuranceProgram (String insuranceProgramName);
+    double getCoefficientCarInsuranceProgram(String insuranceProgramName);
+
+    void delete(Integer id);
+
+    Optional<CarInsuranceProgram> updateWithCheck(Integer id, CarInsuranceProgramUpdateDto carInsuranceProgramUpdateDto);
+
 }
