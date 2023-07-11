@@ -45,11 +45,6 @@ public class CarEngineCapacityController {
         return ResponseEntity.ok(carEngineCapacity);
     }
 
-    @PutMapping(value = "/carEngineCapacity/update")
-    public ResponseEntity<CarEngineCapacity> updateCarBrand(@RequestBody CarEngineCapacity carEngineCapacity) {
-        carEngineCapacityDatabaseService.update(carEngineCapacity);
-        return ResponseEntity.ok(carEngineCapacity);
-    }
 
     @PutMapping(value = "/carEngineCapacity/update/withCheck/{id}")
     public ResponseEntity<Optional<CarEngineCapacity>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody CarEngineCapacityUpdateDto carEngineCapacityUpdateDto) {

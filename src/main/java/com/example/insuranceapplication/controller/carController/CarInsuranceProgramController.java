@@ -45,12 +45,6 @@ public class CarInsuranceProgramController {
         return ResponseEntity.ok(carInsuranceProgram);
     }
 
-    @PutMapping(value = "/carInsuranceProgram/update")
-    public ResponseEntity<CarInsuranceProgram> updateInsuranceProgram(@RequestBody CarInsuranceProgram carInsuranceProgram) {
-        carInsuranceProgramDatabaseService.update(carInsuranceProgram);
-        return ResponseEntity.ok(carInsuranceProgram);
-    }
-
     @PutMapping(value = "/carInsuranceProgram/update/withCheck/{id}")
     public ResponseEntity<Optional<CarInsuranceProgram>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody CarInsuranceProgramUpdateDto carInsuranceProgramUpdateDto) {
         Optional<CarInsuranceProgram> carInsuranceProgram = carInsuranceProgramDatabaseService.updateWithCheck(id, carInsuranceProgramUpdateDto);
