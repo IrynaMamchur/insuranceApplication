@@ -43,12 +43,6 @@ public class PaymentDetailController {
         return ResponseEntity.ok(paymentDetail);
     }
 
-    @PutMapping(value = "/paymentDetail/update")
-    public ResponseEntity<PaymentDetail> updatePaymentDetail(@RequestBody PaymentDetail paymentDetail) {
-        paymentDetailDatabaseService.update(paymentDetail);
-        return ResponseEntity.ok(paymentDetail);
-    }
-
     @PutMapping(value = "/paymentDetail/update/payment")
     public ResponseEntity<Optional<PaymentDetail>> updatePayment(@RequestBody PaymentDetailDto paymentDetailDto) {
         Optional<PaymentDetail> paymentDetail = paymentDetailDatabaseService.updatePayment(paymentDetailDto);

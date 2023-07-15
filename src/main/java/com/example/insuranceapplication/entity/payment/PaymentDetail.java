@@ -2,6 +2,7 @@ package com.example.insuranceapplication.entity.payment;
 
 import com.example.insuranceapplication.entity.ContractNumber;
 import com.example.insuranceapplication.entity.payment.Payment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class PaymentDetail {
     private Integer id;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "payment_id")
     private Payment payment;
 
@@ -36,6 +38,7 @@ public class PaymentDetail {
     private Integer number;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "contract_number_id")
     private ContractNumber contractNumber;
 

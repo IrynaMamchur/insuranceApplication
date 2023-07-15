@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 public interface CarQuantityOfPaymentsRepository extends JpaRepository<CarQuantityOfPayments, Integer> {
 
     @Query(value = "SELECT " +
-            "CarQuantityOfPayments .coefficient\n" +
-            "FROM CarQuantityOfPayments  \n" +
-            "where CarQuantityOfPayments .number = :number ", nativeQuery = true)
+            "coefficient" +
+            " FROM CarQuantityOfPayments" +
+            " where number = :number ", nativeQuery = true)
     double getCoefficientCarNumberOfPayments(@Param("number") CarQuantityOfPaymentsNumbers number);
 }
 

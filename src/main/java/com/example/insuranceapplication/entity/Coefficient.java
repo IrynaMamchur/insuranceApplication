@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.entity;
 
 import com.example.insuranceapplication.entity.car.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,18 +18,22 @@ public class Coefficient {
     private Integer id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "car_brand_id")
     private CarBrand carBrand;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "car_engine_id")
     private CarEngineCapacity carEngineCapacity;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "car_insurance_program_id")
     private CarInsuranceProgram carInsuranceProgram;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "car_year_of_issue_id")
     private CarYearOfIssue carYearOfIssue;
 
@@ -40,11 +45,13 @@ public class Coefficient {
     private Timestamp createdAt;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "carQuantityOfPaymentsId")
     private CarQuantityOfPayments carQuantityOfPayments;
 
 
     @OneToOne(mappedBy = "coefficient")
+    @JsonIgnore
     private InsurancePayment insurancePayment;
 
 }

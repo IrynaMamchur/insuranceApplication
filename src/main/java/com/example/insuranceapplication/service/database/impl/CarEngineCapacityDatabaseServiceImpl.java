@@ -39,11 +39,6 @@ public class CarEngineCapacityDatabaseServiceImpl implements CarEngineCapacityDa
     }
 
     @Override
-    public CarEngineCapacity update(CarEngineCapacity carEngineCapacity) {
-        return carEngineCapacityRepository.save(carEngineCapacity);
-    }
-
-    @Override
     public double getCoefficientCarEngineCapacity(Double engineCapacity) {
         return carEngineCapacityRepository.getCoefficientCarEngineCapacity(engineCapacity);
     }

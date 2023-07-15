@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.entity;
 
 import com.example.insuranceapplication.entity.enam.PasswordStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,6 +40,7 @@ public class ClientPassword {
 
 
     @OneToMany(mappedBy = "clientPassword")
+    @JsonIgnore
     private List<Client> clients;
 
 }

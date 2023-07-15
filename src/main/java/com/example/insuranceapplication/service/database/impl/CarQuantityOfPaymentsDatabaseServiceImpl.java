@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,15 +25,14 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
     }
 
     @Override
-    public CarQuantityOfPayments update(CarQuantityOfPayments carQuantityOfPayments) {
-        return carQuantityOfPaymentsRepository.save(carQuantityOfPayments);
+    public List<CarQuantityOfPayments> getAllCarQuantityOfPayments() {
+        return carQuantityOfPaymentsRepository.findAll();
     }
 
     @Override
-    public double getCoefficientCarNumberOfPayments(CarQuantityOfPaymentsNumbers number) {
-        return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(number);
+    public double getCoefficientCarNumberOfPayments(String number) {
+        return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(CarQuantityOfPaymentsNumbers.valueOf(number));
     }
-
     @Override
     public void delete(Integer id) {
         carQuantityOfPaymentsRepository.deleteById(id);
@@ -45,7 +45,7 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
         if (carQuantityOfPaymentsOptional.isPresent() && carQuantityOfPaymentUpdateDto != null) {
             CarQuantityOfPayments carQuantityOfPayments = carQuantityOfPaymentsOptional.get();
             if (carQuantityOfPaymentUpdateDto.getNumber() != null) {
-                carQuantityOfPayments.setNumber(carQuantityOfPaymentUpdateDto.getNumber());
+                carQuantityOfPayments.setNumber(CarQuantityOfPaymentsNumbers.valueOf(carQuantityOfPaymentUpdateDto.getNumber()));
             }
             if (carQuantityOfPaymentUpdateDto.getCoefficient() != null) {
                 carQuantityOfPayments.setCoefficient(carQuantityOfPaymentUpdateDto.getCoefficient());

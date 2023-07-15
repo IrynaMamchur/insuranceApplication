@@ -23,8 +23,8 @@ public class CarBrandController {
     }
 
     @GetMapping(value = "/carBrand/find/id/{id}")
-    public ResponseEntity<Optional<CarBrand>> getCarBrandById(@PathVariable(name = "id") Integer id) {
-        Optional<CarBrand> carBrand = carBrandDatabaseService.getCarBrandById(id);
+    public ResponseEntity <Optional<CarBrand>> getCarBrandById(@PathVariable(name = "id") Integer id) {
+        Optional<CarBrand>carBrand = carBrandDatabaseService.getCarBrandById(id);
         return ResponseEntity.ok(carBrand);
     }
 
@@ -45,12 +45,6 @@ public class CarBrandController {
     @PostMapping(value = "/carBrand/create")
     public ResponseEntity<CarBrand> createNewCarBrand(@RequestBody CarBrand carBrand) {
         carBrandDatabaseService.create(carBrand);
-        return ResponseEntity.ok(carBrand);
-    }
-
-    @PutMapping(value = "/carBrand/update")
-    public ResponseEntity<CarBrand> updateCarBrand(@RequestBody CarBrand carBrand) {
-        carBrandDatabaseService.update(carBrand);
         return ResponseEntity.ok(carBrand);
     }
 

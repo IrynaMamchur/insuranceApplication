@@ -38,11 +38,6 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     }
 
     @Override
-    public Payment update(Payment payment) {
-        return paymentRepository.save(payment);
-    }
-
-    @Override
     public void delete(Integer id) {
         paymentRepository.deleteById(id);
     }

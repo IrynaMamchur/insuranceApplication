@@ -39,11 +39,6 @@ public class CarInsuranceProgramDatabaseServiceImpl implements CarInsuranceProgr
     }
 
     @Override
-    public CarInsuranceProgram update(CarInsuranceProgram carInsuranceProgram) {
-        return carInsuranceProgramRepository.save(carInsuranceProgram);
-    }
-
-    @Override
     public double getCoefficientCarInsuranceProgram(String insuranceProgramName) {
         return carInsuranceProgramRepository.getCoefficientCarInsuranceProgram(insuranceProgramName);
     }

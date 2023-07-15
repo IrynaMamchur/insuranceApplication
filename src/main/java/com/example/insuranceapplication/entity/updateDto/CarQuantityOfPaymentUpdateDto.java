@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CarQuantityOfPaymentUpdateDto {
-    public CarQuantityOfPaymentsNumbers number;
+    public String number;
     public Double coefficient;
 }

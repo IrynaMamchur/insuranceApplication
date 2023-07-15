@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class InsurancePayment {
     private Integer id;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "coefficient_id")
     private Coefficient coefficient;
 
@@ -27,6 +29,7 @@ public class InsurancePayment {
     private Timestamp createdAt;
 
     @OneToOne(mappedBy = "insurancePayment")
+    @JsonIgnore
     private ClientRequests clientRequests;
 
 }
