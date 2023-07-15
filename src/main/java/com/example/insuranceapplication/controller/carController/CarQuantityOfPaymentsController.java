@@ -1,8 +1,6 @@
 package com.example.insuranceapplication.controller.carController;
 
-import com.example.insuranceapplication.entity.car.CarInsuranceProgram;
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import com.example.insuranceapplication.entity.updateDto.CarQuantityOfPaymentUpdateDto;
 import com.example.insuranceapplication.service.database.CarQuantityOfPaymentsDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +17,7 @@ public class CarQuantityOfPaymentsController {
     private final CarQuantityOfPaymentsDatabaseService carQuantityOfPaymentsDatabaseService;
 
     @GetMapping(value = "/carQuantityOfPayments/find/coefficient/{number}")
-    public ResponseEntity<Double> getCoefficientCarNumberOfPayments(@PathVariable(name = "number") String number) {
+    public ResponseEntity<Double> getCoefficientCarNumberOfPayments(@PathVariable(name = "number") Integer number) {
         return ResponseEntity.ok(carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number));
     }
 

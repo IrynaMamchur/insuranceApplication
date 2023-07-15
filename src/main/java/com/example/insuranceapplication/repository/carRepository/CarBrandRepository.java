@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 public interface CarBrandRepository extends JpaRepository<CarBrand, Integer> {
     CarBrand getBrandByCarBrandName(String carBrandName);
 
-    @Query(nativeQuery = true, value = "SELECT" +
-            " coefficient " +
-            "FROM carBrand " +
-            "where carBrandName like :carBrandName")
+    @Query(value = "SELECT" +
+            " carBrand.coefficient " +
+            "FROM CarBrand carBrand " +
+            " where carBrand.carBrandName like :carBrandName")
     double getCoefficientCarBrand(@Param("carBrandName") String carBrandName);
 
 

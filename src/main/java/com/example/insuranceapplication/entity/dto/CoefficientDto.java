@@ -1,6 +1,5 @@
 package com.example.insuranceapplication.entity.dto;
 
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +20,6 @@ public class CoefficientDto {
 
     public Integer carFirstRegistr;
 
-    public String number;
+    public Integer number;
 
 }

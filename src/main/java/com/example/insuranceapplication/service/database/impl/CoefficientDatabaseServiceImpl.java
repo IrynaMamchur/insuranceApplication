@@ -2,7 +2,6 @@ package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.dto.CoefficientDto;
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import com.example.insuranceapplication.entity.updateDto.CoefficientUpdateDto;
 import com.example.insuranceapplication.repository.CoefficientRepository;
 import com.example.insuranceapplication.service.database.*;
@@ -25,7 +24,7 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
     private final CarQuantityOfPaymentsDatabaseService carQuantityOfPaymentsDatabaseService;
 
 
-    public double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, CarQuantityOfPaymentsNumbers number) {
+    public double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, Integer number) {
         double coefCarBrand;
         double coefCarEngineCapacity;
         double coefCarInsuranceProgram;
@@ -37,7 +36,7 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
         coefCarEngineCapacity = carEngineCapacityDatabaseService.getCoefficientCarEngineCapacity(engineCapacity);
         coefCarInsuranceProgram = carInsuranceProgramDatabaseService.getCoefficientCarInsuranceProgram(insuranceProgramName);
         coefCarYearOfIssue = carYearOfIssueDatabaseService.getCoefficientCarYearOfIssue(carFirstRegistr);
-        coefCarQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(String.valueOf(number));
+        coefCarQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number);
         if (coefCarBrand <= 0 || coefCarEngineCapacity <= 0 || coefCarInsuranceProgram <= 0 || coefCarYearOfIssue <= 0 || coefCarQuantityOfPayments <= 0) {
             throw new IllegalArgumentException();
         }
@@ -62,7 +61,7 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
         Double engineCapacity = coefficientDto.getEngineCapacity();
         String insuranceProgramName = coefficientDto.getInsuranceProgramName();
         Integer carFirstRegistr = coefficientDto.getCarFirstRegistr();
-        CarQuantityOfPaymentsNumbers number = CarQuantityOfPaymentsNumbers.valueOf(coefficientDto.getNumber());
+        Integer number = coefficientDto.getNumber();
         Optional<Coefficient> coefficientOptional = coefficientRepository.findById(id);
         if (coefficientOptional.isPresent()) {
             Coefficient coefficient = coefficientOptional.get();

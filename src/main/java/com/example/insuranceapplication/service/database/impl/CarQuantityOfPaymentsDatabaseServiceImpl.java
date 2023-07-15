@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.service.database.impl;
 
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import com.example.insuranceapplication.entity.updateDto.CarQuantityOfPaymentUpdateDto;
 import com.example.insuranceapplication.repository.carRepository.CarQuantityOfPaymentsRepository;
 import com.example.insuranceapplication.service.database.CarQuantityOfPaymentsDatabaseService;
@@ -30,8 +29,9 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
     }
 
     @Override
-    public double getCoefficientCarNumberOfPayments(String number) {
-        return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(CarQuantityOfPaymentsNumbers.valueOf(number));
+    public double getCoefficientCarNumberOfPayments(Integer number) {
+
+        return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(number);
     }
     @Override
     public void delete(Integer id) {
@@ -45,7 +45,7 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
         if (carQuantityOfPaymentsOptional.isPresent() && carQuantityOfPaymentUpdateDto != null) {
             CarQuantityOfPayments carQuantityOfPayments = carQuantityOfPaymentsOptional.get();
             if (carQuantityOfPaymentUpdateDto.getNumber() != null) {
-                carQuantityOfPayments.setNumber(CarQuantityOfPaymentsNumbers.valueOf(carQuantityOfPaymentUpdateDto.getNumber()));
+                carQuantityOfPayments.setNumber(carQuantityOfPaymentUpdateDto.getNumber());
             }
             if (carQuantityOfPaymentUpdateDto.getCoefficient() != null) {
                 carQuantityOfPayments.setCoefficient(carQuantityOfPaymentUpdateDto.getCoefficient());

@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.service.database;
 
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import com.example.insuranceapplication.entity.updateDto.CarQuantityOfPaymentUpdateDto;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public interface CarQuantityOfPaymentsDatabaseService {
      * @param number The String number of the CarQuantityOfPayments
      * @return The coefficient from database that was found by the specified CarQuantityOfPaymentsNumbers number of the CarQuantityOfPayments
      */
-    double getCoefficientCarNumberOfPayments(String number);
+    double getCoefficientCarNumberOfPayments(Integer number);
 
     /**
      * Deletion an CarQuantityOfPayments entity from database by specified CarQuantityOfPayments id

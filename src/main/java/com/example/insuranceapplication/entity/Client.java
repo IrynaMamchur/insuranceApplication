@@ -3,6 +3,7 @@ package com.example.insuranceapplication.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -49,8 +50,8 @@ public class Client {
     @JoinColumn(name = "client_password_id")
     private ClientPassword clientPassword;
 
+    @CreationTimestamp
     @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
 
