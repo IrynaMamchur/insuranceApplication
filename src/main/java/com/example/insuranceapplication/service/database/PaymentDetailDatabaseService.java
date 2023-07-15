@@ -16,8 +16,6 @@ public interface PaymentDetailDatabaseService {
 
     PaymentDetail create(PaymentDetail paymentDetail);
 
-    PaymentDetail update(PaymentDetail paymentDetail);
-
     List<PaymentDetail> getAllPaymentDetailsByContractNumber(ContractNumber contractNumber);
 
     Integer getPayment(Integer id);

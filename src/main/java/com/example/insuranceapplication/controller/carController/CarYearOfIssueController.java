@@ -45,12 +45,6 @@ public class CarYearOfIssueController {
         return ResponseEntity.ok(carYearOfIssue);
     }
 
-    @PutMapping(value = "/carYearOfIssue/update")
-    public ResponseEntity<CarYearOfIssue> updateCarYearOfIssue(@RequestBody CarYearOfIssue carYearOfIssue) {
-        carYearOfIssueDatabaseService.update(carYearOfIssue);
-        return ResponseEntity.ok(carYearOfIssue);
-    }
-
     @PutMapping(value = "/carYearOfIssue/update/withCheck/{id}")
     public ResponseEntity<Optional<CarYearOfIssue>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody CarYearOfIssueUpdateDto carYearOfIssueUpdateDto) {
         Optional<CarYearOfIssue> carYearOfIssue = carYearOfIssueDatabaseService.updateWithCheck(id, carYearOfIssueUpdateDto);

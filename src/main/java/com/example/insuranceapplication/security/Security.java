@@ -1,4 +1,4 @@
-package com.example.insuranceapplication.securety;
+package com.example.insuranceapplication.security;
 
 //
 //import com.example.insuranceapplication.entity.ClientPassword;
@@ -21,7 +21,7 @@ package com.example.insuranceapplication.securety;
 
 //@Configuration
 //@EnableWebSecurity
-public class Securety {
+public class Security {
 //    @Autowired
 //    private ClientPasswordRepository clientPasswordRepository;
 //

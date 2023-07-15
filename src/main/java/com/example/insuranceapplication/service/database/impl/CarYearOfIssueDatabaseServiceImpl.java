@@ -39,11 +39,6 @@ public class CarYearOfIssueDatabaseServiceImpl implements CarYearOfIssueDatabase
     }
 
     @Override
-    public CarYearOfIssue update(CarYearOfIssue carYearOfIssue) {
-        return carYearOfIssueRepository.save(carYearOfIssue);
-    }
-
-    @Override
     public double getCoefficientCarYearOfIssue(Integer carFirstRegistr) {
         return carYearOfIssueRepository.getCoefficientCarYearOfIssue(carFirstRegistr);
     }
