@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -44,6 +45,7 @@ public class Client {
     private String address;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "client_password_id")
     private ClientPassword clientPassword;
 
@@ -53,6 +55,7 @@ public class Client {
 
 
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<ClientRequests> clientRequestsList;
 
 }

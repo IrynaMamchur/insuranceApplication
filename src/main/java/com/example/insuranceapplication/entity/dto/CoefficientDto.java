@@ -21,6 +21,6 @@ public class CoefficientDto {
 
     public Integer carFirstRegistr;
 
-    public CarQuantityOfPaymentsNumbers number;
+    public String number;
 
 }

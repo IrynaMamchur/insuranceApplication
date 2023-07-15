@@ -2,6 +2,7 @@ package com.example.insuranceapplication.entity.car;
 
 import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -35,5 +36,6 @@ public class CarQuantityOfPayments {
     private Timestamp finishedAt;
 
     @OneToMany(mappedBy = "carQuantityOfPayments")
+    @JsonIgnore
     private List<Coefficient> coefficients;
 }

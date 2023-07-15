@@ -19,7 +19,7 @@ public class CarQuantityOfPaymentsController {
     private final CarQuantityOfPaymentsDatabaseService carQuantityOfPaymentsDatabaseService;
 
     @GetMapping(value = "/carQuantityOfPayments/find/coefficient/{number}")
-    public ResponseEntity<Double> getCoefficientCarNumberOfPayments(@PathVariable(name = "number") CarQuantityOfPaymentsNumbers number) {
+    public ResponseEntity<Double> getCoefficientCarNumberOfPayments(@PathVariable(name = "number") String number) {
         return ResponseEntity.ok(carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number));
     }
 

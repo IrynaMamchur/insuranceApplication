@@ -63,5 +63,4 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
         }
         return Optional.empty();
     }
-
 }

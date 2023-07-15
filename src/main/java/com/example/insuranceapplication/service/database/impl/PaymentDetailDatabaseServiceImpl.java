@@ -36,11 +36,6 @@ public class PaymentDetailDatabaseServiceImpl implements PaymentDetailDatabaseSe
     }
 
     @Override
-    public PaymentDetail update(PaymentDetail paymentDetail) {
-        return paymentDetailRepository.save(paymentDetail);
-    }
-
-    @Override
     public List<PaymentDetail> getAllPaymentDetailsByContractNumber(ContractNumber contractNumber) {
         return (List<PaymentDetail>) paymentDetailRepository.findAllByContractNumber(contractNumber);
     }

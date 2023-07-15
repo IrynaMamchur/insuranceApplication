@@ -23,8 +23,8 @@ public class CarBrandController {
     }
 
     @GetMapping(value = "/carBrand/find/id/{id}")
-    public ResponseEntity<Optional<CarBrand>> getCarBrandById(@PathVariable(name = "id") Integer id) {
-        Optional<CarBrand> carBrand = carBrandDatabaseService.getCarBrandById(id);
+    public ResponseEntity <Optional<CarBrand>> getCarBrandById(@PathVariable(name = "id") Integer id) {
+        Optional<CarBrand>carBrand = carBrandDatabaseService.getCarBrandById(id);
         return ResponseEntity.ok(carBrand);
     }
 

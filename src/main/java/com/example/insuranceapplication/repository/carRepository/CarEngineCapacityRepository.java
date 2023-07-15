@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapacity, Integer> {
     CarEngineCapacity getEngineCapacityByEngineCapacityEquals(Double engineCapacity);
 
-    @Query(value = "SELECT " +
-            "CarEngineCapacity.coefficient\n" +
-            "FROM CarEngineCapacity \n" +
-            "where CarEngineCapacity .engineCapacity = :engineCapacity", nativeQuery = true)
+    @Query(nativeQuery = true, value = "SELECT " +
+            "coefficient" +
+            " FROM CarEngineCapacity" +
+            " where engineCapacity = :engineCapacity")
     double getCoefficientCarEngineCapacity(@Param("engineCapacity") Double engineCapacity);
 
 }

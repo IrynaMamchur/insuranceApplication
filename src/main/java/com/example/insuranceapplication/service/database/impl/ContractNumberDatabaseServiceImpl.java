@@ -85,7 +85,7 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
         if (contractNumberOptional.isPresent() && contractNumberUpdateDto != null) {
             ContractNumber contractNumber = contractNumberOptional.get();
             if (contractNumberUpdateDto.getInsuranceEventInContractNumber() != null) {
-                contractNumber.setInsuranceEventInContractNumber(contractNumberUpdateDto.getInsuranceEventInContractNumber());
+                contractNumber.setInsuranceEventInContractNumber(InsuranceEventInContractNumber.valueOf(contractNumberUpdateDto.getInsuranceEventInContractNumber()));
             }
             if (contractNumberUpdateDto.getStartedAt() != null) {
                 contractNumber.setStartedAt(contractNumberUpdateDto.getStartedAt());

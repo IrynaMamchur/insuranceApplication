@@ -11,5 +11,5 @@ import lombok.Setter;
 public class ClientPasswordUpdateDto {
     public String login;
     public String password;
-    public PasswordStatus passwordStatus;
+    public String passwordStatus;
 }

@@ -29,10 +29,10 @@ public interface CarQuantityOfPaymentsDatabaseService {
     /**
      * Finds coefficient from database by specified CarQuantityOfPaymentsNumbers number
      *
-     * @param number The CarQuantityOfPaymentsNumbers number of the CarQuantityOfPayments
+     * @param number The String number of the CarQuantityOfPayments
      * @return The coefficient from database that was found by the specified CarQuantityOfPaymentsNumbers number of the CarQuantityOfPayments
      */
-    double getCoefficientCarNumberOfPayments(CarQuantityOfPaymentsNumbers number);
+    double getCoefficientCarNumberOfPayments(String number);
 
     /**
      * Deletion an CarQuantityOfPayments entity from database by specified CarQuantityOfPayments id
@@ -45,7 +45,7 @@ public interface CarQuantityOfPaymentsDatabaseService {
      * Change one or more parameters in CarQuantityOfPayments entity from database by specified CarQuantityOfPayments id
      *
      * @param id                            The id of the CarQuantityOfPayments
-     * @param carQuantityOfPaymentUpdateDto The parameters, which need to be replaced(CarQuantityOfPaymentsNumbers number, Double coefficient)
+     * @param carQuantityOfPaymentUpdateDto The parameters, which need to be replaced(String number, Double coefficient)
      * @return The CarQuantityOfPayments entity with new parameters
      */
     Optional<CarQuantityOfPayments> updateWithCheck(Integer id, CarQuantityOfPaymentUpdateDto carQuantityOfPaymentUpdateDto);

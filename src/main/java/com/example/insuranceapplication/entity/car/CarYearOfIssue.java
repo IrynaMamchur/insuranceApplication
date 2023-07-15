@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.entity.car;
 
 import com.example.insuranceapplication.entity.Coefficient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -33,5 +34,6 @@ public class CarYearOfIssue {
     private Timestamp finishedAt;
 
     @OneToMany(mappedBy = "carYearOfIssue")
+    @JsonIgnore
     private List<Coefficient> coefficients;
 }

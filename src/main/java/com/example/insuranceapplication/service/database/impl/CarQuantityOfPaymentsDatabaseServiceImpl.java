@@ -29,12 +29,10 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
         return carQuantityOfPaymentsRepository.findAll();
     }
 
-
     @Override
-    public double getCoefficientCarNumberOfPayments(CarQuantityOfPaymentsNumbers number) {
-        return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(number);
+    public double getCoefficientCarNumberOfPayments(String number) {
+        return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(CarQuantityOfPaymentsNumbers.valueOf(number));
     }
-
     @Override
     public void delete(Integer id) {
         carQuantityOfPaymentsRepository.deleteById(id);
@@ -47,7 +45,7 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
         if (carQuantityOfPaymentsOptional.isPresent() && carQuantityOfPaymentUpdateDto != null) {
             CarQuantityOfPayments carQuantityOfPayments = carQuantityOfPaymentsOptional.get();
             if (carQuantityOfPaymentUpdateDto.getNumber() != null) {
-                carQuantityOfPayments.setNumber(carQuantityOfPaymentUpdateDto.getNumber());
+                carQuantityOfPayments.setNumber(CarQuantityOfPaymentsNumbers.valueOf(carQuantityOfPaymentUpdateDto.getNumber()));
             }
             if (carQuantityOfPaymentUpdateDto.getCoefficient() != null) {
                 carQuantityOfPayments.setCoefficient(carQuantityOfPaymentUpdateDto.getCoefficient());
