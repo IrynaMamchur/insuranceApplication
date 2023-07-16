@@ -28,6 +28,9 @@ public class InsurancePayment {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
+    @Column(name = "car_cost")
+    private Double carCost;
+
     @OneToOne(mappedBy = "insurancePayment")
     @JsonIgnore
     private ClientRequests clientRequests;

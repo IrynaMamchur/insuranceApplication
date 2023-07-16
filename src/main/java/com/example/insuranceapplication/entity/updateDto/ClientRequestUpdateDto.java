@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.entity.updateDto;
 
 import com.example.insuranceapplication.entity.InsurancePayment;
-import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +11,6 @@ import lombok.Setter;
 @Setter
 public class ClientRequestUpdateDto {
     public String clientRequestStatus;
-    public Double carCost;
+//    public Double carCost;
     public InsurancePayment insurancePayment;
 }

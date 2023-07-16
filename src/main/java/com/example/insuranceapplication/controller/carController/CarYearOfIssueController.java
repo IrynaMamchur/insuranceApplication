@@ -4,6 +4,7 @@ import com.example.insuranceapplication.entity.car.CarYearOfIssue;
 import com.example.insuranceapplication.entity.updateDto.CarYearOfIssueUpdateDto;
 import com.example.insuranceapplication.service.database.CarYearOfIssueDatabaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,7 @@ public class CarYearOfIssueController {
     @PostMapping(value = "/carYearOfIssue/create")
     public ResponseEntity<CarYearOfIssue> createNewCarYearOfIssue(@RequestBody CarYearOfIssue carYearOfIssue) {
         carYearOfIssueDatabaseService.create(carYearOfIssue);
-        return ResponseEntity.ok(carYearOfIssue);
+        return ResponseEntity.status(HttpStatus.CREATED).body(carYearOfIssue);
     }
 
     @PutMapping(value = "/carYearOfIssue/update/withCheck/{id}")

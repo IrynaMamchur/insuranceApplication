@@ -31,9 +31,6 @@ public class ClientRequests {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
-    @Basic(optional = false)
-    @Column(name = "car_cost")
-    private Double carCost;
 
     @OneToOne
     @JsonIgnore
@@ -44,5 +41,7 @@ public class ClientRequests {
     @OneToOne(mappedBy = "clientRequests")
     @JsonIgnore
     private ContractNumber contractNumber;
+
+
 
 }

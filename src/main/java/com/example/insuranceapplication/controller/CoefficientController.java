@@ -19,7 +19,7 @@ public class CoefficientController {
 
     @GetMapping(value = "/coefficient/find/id/{id}")
     public ResponseEntity<Double> getCoefficientByID(@PathVariable(name = "id") Integer id) {
-        return ResponseEntity.ok(coefficientDatabaseService.getCoefficient(id));
+        return ResponseEntity.ok(coefficientDatabaseService.getCoefficientCoefficient(id));
     }
 
     @PostMapping(value = "/coefficient/create")

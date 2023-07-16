@@ -45,7 +45,7 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
     }
 
     @Override
-    public double getCoefficient(Integer id) {
+    public double getCoefficientCoefficient(Integer id) {
         return coefficientRepository.getCoefficient(id);
     }
 

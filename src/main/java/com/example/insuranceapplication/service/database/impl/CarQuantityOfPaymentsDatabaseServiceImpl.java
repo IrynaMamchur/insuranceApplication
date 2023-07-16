@@ -30,7 +30,6 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
 
     @Override
     public double getCoefficientCarNumberOfPayments(Integer number) {
-
         return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(number);
     }
     @Override

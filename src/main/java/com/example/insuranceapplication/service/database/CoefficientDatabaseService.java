@@ -10,7 +10,7 @@ public interface CoefficientDatabaseService {
 
     double createCoefficient(String carBrandName, Double engineCapacity, String insuranceProgramName, Integer carFirstRegistr, Integer number);
 
-    double getCoefficient(Integer id);
+    double getCoefficientCoefficient(Integer id);
 
     Coefficient create(Coefficient coefficient);
 

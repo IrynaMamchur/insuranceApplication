@@ -35,10 +35,10 @@ public class ClientRequestsController {
         return ResponseEntity.ok(clientRequest);
     }
 
-    @GetMapping(value = "/clientRequests/find/carCost/{id}")
-    public ResponseEntity<Double> getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
-        return ResponseEntity.ok(clientReguestsDatabaseService.getCarCostClientRequests(id));
-    }
+//    @GetMapping(value = "/clientRequests/find/carCost/{id}")
+//    public ResponseEntity<Double> getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
+//        return ResponseEntity.ok(clientReguestsDatabaseService.getCarCostClientRequests(id));
+//    }
 
     @GetMapping(value = "/clientRequests/find/all")
     public ResponseEntity<List<ClientRequests>> getAllClientRequests() {

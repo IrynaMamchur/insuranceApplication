@@ -13,6 +13,6 @@ public class InsurancePaymentDto {
 
     public Integer coefficientId;
 
-    public Integer carCostId;
+    public Double carCost;
 
 }

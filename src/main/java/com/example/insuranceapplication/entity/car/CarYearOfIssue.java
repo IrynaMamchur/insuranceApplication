@@ -18,11 +18,9 @@ public class CarYearOfIssue {
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
     @Column(name = "car_first_registr")
     private Integer carFirstRegistr;
 
-    @Basic(optional = false)
     @Column(name = "coefficient")
     private Double coefficient;
 
