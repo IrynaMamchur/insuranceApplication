@@ -17,9 +17,9 @@ public class InsurancePaymentController {
 
     private final InsurancePaymentDatabaseService insurancePaymentDatabaseService;
 
-    @GetMapping(value = "/insurancePayment/create/{coefficientId}/{id}")
-    public ResponseEntity<Double> createNewInsurancePayment(@PathVariable(name = "coefficientId") Integer coefficientId, @PathVariable(name = "id") Integer id) {
-        Double amount = insurancePaymentDatabaseService.createInsurancePayment(coefficientId, id);
+    @GetMapping(value = "/insurancePayment/create/{coefficientId}/{carCost}")
+    public ResponseEntity<Double> createNewInsurancePayment(@PathVariable(name = "coefficientId") Integer coefficientId, @PathVariable(name = "carCost") Double carCost) {
+        Double amount = insurancePaymentDatabaseService.createInsurancePayment(coefficientId, carCost);
         return ResponseEntity.ok(amount);
     }
 

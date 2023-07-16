@@ -4,7 +4,7 @@ import com.example.insuranceapplication.entity.InsurancePayment;
 import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 import com.example.insuranceapplication.entity.updateDto.InsurancePaymentUpdateDto;
 import com.example.insuranceapplication.repository.InsurancePaymentRepository;
-import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
+//import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import com.example.insuranceapplication.service.database.CoefficientDatabaseService;
 import com.example.insuranceapplication.service.database.InsurancePaymentDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
 
     private final InsurancePaymentRepository insurancePaymentRepository;
     private final CoefficientDatabaseService coefficientDatabaseService;
-    private final ClientReguestsDatabaseService clientReguestsDatabaseService;
+
 
     @Override
     public InsurancePayment create(InsurancePayment insurancePayment) {
@@ -28,16 +28,14 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
     }
 
     @Override
-    public double createInsurancePayment(Integer coefficientId, Integer carCostId) {
+    public double createInsurancePayment(Integer coefficientId, Double carCost) {
         double coefficientForCar;
         double amount;
-        double carCost;
-        coefficientForCar = coefficientDatabaseService.getCoefficient(coefficientId);
-        carCost = clientReguestsDatabaseService.getCarCostClientRequests(carCostId);
+        coefficientForCar = coefficientDatabaseService.getCoefficientCoefficient(coefficientId);
         if (coefficientForCar <= 0 || carCost <= 0) {
             throw new IllegalArgumentException();
         }
-        amount = coefficientForCar * carCost;
+        amount = coefficientForCar * carCost/100;
         return amount;
     }
 
@@ -49,12 +47,12 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
     @Override
     public Optional<InsurancePayment> updateInsurancePayment(InsurancePaymentDto insurancePaymentDto) {
         Integer coefficientId = insurancePaymentDto.getCoefficientId();
-        Integer carCostId = insurancePaymentDto.getCarCostId();
+        Double carCost = insurancePaymentDto.getCarCost();
         Integer id = insurancePaymentDto.getId();
         Optional<InsurancePayment> insurancePaymentOptional = insurancePaymentRepository.findById(id);
         if (insurancePaymentOptional.isPresent()) {
             InsurancePayment insurancePayment = insurancePaymentOptional.get();
-            insurancePayment.setInsurancePaymentAmount(createInsurancePayment(coefficientId, carCostId));
+            insurancePayment.setInsurancePaymentAmount(createInsurancePayment(coefficientId, carCost));
             insurancePaymentRepository.save(insurancePayment);
             return Optional.of(insurancePayment);
         }

@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.controller.carController;
 
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
-import com.example.insuranceapplication.entity.enam.CarQuantityOfPaymentsNumbers;
 import com.example.insuranceapplication.entity.updateDto.CarQuantityOfPaymentUpdateDto;
 import com.example.insuranceapplication.service.database.CarQuantityOfPaymentsDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class CarQuantityOfPaymentsController {
     private final CarQuantityOfPaymentsDatabaseService carQuantityOfPaymentsDatabaseService;
 
     @GetMapping(value = "/carQuantityOfPayments/find/coefficient/{number}")
-    public ResponseEntity<Double> getCoefficientCarNumberOfPayments(@PathVariable(name = "number") CarQuantityOfPaymentsNumbers number) {
+    public ResponseEntity<Double> getCoefficientCarNumberOfPayments(@PathVariable(name = "number") Integer number) {
         return ResponseEntity.ok(carQuantityOfPaymentsDatabaseService.getCoefficientCarNumberOfPayments(number));
     }
 
@@ -27,11 +26,10 @@ public class CarQuantityOfPaymentsController {
         carQuantityOfPaymentsDatabaseService.create(carQuantityOfPayments);
         return ResponseEntity.ok(carQuantityOfPayments);
     }
-
-    @PutMapping(value = "/carQuantityOfPayments/update")
-    public ResponseEntity<CarQuantityOfPayments> update(@RequestBody CarQuantityOfPayments carQuantityOfPayments) {
-        carQuantityOfPaymentsDatabaseService.update(carQuantityOfPayments);
-        return ResponseEntity.ok(carQuantityOfPayments);
+    @GetMapping(value = "/carQuantityOfPayments/find/all")
+    public ResponseEntity<List<CarQuantityOfPayments>> getAllCarQuantityOfPayments() {
+        List<CarQuantityOfPayments> carQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getAllCarQuantityOfPayments();
+        return createResponseEntity(carQuantityOfPayments);
     }
 
     @PutMapping(value = "/carQuantityOfPayments/update/withCheck/{id}")

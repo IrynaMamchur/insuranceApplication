@@ -43,11 +43,11 @@ public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabase
         return clientRequestsRepository.save(new ClientRequests());
     }
 
-    @Override
-    public double getCarCostClientRequests(Integer id) {
-        return clientRequestsRepository.getCarCostClientRequests(id);
-    }
-
+//    @Override
+//    public double getCarCostClientRequests(Integer id) {
+//        return clientRequestsRepository.getCarCostClientRequests(id);
+//    }
+//
 
     @Override
     public ClientRequests update(ClientRequests clientRequests) {
@@ -66,11 +66,11 @@ public class ClientReguestsDatabaseServiceImpl implements ClientReguestsDatabase
         if (clientRequestsOptional.isPresent() && clientRequestUpdateDto != null) {
             ClientRequests clientRequests = clientRequestsOptional.get();
             if (clientRequestUpdateDto.getClientRequestStatus() != null) {
-                clientRequests.setClientRequestStatus(clientRequestUpdateDto.getClientRequestStatus());
+                clientRequests.setClientRequestStatus(ClientRequestStatus.valueOf(clientRequestUpdateDto.getClientRequestStatus()));
             }
-            if (clientRequestUpdateDto.getCarCost() != null) {
-                clientRequests.setCarCost(clientRequestUpdateDto.getCarCost());
-            }
+//            if (clientRequestUpdateDto.getCarCost() != null) {
+//                clientRequests.setCarCost(clientRequestUpdateDto.getCarCost());
+//            }
             if (clientRequestUpdateDto.getInsurancePayment() != null) {
                 clientRequests.setInsurancePayment(clientRequestUpdateDto.getInsurancePayment());
             }

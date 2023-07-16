@@ -16,8 +16,6 @@ public interface PaymentDatabaseService {
 
     Payment create(Payment payment);
 
-    Payment update(Payment payment);
-
     void delete(Integer id);
 
     Optional<Payment> updateWithCheck(Integer id, PaymentUpdateDto paymentUpdateDto);

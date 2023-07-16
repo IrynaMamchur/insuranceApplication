@@ -11,8 +11,8 @@ public interface CarYearOfIssueRepository extends JpaRepository<CarYearOfIssue, 
     CarYearOfIssue getYearOfIssueByCarFirstRegistr(Integer carFirstRegistr);
 
     @Query(value = "SELECT " +
-            "CarYearOfIssue .coefficient\n" +
-            "FROM CarYearOfIssue  \n" +
-            "where CarYearOfIssue .carFirstRegistr = :carFirstRegistr ", nativeQuery = true)
+            " carYearOfIssue.coefficient" +
+            " FROM CarYearOfIssue carYearOfIssue" +
+            " where carYearOfIssue.carFirstRegistr = :carFirstRegistr ")
     double getCoefficientCarYearOfIssue(@Param("carFirstRegistr") Integer carFirstRegistr);
 }

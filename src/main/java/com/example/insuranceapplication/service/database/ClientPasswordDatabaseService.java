@@ -19,8 +19,6 @@ public interface ClientPasswordDatabaseService {
 
     ClientPassword create(ClientPassword clientPassword);
 
-    ClientPassword update(ClientPassword clientPassword);
-
     void verificationPassword(String password);
 
     ClientPassword getClientPasswordByPassword(String password);

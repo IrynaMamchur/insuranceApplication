@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.entity.payment;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -28,6 +29,7 @@ public class Payment {
     private Timestamp createdAt;
 
     @OneToOne(mappedBy = "payment")
+    @JsonIgnore
     private PaymentDetail paymentDetail;
 
 }

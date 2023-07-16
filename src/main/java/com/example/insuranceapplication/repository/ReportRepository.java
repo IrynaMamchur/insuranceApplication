@@ -6,15 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface ReportRepository extends JpaRepository<ContractNumber, Integer> {
 
 
-    @Query("SELECT cn.id, cr.carCost, ir.insurancePaymentAmount FROM ContractNumber cn, ClientRequests cr, InsurancePayment ir" +
-            " WHERE cn.startedAt = :startedAt")
-    Collection<ContractNumber> createFirstReport(@Param("startedAt") Timestamp startedAt);
+    @Query("SELECT DISTINCT cn.id, ir.carCost, ir.insurancePaymentAmount FROM ContractNumber cn, InsurancePayment ir, ClientRequests cr" +
+            " WHERE ir.insurancePaymentAmount >= :insurancePaymentAmount")
+    List<Object[]>  createFirstReport(@Param("insurancePaymentAmount") Double insurancePaymentAmount);
 
 }

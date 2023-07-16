@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 public class ContractNumberUpdateDto {
-    public InsuranceEventInContractNumber insuranceEventInContractNumber;
+    public String insuranceEventInContractNumber;
     public Timestamp startedAt;
     public Timestamp finishedAt;
 }

@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.entity;
 
 import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class ClientRequests {
     private Integer id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "client_id")
     private Client client;
 
@@ -29,16 +31,17 @@ public class ClientRequests {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
-    @Basic(optional = false)
-    @Column(name = "car_cost")
-    private Double carCost;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "insurance_payment_id")
     private InsurancePayment insurancePayment;
 
 
     @OneToOne(mappedBy = "clientRequests")
+    @JsonIgnore
     private ContractNumber contractNumber;
+
+
 
 }

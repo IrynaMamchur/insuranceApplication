@@ -21,7 +21,7 @@ public interface ClientReguestsDatabaseService {
 
     ClientRequests create(ClientRequests clientRequests);
 
-    double getCarCostClientRequests(Integer id);
+//    double getCarCostClientRequests(Integer id);
 
     void delete(Integer id);
 
