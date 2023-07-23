@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.controller;
 
+import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.InsurancePayment;
 import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 import com.example.insuranceapplication.entity.updateDto.InsurancePaymentUpdateDto;
@@ -26,6 +27,12 @@ public class InsurancePaymentController {
     @GetMapping(value = "/insurancePayment/find/insurancePaymentAmount/id/{id}")
     public ResponseEntity<Double> getAmount(@PathVariable(name = "id") Integer id) {
         return ResponseEntity.ok(insurancePaymentDatabaseService.getAmount(id));
+    }
+
+    @GetMapping(value = "/insurancePayment/find/id/{id}")
+    public ResponseEntity<Optional<InsurancePayment>> getInsurancePaymentById(@PathVariable(name = "id") Integer id) {
+        Optional<InsurancePayment> insurancePayment = insurancePaymentDatabaseService.getInsurancePaymentById(id);
+        return ResponseEntity.ok(insurancePayment);
     }
 
     @PostMapping(value = "/insurancePayment/create")

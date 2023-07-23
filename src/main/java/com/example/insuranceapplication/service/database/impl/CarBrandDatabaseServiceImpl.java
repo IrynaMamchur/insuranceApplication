@@ -23,7 +23,7 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
     }
 
     @Override
-    public Optional<CarBrand> getCarBrandById(int id) {
+    public Optional<CarBrand> getCarBrandById(Integer id) {
         return carBrandRepository.findById(id);
     }
 
@@ -34,7 +34,7 @@ public class CarBrandDatabaseServiceImpl implements CarBrandDatabaseService {
 
     @Override
     public CarBrand create(CarBrand carBrand) {
-        return carBrandRepository.save(new CarBrand());
+        return carBrandRepository.save(carBrand);
     }
 
     @Override

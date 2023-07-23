@@ -55,4 +55,9 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
         return Optional.empty();
     }
 
+    @Override
+    public Optional<CarQuantityOfPayments> getCarQuantityOfPaymentsByID(int id) {
+        return carQuantityOfPaymentsRepository.findById(id);
+    }
+
 }

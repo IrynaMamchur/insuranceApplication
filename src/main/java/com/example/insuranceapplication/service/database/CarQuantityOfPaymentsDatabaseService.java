@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.service.database;
 
+import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
 import com.example.insuranceapplication.entity.updateDto.CarQuantityOfPaymentUpdateDto;
 
@@ -49,4 +50,5 @@ public interface CarQuantityOfPaymentsDatabaseService {
      */
     Optional<CarQuantityOfPayments> updateWithCheck(Integer id, CarQuantityOfPaymentUpdateDto carQuantityOfPaymentUpdateDto);
 
+    Optional<CarQuantityOfPayments> getCarQuantityOfPaymentsByID(int id);
 }

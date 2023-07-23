@@ -1,9 +1,6 @@
 package com.example.insuranceapplication.controller.paymentController;
 
-import com.example.insuranceapplication.entity.ClientPassword;
-import com.example.insuranceapplication.entity.ContractNumber;
 import com.example.insuranceapplication.entity.payment.PaymentDetail;
-import com.example.insuranceapplication.entity.dto.PaymentDetailDto;
 import com.example.insuranceapplication.entity.updateDto.PaymentDetailUpdateDto;
 import com.example.insuranceapplication.service.database.PaymentDetailDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -31,21 +28,11 @@ public class PaymentDetailController {
         Optional<PaymentDetail> paymentDetail = paymentDetailDatabaseService.getPaymentDetailById(id);
         return ResponseEntity.ok(paymentDetail);
     }
-    @GetMapping(value = "/paymentDetail/find/all/contractNumberId/{contractNumberId}")
-    public ResponseEntity<List<PaymentDetail>> getAllPaymentDetailsByContractNumber(@PathVariable(name = "contractNumberId") ContractNumber contractNumber) {
-        List<PaymentDetail> paymentDetails = paymentDetailDatabaseService.getAllPaymentDetailsByContractNumber(contractNumber);
-        return createResponseEntity(paymentDetails);
-    }
+
 
     @PostMapping(value = "/paymentDetail/create")
     public ResponseEntity<PaymentDetail> createNewPaymentDetail(@RequestBody PaymentDetail paymentDetail) {
         paymentDetailDatabaseService.create(paymentDetail);
-        return ResponseEntity.ok(paymentDetail);
-    }
-
-    @PutMapping(value = "/paymentDetail/update/payment")
-    public ResponseEntity<Optional<PaymentDetail>> updatePayment(@RequestBody PaymentDetailDto paymentDetailDto) {
-        Optional<PaymentDetail> paymentDetail = paymentDetailDatabaseService.updatePayment(paymentDetailDto);
         return ResponseEntity.ok(paymentDetail);
     }
 

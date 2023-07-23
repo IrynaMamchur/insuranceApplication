@@ -14,16 +14,14 @@ import java.util.List;
 public class CarQuantityOfPayments {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
-
-    @Basic(optional = false)
     @Column(name = "number")
     private Integer number;
 
-    @Basic(optional = false)
+
     @Column(name = "coefficient")
     private Double coefficient;
 

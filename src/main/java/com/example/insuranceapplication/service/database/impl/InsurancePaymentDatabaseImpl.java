@@ -72,14 +72,22 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
             if (insurancePaymentUpdateDto.getInsurancePaymentAmount() != null) {
                 insurancePayment.setInsurancePaymentAmount(insurancePaymentUpdateDto.getInsurancePaymentAmount());
             }
-            if (insurancePaymentUpdateDto.getCoefficient() != null) {
-                insurancePayment.setCoefficient(insurancePaymentUpdateDto.getCoefficient());
+            if (insurancePaymentUpdateDto.getCoefficientId() != null) {
+                insurancePayment.setCoefficientId(insurancePaymentUpdateDto.getCoefficientId());
             }
             insurancePaymentRepository.save(insurancePayment);
             return Optional.of(insurancePayment);
         }
         return Optional.empty();
     }
+
+    @Override
+    public Optional<InsurancePayment> getInsurancePaymentById(Integer id) {
+        return insurancePaymentRepository.findById(id);
+    }
+
+
+
 
 }
 

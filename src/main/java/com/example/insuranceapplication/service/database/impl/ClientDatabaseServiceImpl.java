@@ -40,11 +40,6 @@ public class ClientDatabaseServiceImpl implements ClientDatabaseService {
 
     @Override
     public Client create(Client client) {
-        return clientRepository.save(new Client());
-    }
-
-    @Override
-    public Client update(Client client) {
         return clientRepository.save(client);
     }
 
@@ -76,7 +71,9 @@ public class ClientDatabaseServiceImpl implements ClientDatabaseService {
             if (clientUpdateDto.getAddress() != null) {
                 client.setAddress(clientUpdateDto.getAddress());
             }
-
+            if (clientUpdateDto.getClientPasswordId() != null) {
+                client.setClientPasswordId(clientUpdateDto.getClientPasswordId());
+            }
             clientRepository.save(client);
             return Optional.of(client);
         }

@@ -20,7 +20,7 @@ public interface CarBrandDatabaseService {
      * @param id The id of the CarBrand.
      * @return CarBrand entity from database that was found by the specified id of the CarBrand
      */
-    Optional<CarBrand> getCarBrandById(int id);
+    Optional<CarBrand> getCarBrandById(Integer id);
 
     /**
      * Finds all СarBrand entity from database

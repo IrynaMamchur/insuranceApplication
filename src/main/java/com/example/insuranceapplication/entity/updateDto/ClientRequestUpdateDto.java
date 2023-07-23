@@ -11,6 +11,5 @@ import lombok.Setter;
 @Setter
 public class ClientRequestUpdateDto {
     public String clientRequestStatus;
-//    public Double carCost;
-    public InsurancePayment insurancePayment;
+    public Integer insurancePaymentId;
 }

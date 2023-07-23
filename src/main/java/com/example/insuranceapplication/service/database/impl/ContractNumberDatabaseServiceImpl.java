@@ -56,11 +56,6 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
 
     @Override
     public ContractNumber create(ContractNumber contractNumber) {
-        return contractNumberRepository.save(new ContractNumber());
-    }
-
-    @Override
-    public ContractNumber update(ContractNumber contractNumber) {
         return contractNumberRepository.save(contractNumber);
     }
 

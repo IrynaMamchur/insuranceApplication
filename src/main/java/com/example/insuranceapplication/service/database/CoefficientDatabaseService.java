@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.service.database;
 
+import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.dto.CoefficientDto;
 import com.example.insuranceapplication.entity.updateDto.CoefficientUpdateDto;
@@ -19,4 +20,6 @@ public interface CoefficientDatabaseService {
     void delete(Integer id);
 
     Optional<Coefficient> updateWithCheck(Integer id, CoefficientUpdateDto coefficientUpdateDto);
+
+    Optional<Coefficient> getCoefficientById(Integer id);
 }

@@ -19,8 +19,6 @@ public interface ClientDatabaseService {
 
     Client create(Client client);
 
-    Client update(Client client);
-
     void delete(Integer id);
 
     Optional<Client> updateWithCheck(Integer id, ClientUpdateDto clientUpdateDto);

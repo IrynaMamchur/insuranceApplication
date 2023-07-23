@@ -16,7 +16,7 @@ import java.util.List;
 public class ContractNumber {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -24,6 +24,11 @@ public class ContractNumber {
     @JsonIgnore
     @JoinColumn(name = "requests_id")
     private ClientRequests clientRequests;
+
+    @Basic
+    @Column(insertable=false, updatable=false, name = "requests_id")
+    private Integer clientRequestsId;
+
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "is_insurance_event")

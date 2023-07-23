@@ -35,7 +35,7 @@ public class CarYearOfIssueDatabaseServiceImpl implements CarYearOfIssueDatabase
 
     @Override
     public CarYearOfIssue create(CarYearOfIssue carYearOfIssue) {
-        return carYearOfIssueRepository.save(new CarYearOfIssue());
+        return carYearOfIssueRepository.save(carYearOfIssue);
     }
 
     @Override

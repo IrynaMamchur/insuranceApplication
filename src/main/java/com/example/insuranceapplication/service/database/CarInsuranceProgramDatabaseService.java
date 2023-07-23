@@ -22,7 +22,7 @@ public interface CarInsuranceProgramDatabaseService {
      * @param id The id of the CarInsuranceProgram
      * @return CarInsuranceProgram entity from database that was found by the specified CarInsuranceProgram id
      */
-    Optional<CarInsuranceProgram> getInsuranceProgramById(int id);
+    Optional<CarInsuranceProgram> getInsuranceProgramById(Integer id);
 
     /**
      * Finds all CarInsuranceProgram entity from database

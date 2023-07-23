@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.service.database;
 
+import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.InsurancePayment;
 import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 import com.example.insuranceapplication.entity.updateDto.InsurancePaymentUpdateDto;
@@ -19,4 +20,5 @@ public interface InsurancePaymentDatabaseService {
 
     Optional<InsurancePayment> updateWithCheck(Integer id, InsurancePaymentUpdateDto insurancePaymentUpdateDto);
 
+    Optional<InsurancePayment> getInsurancePaymentById(Integer id);
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -49,6 +49,10 @@ public class Client {
     @JsonIgnore
     @JoinColumn(name = "client_password_id")
     private ClientPassword clientPassword;
+
+    @Basic
+    @Column(insertable=false, updatable=false, name = "client_password_id")
+    private Integer clientPasswordId;
 
     @CreationTimestamp
     @Column(name = "created_at")

@@ -17,11 +17,8 @@ public interface ClientReguestsDatabaseService {
 
     List<ClientRequests> getAllClientRequests();
 
-    ClientRequests update(ClientRequests clientRequests);
 
     ClientRequests create(ClientRequests clientRequests);
-
-//    double getCarCostClientRequests(Integer id);
 
     void delete(Integer id);
 

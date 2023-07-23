@@ -34,7 +34,7 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
 
     @Override
     public Payment create(Payment payment) {
-        return paymentRepository.save(new Payment());
+        return paymentRepository.save(payment);
     }
 
     @Override

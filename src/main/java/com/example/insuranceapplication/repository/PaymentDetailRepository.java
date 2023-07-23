@@ -8,16 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface PaymentDetailRepository extends JpaRepository<PaymentDetail, Integer> {
-
-    @Query(value = "SELECT " +
-            "PaymentDetail.payment\n" +
-            "FROM PaymentDetail \n" +
-            "where PaymentDetail .id = :id", nativeQuery = true)
-    Integer getPayment(@Param("id") Integer id);
-
-    Collection<PaymentDetail> findAllByContractNumber(ContractNumber contractNumber);
 
 }

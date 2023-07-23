@@ -35,10 +35,6 @@ public class ClientRequestsController {
         return ResponseEntity.ok(clientRequest);
     }
 
-//    @GetMapping(value = "/clientRequests/find/carCost/{id}")
-//    public ResponseEntity<Double> getCarCostClientRequests(@PathVariable(name = "id") Integer id) {
-//        return ResponseEntity.ok(clientReguestsDatabaseService.getCarCostClientRequests(id));
-//    }
 
     @GetMapping(value = "/clientRequests/find/all")
     public ResponseEntity<List<ClientRequests>> getAllClientRequests() {
@@ -49,12 +45,6 @@ public class ClientRequestsController {
     @PostMapping(value = "/clientRequests/create")
     public ResponseEntity<ClientRequests> createNewCClientRequests(@RequestBody ClientRequests clientRequests) {
         clientReguestsDatabaseService.create(clientRequests);
-        return ResponseEntity.ok(clientRequests);
-    }
-
-    @PutMapping(value = "/clientRequests/update")
-    public ResponseEntity<ClientRequests> updateClientRequests(@RequestBody ClientRequests clientRequests) {
-        clientReguestsDatabaseService.update(clientRequests);
         return ResponseEntity.ok(clientRequests);
     }
 

@@ -77,11 +77,6 @@ public class ContractNumberController {
         return ResponseEntity.ok(contractNumber);
     }
 
-    @PutMapping(value = "/contract/update")
-    public ResponseEntity<ContractNumber> updateContractNumber(@RequestBody ContractNumber contractNumber) {
-        contractNumberDatabaseService.update(contractNumber);
-        return ResponseEntity.ok(contractNumber);
-    }
 
     @PutMapping(value = "/contract/update/withCheck/{id}")
     public ResponseEntity<Optional<ContractNumber>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody ContractNumberUpdateDto contractNumberUpdateDto) {

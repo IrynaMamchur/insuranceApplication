@@ -16,4 +16,6 @@ public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapa
             " where engineCapacity = :engineCapacity")
     double getCoefficientCarEngineCapacity(@Param("engineCapacity") Double engineCapacity);
 
+
+    CarEngineCapacity deleteCarEngineCapacityById (Integer id);
 }

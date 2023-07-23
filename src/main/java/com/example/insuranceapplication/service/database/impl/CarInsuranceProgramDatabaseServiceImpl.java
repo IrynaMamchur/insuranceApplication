@@ -24,7 +24,7 @@ public class CarInsuranceProgramDatabaseServiceImpl implements CarInsuranceProgr
     }
 
     @Override
-    public Optional<CarInsuranceProgram> getInsuranceProgramById(int id) {
+    public Optional<CarInsuranceProgram> getInsuranceProgramById(Integer id) {
         return carInsuranceProgramRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class CarInsuranceProgramDatabaseServiceImpl implements CarInsuranceProgr
 
     @Override
     public CarInsuranceProgram create(CarInsuranceProgram carInsuranceProgram) {
-        return carInsuranceProgramRepository.save(new CarInsuranceProgram());
+        return carInsuranceProgramRepository.save(carInsuranceProgram);
     }
 
     @Override

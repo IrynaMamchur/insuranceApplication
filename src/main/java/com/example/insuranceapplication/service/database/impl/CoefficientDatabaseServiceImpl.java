@@ -82,29 +82,34 @@ public class CoefficientDatabaseServiceImpl implements CoefficientDatabaseServic
         Optional<Coefficient> coefficientOptional = coefficientRepository.findById(id);
         if (coefficientOptional.isPresent() && coefficientUpdateDto != null) {
             Coefficient coefficient = coefficientOptional.get();
-            if (coefficientUpdateDto.getCarBrand() != null) {
-                coefficient.setCarBrand(coefficientUpdateDto.getCarBrand());
+            if (coefficientUpdateDto.getCarBrandId() != null) {
+                coefficient.setCarBrandId(coefficientUpdateDto.getCarBrandId());
             }
-            if (coefficientUpdateDto.getCarEngineCapacity() != null) {
-                coefficient.setCarEngineCapacity(coefficientUpdateDto.getCarEngineCapacity());
+            if (coefficientUpdateDto.getCarEngineCapacityId() != null) {
+                coefficient.setCarEngineCapacityId(coefficientUpdateDto.getCarEngineCapacityId());
             }
-            if (coefficientUpdateDto.getCarInsuranceProgram() != null) {
-                coefficient.setCarInsuranceProgram(coefficientUpdateDto.getCarInsuranceProgram());
+            if (coefficientUpdateDto.getCarInsuranceProgramId() != null) {
+                coefficient.setCarInsuranceProgramId(coefficientUpdateDto.getCarInsuranceProgramId());
             }
-            if (coefficientUpdateDto.getCarYearOfIssue() != null) {
-                coefficient.setCarYearOfIssue(coefficientUpdateDto.getCarYearOfIssue());
+            if (coefficientUpdateDto.getCarYearOfIssueId() != null) {
+                coefficient.setCarYearOfIssueId(coefficientUpdateDto.getCarYearOfIssueId());
             }
             if (coefficientUpdateDto.getCoefficientForCar() != null) {
                 coefficient.setCoefficientForCar(coefficientUpdateDto.getCoefficientForCar());
             }
-            if (coefficientUpdateDto.getCarQuantityOfPayments() != null) {
-                coefficient.setCarQuantityOfPayments(coefficientUpdateDto.getCarQuantityOfPayments());
+            if (coefficientUpdateDto.getCarQuantityOfPaymentsId() != null) {
+                coefficient.setCarQuantityOfPaymentsId(coefficientUpdateDto.getCarQuantityOfPaymentsId());
             }
 
             coefficientRepository.save(coefficient);
             return Optional.of(coefficient);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<Coefficient> getCoefficientById(Integer id) {
+        return coefficientRepository.findById(id);
     }
 
 }

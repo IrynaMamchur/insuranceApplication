@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.controller.carController;
 
+import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
 import com.example.insuranceapplication.entity.updateDto.CarQuantityOfPaymentUpdateDto;
 import com.example.insuranceapplication.service.database.CarQuantityOfPaymentsDatabaseService;
@@ -30,6 +31,12 @@ public class CarQuantityOfPaymentsController {
     public ResponseEntity<List<CarQuantityOfPayments>> getAllCarQuantityOfPayments() {
         List<CarQuantityOfPayments> carQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getAllCarQuantityOfPayments();
         return createResponseEntity(carQuantityOfPayments);
+    }
+
+    @GetMapping(value = "/carQuantityOfPayments/find/id/{id}")
+    public ResponseEntity <Optional<CarQuantityOfPayments>> getCarQuantityOfPaymentsById(@PathVariable(name = "id") Integer id) {
+        Optional<CarQuantityOfPayments>carQuantityOfPayments = carQuantityOfPaymentsDatabaseService.getCarQuantityOfPaymentsByID(id);
+        return ResponseEntity.ok(carQuantityOfPayments);
     }
 
     @PutMapping(value = "/carQuantityOfPayments/update/withCheck/{id}")

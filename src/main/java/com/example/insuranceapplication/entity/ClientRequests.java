@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 public class ClientRequests {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -22,6 +22,10 @@ public class ClientRequests {
     @JsonIgnore
     @JoinColumn(name = "client_id")
     private Client client;
+
+    @Basic
+    @Column(insertable=false, updatable=false, name = "client_id")
+    private Integer clientId;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
@@ -31,12 +35,14 @@ public class ClientRequests {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
-
     @OneToOne
     @JsonIgnore
     @JoinColumn(name = "insurance_payment_id")
     private InsurancePayment insurancePayment;
 
+    @Basic
+    @Column(insertable=false, updatable=false, name = "insurance_payment_id")
+    private Integer insurancePaymentId;
 
     @OneToOne(mappedBy = "clientRequests")
     @JsonIgnore

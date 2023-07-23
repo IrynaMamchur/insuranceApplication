@@ -29,8 +29,6 @@ public interface ContractNumberDatabaseService {
 
     ContractNumber create(ContractNumber contractNumber);
 
-    ContractNumber update(ContractNumber contractNumber);
-
     InsuranceEventInContractNumber getInsuranceEvent(Integer id);
 
     void delete(Integer id);
