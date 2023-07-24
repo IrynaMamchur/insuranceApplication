@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface InsurancePaymentDatabaseService {
     InsurancePayment create(InsurancePayment insurancePayment);
 
-    double createInsurancePayment(Integer coefficientId, Integer carCostId);
+    double createInsurancePayment(Integer coefficientId, Double carCost);
 
     double getAmount(Integer id);
 
@@ -19,4 +19,5 @@ public interface InsurancePaymentDatabaseService {
 
     Optional<InsurancePayment> updateWithCheck(Integer id, InsurancePaymentUpdateDto insurancePaymentUpdateDto);
 
+    Optional<InsurancePayment> getInsurancePaymentById(Integer id);
 }

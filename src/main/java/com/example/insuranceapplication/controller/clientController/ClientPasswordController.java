@@ -62,11 +62,6 @@ public class ClientPasswordController {
         return ResponseEntity.ok(clientPassword);
     }
 
-    @PutMapping(value = "/clientPassword/update")
-    public ResponseEntity<ClientPassword> updateClientPassword(@RequestBody ClientPassword clientPassword) {
-        clientPasswordDatabaseService.update(clientPassword);
-        return ResponseEntity.ok(clientPassword);
-    }
 
     @PutMapping(value = "/clientPassword/update/withCheck/{id}")
     public ResponseEntity<Optional<ClientPassword>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody ClientPasswordUpdateDto clientPasswordUpdateDto) {

@@ -11,15 +11,13 @@ import java.time.LocalDate;
 @Table(name = "payment")
 public class Payment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
     @Column(name = "date_of_payment")
     private LocalDate dateOfPayment;
 
-    @Basic(optional = false)
     @Column(name = "amount")
     private Double amount;
 
@@ -27,7 +25,5 @@ public class Payment {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp createdAt;
 
-    @OneToOne(mappedBy = "payment")
-    private PaymentDetail paymentDetail;
 
 }

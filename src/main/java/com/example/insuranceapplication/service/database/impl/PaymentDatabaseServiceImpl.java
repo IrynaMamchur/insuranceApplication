@@ -34,11 +34,6 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
 
     @Override
     public Payment create(Payment payment) {
-        return paymentRepository.save(new Payment());
-    }
-
-    @Override
-    public Payment update(Payment payment) {
         return paymentRepository.save(payment);
     }
 

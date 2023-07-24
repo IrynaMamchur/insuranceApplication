@@ -3,8 +3,6 @@ package com.example.insuranceapplication.repository;
 import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.enam.ClientRequestStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -15,10 +13,5 @@ public interface ClientRequestsRepository extends JpaRepository<ClientRequests, 
 
     Collection<ClientRequests> getClientRequestsByClientId(Integer clientId);
 
-    @Query(value = "SELECT " +
-            "ClientRequests .carCost\n" +
-            "FROM ClientRequests \n" +
-            "where ClientRequests .id = :id", nativeQuery = true)
-    double getCarCostClientRequests(@Param("id") Integer id);
 }
 

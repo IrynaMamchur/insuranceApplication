@@ -11,9 +11,11 @@ public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapa
     CarEngineCapacity getEngineCapacityByEngineCapacityEquals(Double engineCapacity);
 
     @Query(value = "SELECT " +
-            "CarEngineCapacity.coefficient\n" +
-            "FROM CarEngineCapacity \n" +
-            "where CarEngineCapacity .engineCapacity = :engineCapacity", nativeQuery = true)
+            "coefficient" +
+            " FROM CarEngineCapacity" +
+            " where engineCapacity = :engineCapacity")
     double getCoefficientCarEngineCapacity(@Param("engineCapacity") Double engineCapacity);
 
+
+    CarEngineCapacity deleteCarEngineCapacityById(Integer id);
 }

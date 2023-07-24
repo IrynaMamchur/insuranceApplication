@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class PaymentDetailUpdateDto {
-    public Payment payment;
+    public Integer paymentId;
     public LocalDate datePaymentPlan;
     public Double amountPlan;
     public Timestamp createdAt;
     public Integer number;
-    public ContractNumber contractNumber;
+    public Integer contractNumberId;
 }

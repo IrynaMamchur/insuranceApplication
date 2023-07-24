@@ -1,5 +1,6 @@
 package com.example.insuranceapplication.controller;
 
+import com.example.insuranceapplication.entity.ClientRequests;
 import com.example.insuranceapplication.entity.Coefficient;
 import com.example.insuranceapplication.entity.dto.CoefficientDto;
 import com.example.insuranceapplication.entity.updateDto.CoefficientUpdateDto;
@@ -17,11 +18,15 @@ public class CoefficientController {
 
     private final CoefficientDatabaseService coefficientDatabaseService;
 
-    @GetMapping(value = "/coefficient/find/id/{id}")
+    @GetMapping(value = "/coefficient/find/coefficientId/{id}")
     public ResponseEntity<Double> getCoefficientByID(@PathVariable(name = "id") Integer id) {
-        return ResponseEntity.ok(coefficientDatabaseService.getCoefficient(id));
+        return ResponseEntity.ok(coefficientDatabaseService.getCoefficientCoefficient(id));
     }
-
+    @GetMapping(value = "/coefficient/find/id/{id}")
+    public ResponseEntity<Optional<Coefficient>> getCoefficientById(@PathVariable(name = "id") Integer id) {
+        Optional<Coefficient> coefficient = coefficientDatabaseService.getCoefficientById(id);
+        return ResponseEntity.ok(coefficient);
+    }
     @PostMapping(value = "/coefficient/create")
     public ResponseEntity<Coefficient> createCoefficient(@RequestBody Coefficient coefficient) {
         coefficientDatabaseService.create(coefficient);

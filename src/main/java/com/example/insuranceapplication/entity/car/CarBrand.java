@@ -1,6 +1,7 @@
 package com.example.insuranceapplication.entity.car;
 
 import com.example.insuranceapplication.entity.Coefficient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,15 +13,13 @@ import java.util.List;
 @Table(name = "carBrand")
 public class CarBrand {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
-    @Basic(optional = false)
-    @Column(name = "car_brand_name", length = 30)
+    @Column(name = "carBrandName", length = 30)
     private String carBrandName;
 
-    @Basic(optional = false)
     @Column(name = "coefficient")
     private Double coefficient;
 
@@ -32,5 +31,7 @@ public class CarBrand {
     private Timestamp finishedAt;
 
     @OneToMany(mappedBy = "carBrand")
+    @JsonIgnore
     private List<Coefficient> coefficients;
+
 }

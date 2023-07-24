@@ -1,9 +1,6 @@
 package com.example.insuranceapplication.service.database.impl;
 
-import com.example.insuranceapplication.entity.ContractNumber;
-import com.example.insuranceapplication.entity.payment.Payment;
 import com.example.insuranceapplication.entity.payment.PaymentDetail;
-import com.example.insuranceapplication.entity.dto.PaymentDetailDto;
 import com.example.insuranceapplication.entity.updateDto.PaymentDetailUpdateDto;
 import com.example.insuranceapplication.repository.PaymentDetailRepository;
 import com.example.insuranceapplication.service.database.PaymentDetailDatabaseService;
@@ -32,39 +29,9 @@ public class PaymentDetailDatabaseServiceImpl implements PaymentDetailDatabaseSe
 
     @Override
     public PaymentDetail create(PaymentDetail paymentDetail) {
-        return paymentDetailRepository.save(new PaymentDetail());
-    }
-
-    @Override
-    public PaymentDetail update(PaymentDetail paymentDetail) {
         return paymentDetailRepository.save(paymentDetail);
     }
 
-    @Override
-    public List<PaymentDetail> getAllPaymentDetailsByContractNumber(ContractNumber contractNumber) {
-        return (List<PaymentDetail>) paymentDetailRepository.findAllByContractNumber(contractNumber);
-    }
-
-    @Override
-    public Integer getPayment(Integer id) {
-        return paymentDetailRepository.getPayment(id);
-    }
-
-    @Override
-    public Optional<PaymentDetail> updatePayment(PaymentDetailDto paymentDetailDto) {
-        ContractNumber contractNumber = paymentDetailDto.getContractNumberId();
-        Payment paymentId = paymentDetailDto.getPaymentId();
-        List<PaymentDetail> paymentDetailsWithOnceContractNumber = getAllPaymentDetailsByContractNumber(contractNumber);
-        for (int i = 0; i < paymentDetailsWithOnceContractNumber.size(); i++) {
-            if (getPayment(i) == null) {
-                PaymentDetail paymentDetail = paymentDetailsWithOnceContractNumber.get(i);
-                paymentDetail.setPayment(paymentId);
-                paymentDetailRepository.save(paymentDetail);
-                return Optional.of(paymentDetail);
-            }
-        }
-        return Optional.empty();
-    }
 
     @Override
     public void delete(Integer id) {
@@ -76,8 +43,8 @@ public class PaymentDetailDatabaseServiceImpl implements PaymentDetailDatabaseSe
         Optional<PaymentDetail> paymentDetailOptional = paymentDetailRepository.findById(id);
         if (paymentDetailOptional.isPresent() && paymentDetailUpdateDto != null) {
             PaymentDetail paymentDetail = paymentDetailOptional.get();
-            if (paymentDetailUpdateDto.getPayment() != null) {
-                paymentDetail.setPayment(paymentDetailUpdateDto.getPayment());
+            if (paymentDetailUpdateDto.getPaymentId() != null) {
+                paymentDetail.setPaymentId(paymentDetailUpdateDto.getPaymentId());
             }
             if (paymentDetailUpdateDto.getAmountPlan() != null) {
                 paymentDetail.setAmountPlan(paymentDetailUpdateDto.getAmountPlan());
@@ -91,8 +58,8 @@ public class PaymentDetailDatabaseServiceImpl implements PaymentDetailDatabaseSe
             if (paymentDetailUpdateDto.getNumber() != null) {
                 paymentDetail.setNumber(paymentDetailUpdateDto.getNumber());
             }
-            if (paymentDetailUpdateDto.getContractNumber() != null) {
-                paymentDetail.setContractNumber(paymentDetailUpdateDto.getContractNumber());
+            if (paymentDetailUpdateDto.getContractNumberId() != null) {
+                paymentDetail.setContractNumberId(paymentDetailUpdateDto.getContractNumberId());
             }
             paymentDetailRepository.save(paymentDetail);
             return Optional.of(paymentDetail);

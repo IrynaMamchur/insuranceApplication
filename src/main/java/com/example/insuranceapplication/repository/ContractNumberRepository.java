@@ -17,13 +17,6 @@ public interface ContractNumberRepository extends JpaRepository<ContractNumber, 
 
     Collection<ContractNumber> getContractNumberByInsuranceEventInContractNumber(InsuranceEventInContractNumber insuranceEventInContractNumber);
 
-    Collection<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt);
-
-    Collection<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt);
-
-    Collection<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt);
-
-    Collection<ContractNumber> getContractNumberByStartedAtAfter(Timestamp startedAt);
 
     @Query(value = "SELECT " +
             "ContractNumber .insuranceEventInContractNumber\n" +

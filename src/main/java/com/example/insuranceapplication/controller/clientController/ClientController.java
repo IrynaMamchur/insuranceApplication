@@ -47,12 +47,6 @@ public class ClientController {
         return ResponseEntity.ok(client);
     }
 
-    @PutMapping(value = "/client/update")
-    public ResponseEntity<Client> updateClient(@RequestBody Client client) {
-        clientDatabaseService.update(client);
-        return ResponseEntity.ok(client);
-    }
-
     @PutMapping(value = "/client/update/withCheck/{id}")
     public ResponseEntity<Optional<Client>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody ClientUpdateDto clientUpdateDto) {
         Optional<Client> client = clientDatabaseService.updateWithCheck(id, clientUpdateDto);
