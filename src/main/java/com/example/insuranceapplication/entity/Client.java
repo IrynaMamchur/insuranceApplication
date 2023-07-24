@@ -51,7 +51,7 @@ public class Client {
     private ClientPassword clientPassword;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "client_password_id")
+    @Column(insertable = false, updatable = false, name = "client_password_id")
     private Integer clientPasswordId;
 
     @CreationTimestamp

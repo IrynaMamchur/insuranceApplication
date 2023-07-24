@@ -23,7 +23,7 @@ public class Coefficient {
     private CarBrand carBrand;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "car_brand_id")
+    @Column(insertable = false, updatable = false, name = "car_brand_id")
     private Integer carBrandId;
 
 
@@ -33,7 +33,7 @@ public class Coefficient {
     private CarEngineCapacity carEngineCapacity;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "car_engine_id")
+    @Column(insertable = false, updatable = false, name = "car_engine_id")
     private Integer carEngineCapacityId;
 
     @ManyToOne
@@ -42,7 +42,7 @@ public class Coefficient {
     private CarInsuranceProgram carInsuranceProgram;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "car_insurance_program_id")
+    @Column(insertable = false, updatable = false, name = "car_insurance_program_id")
     private Integer carInsuranceProgramId;
 
 
@@ -52,7 +52,7 @@ public class Coefficient {
     private CarYearOfIssue carYearOfIssue;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "car_year_of_issue_id")
+    @Column(insertable = false, updatable = false, name = "car_year_of_issue_id")
     private Integer carYearOfIssueId;
 
     @Column(name = "coefficient")
@@ -68,7 +68,7 @@ public class Coefficient {
     private CarQuantityOfPayments carQuantityOfPayments;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "carQuantityOfPaymentsId")
+    @Column(insertable = false, updatable = false, name = "carQuantityOfPaymentsId")
     private Integer carQuantityOfPaymentsId;
 
 

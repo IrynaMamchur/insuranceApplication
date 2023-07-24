@@ -3,7 +3,6 @@ package com.example.insuranceapplication.entity.car;
 import com.example.insuranceapplication.entity.Coefficient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -14,7 +13,7 @@ import java.util.List;
 @Table(name = "carBrand")
 public class CarBrand {
     @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

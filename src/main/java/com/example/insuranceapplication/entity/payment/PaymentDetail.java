@@ -1,7 +1,6 @@
 package com.example.insuranceapplication.entity.payment;
 
 import com.example.insuranceapplication.entity.ContractNumber;
-import com.example.insuranceapplication.entity.payment.Payment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -41,7 +40,7 @@ public class PaymentDetail {
     private ContractNumber contractNumber;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "contract_number_id")
+    @Column(insertable = false, updatable = false, name = "contract_number_id")
     private Integer contractNumberId;
 
 }

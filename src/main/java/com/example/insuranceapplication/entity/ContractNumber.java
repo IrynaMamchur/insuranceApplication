@@ -26,7 +26,7 @@ public class ContractNumber {
     private ClientRequests clientRequests;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "requests_id")
+    @Column(insertable = false, updatable = false, name = "requests_id")
     private Integer clientRequestsId;
 
 

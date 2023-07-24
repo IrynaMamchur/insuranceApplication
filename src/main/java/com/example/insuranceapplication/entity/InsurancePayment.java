@@ -22,7 +22,7 @@ public class InsurancePayment {
     private Coefficient coefficient;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "coefficient_id")
+    @Column(insertable = false, updatable = false, name = "coefficient_id")
     private Integer coefficientId;
 
 

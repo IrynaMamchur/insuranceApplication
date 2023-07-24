@@ -4,7 +4,6 @@ import com.example.insuranceapplication.entity.InsurancePayment;
 import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 import com.example.insuranceapplication.entity.updateDto.InsurancePaymentUpdateDto;
 import com.example.insuranceapplication.repository.InsurancePaymentRepository;
-//import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import com.example.insuranceapplication.service.database.CoefficientDatabaseService;
 import com.example.insuranceapplication.service.database.InsurancePaymentDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseService {
+public class InsurancePaymentDatabaseServiceImpl implements InsurancePaymentDatabaseService {
 
     private final InsurancePaymentRepository insurancePaymentRepository;
     private final CoefficientDatabaseService coefficientDatabaseService;
@@ -35,7 +34,7 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
         if (coefficientForCar <= 0 || carCost <= 0) {
             throw new IllegalArgumentException();
         }
-        amount = coefficientForCar * carCost/100;
+        amount = coefficientForCar * carCost / 100;
         return amount;
     }
 
@@ -85,8 +84,6 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
     public Optional<InsurancePayment> getInsurancePaymentById(Integer id) {
         return insurancePaymentRepository.findById(id);
     }
-
-
 
 
 }

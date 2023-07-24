@@ -32,6 +32,7 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
     public double getCoefficientCarNumberOfPayments(Integer number) {
         return carQuantityOfPaymentsRepository.getCoefficientCarNumberOfPayments(number);
     }
+
     @Override
     public void delete(Integer id) {
         carQuantityOfPaymentsRepository.deleteById(id);
@@ -56,7 +57,7 @@ public class CarQuantityOfPaymentsDatabaseServiceImpl implements CarQuantityOfPa
     }
 
     @Override
-    public Optional<CarQuantityOfPayments> getCarQuantityOfPaymentsByID(int id) {
+    public Optional<CarQuantityOfPayments> getCarQuantityOfPaymentsByID(Integer id) {
         return carQuantityOfPaymentsRepository.findById(id);
     }
 

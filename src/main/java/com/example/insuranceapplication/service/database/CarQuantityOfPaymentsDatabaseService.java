@@ -1,6 +1,5 @@
 package com.example.insuranceapplication.service.database;
 
-import com.example.insuranceapplication.entity.car.CarBrand;
 import com.example.insuranceapplication.entity.car.CarQuantityOfPayments;
 import com.example.insuranceapplication.entity.updateDto.CarQuantityOfPaymentUpdateDto;
 
@@ -11,26 +10,23 @@ public interface CarQuantityOfPaymentsDatabaseService {
 
     /**
      * Create new CarQuantityOfPayments entity
-     *
      * @param carQuantityOfPayments The CarQuantityOfPayments entity (Integer id, CarQuantityOfPaymentsNumbers number, Double coefficient, Timestamp createdAt, Timestamp finishedAt,
      * @return The new CarQuantityOfPayments entity
      */
     CarQuantityOfPayments create(CarQuantityOfPayments carQuantityOfPayments);
 
     /**
-     * //     * Finds all CarQuantityOfPayments entity from database
-     * //     *
-     * //     * @return All CarQuantityOfPayments entity from database
-     * //
+     * Finds all CarQuantityOfPayments entity from database
+     * @return All CarQuantityOfPayments entity from database
      */
 
     List<CarQuantityOfPayments> getAllCarQuantityOfPayments();
 
     /**
-     * Finds coefficient from database by specified CarQuantityOfPaymentsNumbers number
+     * Finds coefficient from database by specified CarQuantityOfPayments number
      *
-     * @param number The String number of the CarQuantityOfPayments
-     * @return The coefficient from database that was found by the specified CarQuantityOfPaymentsNumbers number of the CarQuantityOfPayments
+     * @param number The Integer number of the CarQuantityOfPayments
+     * @return The coefficient from database that was found by the specified CarQuantityOfPayments number of the CarQuantityOfPayments
      */
     double getCoefficientCarNumberOfPayments(Integer number);
 
@@ -50,5 +46,10 @@ public interface CarQuantityOfPaymentsDatabaseService {
      */
     Optional<CarQuantityOfPayments> updateWithCheck(Integer id, CarQuantityOfPaymentUpdateDto carQuantityOfPaymentUpdateDto);
 
-    Optional<CarQuantityOfPayments> getCarQuantityOfPaymentsByID(int id);
+    /**
+     * Finds an CarQuantityOfPayments entity from database by specified CarQuantityOfPayments id
+     * @param id  The id of the CarQuantityOfPayments
+     * @return  CarQuantityOfPayments entity from database that was found by the specified CarQuantityOfPayments id
+     */
+    Optional<CarQuantityOfPayments> getCarQuantityOfPaymentsByID(Integer id);
 }

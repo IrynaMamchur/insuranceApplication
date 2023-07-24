@@ -29,27 +29,6 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
         return (List<ContractNumber>) contractNumberRepository.getContractNumberByInsuranceEventInContractNumber(insuranceEventInContractNumber);
     }
 
-    @Override
-    public List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAtAfter(finishedAt);
-    }
-
-    @Override
-    public List<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAt(finishedAt);
-    }
-
-    @Override
-    public List<ContractNumber> getContractNumberByStartedAtAfter(Timestamp startedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByStartedAtAfter(startedAt);
-    }
-
-    @Override
-    public List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByStartedAt(startedAt);
-    }
-
-
     public Optional<ContractNumber> getContractNumberById(Integer id) {
         return contractNumberRepository.findById(id);
     }

@@ -1,6 +1,6 @@
 package com.example.insuranceapplication.repository;
 
-import com.example.insuranceapplication.entity.ContractNumber;
+
 import com.example.insuranceapplication.entity.InsurancePayment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,8 +15,7 @@ public interface ReportRepository extends JpaRepository<InsurancePayment, Intege
 
     @Query("SELECT DISTINCT ir.carCost, ir.insurancePaymentAmount FROM InsurancePayment ir " +
             " WHERE ir.insurancePaymentAmount >= :insurancePaymentAmount")
-    List<Object>  createFirstReport(@Param("insurancePaymentAmount") Double insurancePaymentAmount);
-
+    List<Object> createFirstReport(@Param("insurancePaymentAmount") Double insurancePaymentAmount);
 
 
 }

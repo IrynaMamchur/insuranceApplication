@@ -24,7 +24,7 @@ public class ClientRequests {
     private Client client;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "client_id")
+    @Column(insertable = false, updatable = false, name = "client_id")
     private Integer clientId;
 
     @Enumerated(EnumType.ORDINAL)
@@ -41,13 +41,12 @@ public class ClientRequests {
     private InsurancePayment insurancePayment;
 
     @Basic
-    @Column(insertable=false, updatable=false, name = "insurance_payment_id")
+    @Column(insertable = false, updatable = false, name = "insurance_payment_id")
     private Integer insurancePaymentId;
 
     @OneToOne(mappedBy = "clientRequests")
     @JsonIgnore
     private ContractNumber contractNumber;
-
 
 
 }
