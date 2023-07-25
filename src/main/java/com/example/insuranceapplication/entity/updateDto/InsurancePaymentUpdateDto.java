@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class InsurancePaymentUpdateDto {
-    public Coefficient coefficient;
+    public Integer coefficientId;
     public Double insurancePaymentAmount;
 
 }

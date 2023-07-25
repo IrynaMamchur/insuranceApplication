@@ -1,11 +1,14 @@
 package com.example.insuranceapplication.service.database;
 
-import com.example.insuranceapplication.entity.ContractNumber;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 
 public interface ReportDatabaseService {
-    List<ContractNumber> createFirstReport(Timestamp startedAt);
+    /**
+     * Create Report from insurance payment and car cost
+     * @param insurancePaymentAmount The insurancePaymentAmount from InsurancePayment
+     * @return The Report from insurance payment and car cost
+     */
+    List<Object> createFirstReport(Double insurancePaymentAmount);
 }

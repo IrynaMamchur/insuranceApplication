@@ -30,29 +30,6 @@ public class ContractNumberController {
         return createResponseEntity(contractNumbers);
     }
 
-    @GetMapping(value = "/contract/find/finished/after/{finishedAt}")
-    public ResponseEntity<List<ContractNumber>> getContractNumberByFinishedAtAfter(@PathVariable(name = "finishedAt") Timestamp finishedAt) {
-        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByFinishedAtAfter(finishedAt);
-        return createResponseEntity(contractNumbers);
-    }
-
-    @GetMapping(value = "/contract/find/finished/{finishedAt}")
-    public ResponseEntity<List<ContractNumber>> getContractNumberByFinishedAt(@PathVariable(name = "finishedAt") Timestamp finishedAt) {
-        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByFinishedAt(finishedAt);
-        return createResponseEntity(contractNumbers);
-    }
-
-    @GetMapping(value = "/contract/find/started/after/{startedAt}")
-    public ResponseEntity<List<ContractNumber>> getContractNumberByStartedAtAfter(@PathVariable(name = "startedAt") Timestamp startedAt) {
-        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByStartedAtAfter(startedAt);
-        return createResponseEntity(contractNumbers);
-    }
-
-    @GetMapping(value = "/contract/find/started/{startedAt}")
-    public ResponseEntity<List<ContractNumber>> getContractNumberByStartedAt(@PathVariable(name = "startedAt") Timestamp startedAt) {
-        List<ContractNumber> contractNumbers = contractNumberDatabaseService.getContractNumberByStartedAt(startedAt);
-        return createResponseEntity(contractNumbers);
-    }
 
     @GetMapping(value = "/contract/find/insuranseEvent/{insuranceEventInContractNumber}")
     public ResponseEntity<List<ContractNumber>> getContractNumberByInsuranceEvent(@PathVariable(name = "insuranceEventInContractNumber") InsuranceEventInContractNumber insuranceEventInContractNumber) {
@@ -77,11 +54,6 @@ public class ContractNumberController {
         return ResponseEntity.ok(contractNumber);
     }
 
-    @PutMapping(value = "/contract/update")
-    public ResponseEntity<ContractNumber> updateContractNumber(@RequestBody ContractNumber contractNumber) {
-        contractNumberDatabaseService.update(contractNumber);
-        return ResponseEntity.ok(contractNumber);
-    }
 
     @PutMapping(value = "/contract/update/withCheck/{id}")
     public ResponseEntity<Optional<ContractNumber>> updateWithCheck(@PathVariable(name = "id") Integer id, @RequestBody ContractNumberUpdateDto contractNumberUpdateDto) {

@@ -29,38 +29,12 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
         return (List<ContractNumber>) contractNumberRepository.getContractNumberByInsuranceEventInContractNumber(insuranceEventInContractNumber);
     }
 
-    @Override
-    public List<ContractNumber> getContractNumberByFinishedAtAfter(Timestamp finishedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAtAfter(finishedAt);
-    }
-
-    @Override
-    public List<ContractNumber> getContractNumberByFinishedAt(Timestamp finishedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByFinishedAt(finishedAt);
-    }
-
-    @Override
-    public List<ContractNumber> getContractNumberByStartedAtAfter(Timestamp startedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByStartedAtAfter(startedAt);
-    }
-
-    @Override
-    public List<ContractNumber> getContractNumberByStartedAt(Timestamp startedAt) {
-        return (List<ContractNumber>) contractNumberRepository.getContractNumberByStartedAt(startedAt);
-    }
-
-
     public Optional<ContractNumber> getContractNumberById(Integer id) {
         return contractNumberRepository.findById(id);
     }
 
     @Override
     public ContractNumber create(ContractNumber contractNumber) {
-        return contractNumberRepository.save(new ContractNumber());
-    }
-
-    @Override
-    public ContractNumber update(ContractNumber contractNumber) {
         return contractNumberRepository.save(contractNumber);
     }
 
@@ -85,7 +59,7 @@ public class ContractNumberDatabaseServiceImpl implements ContractNumberDatabase
         if (contractNumberOptional.isPresent() && contractNumberUpdateDto != null) {
             ContractNumber contractNumber = contractNumberOptional.get();
             if (contractNumberUpdateDto.getInsuranceEventInContractNumber() != null) {
-                contractNumber.setInsuranceEventInContractNumber(contractNumberUpdateDto.getInsuranceEventInContractNumber());
+                contractNumber.setInsuranceEventInContractNumber(InsuranceEventInContractNumber.valueOf(contractNumberUpdateDto.getInsuranceEventInContractNumber()));
             }
             if (contractNumberUpdateDto.getStartedAt() != null) {
                 contractNumber.setStartedAt(contractNumberUpdateDto.getStartedAt());

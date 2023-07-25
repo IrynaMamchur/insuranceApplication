@@ -22,7 +22,6 @@ public class ClientController {
         Client client = clientDatabaseService.getClientByName(name, surname);
         return ResponseEntity.ok(client);
     }
-
     @GetMapping(value = "/client/find/dateOfBirthday/{dateOfBirthday}")
     public ResponseEntity<Client> getClientByDateOfBirthday(@PathVariable(name = "dateOfBirthday") LocalDate dateOfBirthday) {
         Client client = clientDatabaseService.getClientByDateOfBirthday(dateOfBirthday);
@@ -44,12 +43,6 @@ public class ClientController {
     @PostMapping(value = "/client/create")
     public ResponseEntity<Client> createNewClient(@RequestBody Client client) {
         clientDatabaseService.create(client);
-        return ResponseEntity.ok(client);
-    }
-
-    @PutMapping(value = "/client/update")
-    public ResponseEntity<Client> updateClient(@RequestBody Client client) {
-        clientDatabaseService.update(client);
         return ResponseEntity.ok(client);
     }
 

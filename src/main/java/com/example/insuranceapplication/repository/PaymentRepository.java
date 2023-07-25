@@ -9,6 +9,11 @@ import java.util.Collection;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 
-    Collection<Payment> getPaymentsByAmount(Integer amount);
+    /**
+     * Finds an Payment entity from database by amount of insurance payment
+     * @param amount The amount of the Payment
+     * @return Payment entity from database that was found by amount of insurance payment
+     */
+    Collection<Payment> getPaymentsByAmount(Double amount);
 
 }

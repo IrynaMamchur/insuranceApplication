@@ -4,7 +4,6 @@ import com.example.insuranceapplication.entity.InsurancePayment;
 import com.example.insuranceapplication.entity.dto.InsurancePaymentDto;
 import com.example.insuranceapplication.entity.updateDto.InsurancePaymentUpdateDto;
 import com.example.insuranceapplication.repository.InsurancePaymentRepository;
-import com.example.insuranceapplication.service.database.ClientReguestsDatabaseService;
 import com.example.insuranceapplication.service.database.CoefficientDatabaseService;
 import com.example.insuranceapplication.service.database.InsurancePaymentDatabaseService;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +15,11 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseService {
+public class InsurancePaymentDatabaseServiceImpl implements InsurancePaymentDatabaseService {
 
     private final InsurancePaymentRepository insurancePaymentRepository;
     private final CoefficientDatabaseService coefficientDatabaseService;
-    private final ClientReguestsDatabaseService clientReguestsDatabaseService;
+
 
     @Override
     public InsurancePayment create(InsurancePayment insurancePayment) {
@@ -28,16 +27,14 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
     }
 
     @Override
-    public double createInsurancePayment(Integer coefficientId, Integer carCostId) {
+    public double createInsurancePayment(Integer coefficientId, Double carCost) {
         double coefficientForCar;
         double amount;
-        double carCost;
-        coefficientForCar = coefficientDatabaseService.getCoefficient(coefficientId);
-        carCost = clientReguestsDatabaseService.getCarCostClientRequests(carCostId);
+        coefficientForCar = coefficientDatabaseService.getCoefficientCoefficient(coefficientId);
         if (coefficientForCar <= 0 || carCost <= 0) {
             throw new IllegalArgumentException();
         }
-        amount = coefficientForCar * carCost;
+        amount = coefficientForCar * carCost / 100;
         return amount;
     }
 
@@ -49,12 +46,12 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
     @Override
     public Optional<InsurancePayment> updateInsurancePayment(InsurancePaymentDto insurancePaymentDto) {
         Integer coefficientId = insurancePaymentDto.getCoefficientId();
-        Integer carCostId = insurancePaymentDto.getCarCostId();
+        Double carCost = insurancePaymentDto.getCarCost();
         Integer id = insurancePaymentDto.getId();
         Optional<InsurancePayment> insurancePaymentOptional = insurancePaymentRepository.findById(id);
         if (insurancePaymentOptional.isPresent()) {
             InsurancePayment insurancePayment = insurancePaymentOptional.get();
-            insurancePayment.setInsurancePaymentAmount(createInsurancePayment(coefficientId, carCostId));
+            insurancePayment.setInsurancePaymentAmount(createInsurancePayment(coefficientId, carCost));
             insurancePaymentRepository.save(insurancePayment);
             return Optional.of(insurancePayment);
         }
@@ -74,14 +71,20 @@ public class InsurancePaymentDatabaseImpl implements InsurancePaymentDatabaseSer
             if (insurancePaymentUpdateDto.getInsurancePaymentAmount() != null) {
                 insurancePayment.setInsurancePaymentAmount(insurancePaymentUpdateDto.getInsurancePaymentAmount());
             }
-            if (insurancePaymentUpdateDto.getCoefficient() != null) {
-                insurancePayment.setCoefficient(insurancePaymentUpdateDto.getCoefficient());
+            if (insurancePaymentUpdateDto.getCoefficientId() != null) {
+                insurancePayment.setCoefficientId(insurancePaymentUpdateDto.getCoefficientId());
             }
             insurancePaymentRepository.save(insurancePayment);
             return Optional.of(insurancePayment);
         }
         return Optional.empty();
     }
+
+    @Override
+    public Optional<InsurancePayment> getInsurancePaymentById(Integer id) {
+        return insurancePaymentRepository.findById(id);
+    }
+
 
 }
 

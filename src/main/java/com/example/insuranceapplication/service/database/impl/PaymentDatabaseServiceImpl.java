@@ -18,7 +18,7 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     private final PaymentRepository paymentRepository;
 
     @Override
-    public List<Payment> getPaymentsByAmount(Integer amount) {
+    public List<Payment> getPaymentsByAmount(Double amount) {
         return (List<Payment>) paymentRepository.getPaymentsByAmount(amount);
     }
 
@@ -34,11 +34,6 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
 
     @Override
     public Payment create(Payment payment) {
-        return paymentRepository.save(new Payment());
-    }
-
-    @Override
-    public Payment update(Payment payment) {
         return paymentRepository.save(payment);
     }
 

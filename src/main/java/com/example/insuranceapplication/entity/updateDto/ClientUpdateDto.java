@@ -16,5 +16,6 @@ public class ClientUpdateDto {
     public String eMail;
     public String phoneNumber;
     public String address;
+    private Integer clientPasswordId;
 
 }

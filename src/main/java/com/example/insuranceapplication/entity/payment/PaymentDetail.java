@@ -1,7 +1,7 @@
 package com.example.insuranceapplication.entity.payment;
 
 import com.example.insuranceapplication.entity.ContractNumber;
-import com.example.insuranceapplication.entity.payment.Payment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,13 +14,12 @@ import java.time.LocalDate;
 public class PaymentDetail {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "payment_id")
-    private Payment payment;
+    @Column(name = "payment_id")
+    private Integer paymentId;
 
     @Column(name = "date_payment_plan")
     private LocalDate datePaymentPlan;
@@ -36,7 +35,12 @@ public class PaymentDetail {
     private Integer number;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "contract_number_id")
     private ContractNumber contractNumber;
+
+    @Basic
+    @Column(insertable = false, updatable = false, name = "contract_number_id")
+    private Integer contractNumberId;
 
 }

@@ -8,6 +8,7 @@ import com.example.insuranceapplication.service.database.ClientPasswordDatabaseS
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,14 +40,10 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
     }
 
     @Override
+    @Transactional
     public ClientPassword create(ClientPassword clientPassword) {
-        verificationPassword(clientPassword.getPassword());
         verificationLogin(clientPassword.getLogin());
-        return clientPasswordRepository.save(clientPassword);
-    }
-
-    @Override
-    public ClientPassword update(ClientPassword clientPassword) {
+        verificationPassword(clientPassword.getPassword());
         return clientPasswordRepository.save(clientPassword);
     }
 
@@ -74,13 +71,6 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
             if (lowercaseLetter.equals(password)) {
                 log.info("Пароль не соответствует требованиям, поскольку в нем отсутствуют строчные буквы");
                 throw new IllegalArgumentException();
-            }
-            for (int i = 0; i < password.length(); i++) {
-                int num = Character.getNumericValue(password.charAt(i));
-                if (num >= 10) {
-                    log.info("Пароль не соответствует требованиям, поскольку в нем отсутствуют цифры");
-                    throw new IllegalArgumentException();
-                }
             }
             log.info("Пароль идеален");
         }
@@ -118,18 +108,9 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
                     log.info("Логин не соответствует требованиям, поскольку в нем отсутствуют строчные буквы");
                     throw new IllegalArgumentException();
                 }
-                for (int i = 0; i < login.length(); i++) {
-                    int num = Character.getNumericValue(login.charAt(i));
-                    if (num >= 10) {
-                        log.info("Логин не соответствует требованиям, поскольку в нем отсутствуют цифры");
-                        throw new IllegalArgumentException();
-                    }
-                }
                 log.info("Логин идеален");
             }
-
         }
-
     }
 
     @Override
@@ -155,7 +136,7 @@ public class ClientPasswordDatabaseServiceImpl implements ClientPasswordDatabase
                 clientPassword.setPassword(clientPasswordUpdateDto.getPassword());
             }
             if (clientPasswordUpdateDto.getPasswordStatus() != null) {
-                clientPassword.setPasswordStatus(clientPasswordUpdateDto.getPasswordStatus());
+                clientPassword.setPasswordStatus(PasswordStatus.valueOf(clientPasswordUpdateDto.getPasswordStatus()));
             }
             clientPasswordRepository.save(clientPassword);
             return Optional.of(clientPassword);

@@ -35,11 +35,6 @@ public class CarEngineCapacityDatabaseServiceImpl implements CarEngineCapacityDa
 
     @Override
     public CarEngineCapacity create(CarEngineCapacity carEngineCapacity) {
-        return carEngineCapacityRepository.save(new CarEngineCapacity());
-    }
-
-    @Override
-    public CarEngineCapacity update(CarEngineCapacity carEngineCapacity) {
         return carEngineCapacityRepository.save(carEngineCapacity);
     }
 
@@ -50,7 +45,7 @@ public class CarEngineCapacityDatabaseServiceImpl implements CarEngineCapacityDa
 
     @Override
     public void delete(Integer id) {
-        carEngineCapacityRepository.deleteById(id);
+        carEngineCapacityRepository.deleteCarEngineCapacityById(id);
     }
 
     @Override

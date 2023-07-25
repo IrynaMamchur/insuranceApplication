@@ -9,10 +9,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CoefficientRepository extends JpaRepository<Coefficient, Integer> {
 
+
+    /**
+     * Find coefficient from database by specified Coefficient id
+     * @param id The id of the Coefficient
+     * @return  The coefficient from database by specified Coefficient id
+     */
     @Query(value = "SELECT " +
-            "Coefficient .coefficient\n" +
-            "FROM Coefficient \n" +
-            "where Coefficient .id = :id", nativeQuery = true)
+            "coefficient" +
+            " FROM Coefficient" +
+            " where id = :id", nativeQuery = true)
     double getCoefficient(@Param("id") Integer id);
 
 }

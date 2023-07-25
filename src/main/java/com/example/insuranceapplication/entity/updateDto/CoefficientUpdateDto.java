@@ -9,11 +9,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CoefficientUpdateDto {
-    public CarBrand carBrand;
-    public CarEngineCapacity carEngineCapacity;
-    public CarInsuranceProgram carInsuranceProgram;
-    public CarYearOfIssue carYearOfIssue;
+    public Integer carBrandId;
+    public Integer carEngineCapacityId;
+    public Integer carInsuranceProgramId;
+    public Integer carYearOfIssueId;
     public Double coefficientForCar;
-    public CarQuantityOfPayments carQuantityOfPayments;
+    public Integer carQuantityOfPaymentsId;
 
 }
