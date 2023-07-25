@@ -8,8 +8,20 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarYearOfIssueRepository extends JpaRepository<CarYearOfIssue, Integer> {
+
+    /**
+     * Finds an CarYearOfIssue entity from database by carFirstRegistr
+     * @param carFirstRegistr The Integer carFirstRegistr of the CarYearOfIssue
+     * @return CarYearOfIssue entity from database that was found by the carFirstRegistr of the CarYearOfIssue
+     */
     CarYearOfIssue getYearOfIssueByCarFirstRegistr(Integer carFirstRegistr);
 
+
+    /**
+     * Finds coefficient from database by specified CarYearOfIssue carFirstRegistr
+     * @param carFirstRegistr The Integer carFirstRegistr of the CarYearOfIssue
+     * @return The coefficient from database that was found by the carFirstRegistr of the CarYearOfIssue
+     */
     @Query(value = "SELECT " +
             " carYearOfIssue.coefficient" +
             " FROM CarYearOfIssue carYearOfIssue" +

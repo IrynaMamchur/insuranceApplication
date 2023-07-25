@@ -8,7 +8,6 @@ import java.util.Optional;
 public interface CarBrandDatabaseService {
     /**
      * Finds an СarBrand entity from database by car brand and model
-     *
      * @param carBrandName The brand and model name of the CarBrand.
      * @return CarBrand entity from database that was found by the brand and model of the CarBrand
      */

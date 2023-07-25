@@ -30,8 +30,8 @@ void setup(){
 
     @Test
     void getPaymentsByAmount() {
-    underTest.getPaymentsByAmount(2000);
-    verify(paymentRepository).getPaymentsByAmount(2000);
+    underTest.getPaymentsByAmount(2000.0);
+    verify(paymentRepository).getPaymentsByAmount(2000.0);
     }
 
     @Test

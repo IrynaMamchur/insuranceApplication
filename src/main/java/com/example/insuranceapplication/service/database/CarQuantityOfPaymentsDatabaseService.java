@@ -24,7 +24,6 @@ public interface CarQuantityOfPaymentsDatabaseService {
 
     /**
      * Finds coefficient from database by specified CarQuantityOfPayments number
-     *
      * @param number The Integer number of the CarQuantityOfPayments
      * @return The coefficient from database that was found by the specified CarQuantityOfPayments number of the CarQuantityOfPayments
      */

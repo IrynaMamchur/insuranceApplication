@@ -22,7 +22,6 @@ public class ClientController {
         Client client = clientDatabaseService.getClientByName(name, surname);
         return ResponseEntity.ok(client);
     }
-
     @GetMapping(value = "/client/find/dateOfBirthday/{dateOfBirthday}")
     public ResponseEntity<Client> getClientByDateOfBirthday(@PathVariable(name = "dateOfBirthday") LocalDate dateOfBirthday) {
         Client client = clientDatabaseService.getClientByDateOfBirthday(dateOfBirthday);

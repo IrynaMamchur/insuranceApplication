@@ -8,8 +8,21 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapacity, Integer> {
+
+    /**
+     * Finds an СarEngineCapacity entity from database by engineCapacity
+     *
+     * @param engineCapacity The Double engineCapacity of the CarEngineCapacity
+     * @return CarEngineCapacity entity from database that was found by the engineCapacity of the CarEngineCapacity
+     */
     CarEngineCapacity getEngineCapacityByEngineCapacityEquals(Double engineCapacity);
 
+    /**
+     * Finds coefficient from database by specified CarEngineCapacity engineCapacity
+     *
+     * @param engineCapacity The engineCapacity of the CarEngineCapacity
+     * @return The coefficient from database that was found by the engineCapacity of the CarEngineCapacity
+     */
     @Query(value = "SELECT " +
             "coefficient" +
             " FROM CarEngineCapacity" +
@@ -17,5 +30,4 @@ public interface CarEngineCapacityRepository extends JpaRepository<CarEngineCapa
     double getCoefficientCarEngineCapacity(@Param("engineCapacity") Double engineCapacity);
 
 
-    CarEngineCapacity deleteCarEngineCapacityById(Integer id);
 }

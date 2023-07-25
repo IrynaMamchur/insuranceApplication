@@ -10,10 +10,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InsurancePaymentRepository extends JpaRepository<InsurancePayment, Integer> {
 
+    /**
+     * Find insurance payment from database by specified InsurancePayment id
+     * @param id  The id of the InsurancePayment
+     * @return The insurance payment from database by specified InsurancePayment id
+     */
     @Query(value = "SELECT " +
-            "InsurancePayment.insurancePaymentAmount\n" +
-            "FROM InsurancePayment \n" +
-            "where InsurancePayment .id = :id", nativeQuery = true)
+            "insurancePaymentAmount" +
+            " FROM InsurancePayment ip" +
+            " where id = :id", nativeQuery = true)
     double getAmount(@Param("id") Integer id);
 
 }

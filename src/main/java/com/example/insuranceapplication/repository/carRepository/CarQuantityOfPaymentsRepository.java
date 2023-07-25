@@ -9,6 +9,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CarQuantityOfPaymentsRepository extends JpaRepository<CarQuantityOfPayments, Integer> {
 
+    /**
+     * Finds coefficient from database by specified CarQuantityOfPayments number
+     * @param number The Integer number of the CarQuantityOfPayments
+     * @return The coefficient from database that was found by the specified CarQuantityOfPayments number of the CarQuantityOfPayments
+     */
     @Query(value = "SELECT " +
             " carQuantityOfPayments.coefficient" +
             " FROM CarQuantityOfPayments carQuantityOfPayments" +

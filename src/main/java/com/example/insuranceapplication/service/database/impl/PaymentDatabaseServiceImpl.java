@@ -18,7 +18,7 @@ public class PaymentDatabaseServiceImpl implements PaymentDatabaseService {
     private final PaymentRepository paymentRepository;
 
     @Override
-    public List<Payment> getPaymentsByAmount(Integer amount) {
+    public List<Payment> getPaymentsByAmount(Double amount) {
         return (List<Payment>) paymentRepository.getPaymentsByAmount(amount);
     }
 

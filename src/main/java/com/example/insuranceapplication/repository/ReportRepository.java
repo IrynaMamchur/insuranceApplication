@@ -12,7 +12,11 @@ import java.util.List;
 @Repository
 public interface ReportRepository extends JpaRepository<InsurancePayment, Integer> {
 
-
+    /**
+     * Create Report from insurance payment and car cost
+     * @param insurancePaymentAmount The insurancePaymentAmount from InsurancePayment
+     * @return The Report from insurance payment and car cost
+     */
     @Query("SELECT DISTINCT ir.carCost, ir.insurancePaymentAmount FROM InsurancePayment ir " +
             " WHERE ir.insurancePaymentAmount >= :insurancePaymentAmount")
     List<Object> createFirstReport(@Param("insurancePaymentAmount") Double insurancePaymentAmount);
